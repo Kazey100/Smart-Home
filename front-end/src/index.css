@@ -41,5 +41,5 @@ button {
   margin-left: 85px; /* Push the content to the right by the width of the sidebar */
   /* padding: 20px;  */
   overflow-y: auto; /* Enables vertical scrolling if content overflows */
-  height: 97vh;
+  height: 97.8vh;
 }
