@@ -23,3 +23,23 @@ button {
 .teal-text {
   color: #006868;
 }
+
+.sidebar {
+  position: fixed;
+  /* top: 0;
+  left: 0; */
+  width: 100px;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.main-content {
+  margin-left: 85px; /* Push the content to the right by the width of the sidebar */
+  /* padding: 20px;  */
+  overflow-y: auto; /* Enables vertical scrolling if content overflows */
+  height: 97vh;
+}
