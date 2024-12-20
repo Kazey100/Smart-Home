@@ -1,115 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 
 function App() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
   return (
-    <div className="bg-gray-800 font-sans leading-normal tracking-normal">
-      <div className="p-2 grid grid-cols-[auto_1fr]">
-        {/* Sidebar */}
-        <div
-          className={`sidebar ${isCollapsed ? "w-[50px]" : "w-[100px]"} ${
-            isCollapsed ? "" : "bg-black"
-          } rounded-lg min-h-screen flex flex-col transition-all duration-300`}
-        >
-          {/* Sidebar Logo */}
-          <div className="h-[100px] flex items-center justify-center">
+    <div class="bg-gray-800 font-sans leading-normal tracking-normal">
+      <div id="root"></div>
+      <div class="p-2 grid grid-cols-[auto_1fr]">
+        <div class="sidebar w-[100px] rounded-lg bg-black min-h-screen flex flex-col">
+          <div class="h-[100px] flex items-center justify-center">
             <a href="index.html">
-              <img
-                src="./image/NZHome.png"
-                alt=""
-                className={`${isCollapsed ? "hidden" : "block"}`}
-              />
+              <img src="./image/NZHome.png" alt="" />
             </a>
           </div>
-
-          {/* Sidebar Items */}
-          <div className="flex flex-col items-center justify-center px-4 py-2">
-            <i
-              className={`fas fa-layer-group text-white text-2xl ${
-                isCollapsed ? "hidden" : "block"
-              }`}
-            ></i>
-            {!isCollapsed && (
-              <span className="text-white text-center text-sm mt-2">
-                Devices
-              </span>
-            )}
+          <div class="flex flex-col items-center justify-center px-4 py-2">
+            <i class="fas fa-layer-group text-white text-2xl"></i>
+            <span class="text-white text-center text-sm mt-2">Devices</span>
           </div>
-          <div className="flex flex-col items-center justify-center px-4 py-2">
-            <i
-              className={`fas fa-chart-pie text-white text-2xl ${
-                isCollapsed ? "hidden" : "block"
-              }`}
-            ></i>
-            {!isCollapsed && (
-              <span className="text-white text-center text-sm mt-2">
-                Internet Usage
-              </span>
-            )}
+          <div class="flex flex-col items-center justify-center px-4 py-2">
+            <i class="fas fa-chart-pie text-white text-2xl"></i>
+            <span class="text-white text-center text-sm mt-2">
+              Internet Usage
+            </span>
           </div>
-          <div className="flex flex-col items-center justify-center px-4 py-2">
-            <i
-              className={`fas fa-wind text-white text-2xl ${
-                isCollapsed ? "hidden" : "block"
-              }`}
-            ></i>
-            {!isCollapsed && (
-              <span className="text-white text-center text-sm mt-2">
-                Calendar
-              </span>
-            )}
+          <div class="flex flex-col items-center justify-center px-4 py-2">
+            <i class="fas fa-wind text-white text-2xl"></i>
+            <span class="text-white text-center text-sm mt-2">Calendar</span>
           </div>
-
-          {/* Collapse Button inside the Sidebar (only < button) */}
-          <div className="flex justify-center px-4 py-4">
-            <button
-              onClick={toggleSidebar}
-              className={`text-white text-2xl bg-transparent border-0 ${
-                isCollapsed ? "hidden" : "block"
-              }`}
-            >
-              <i
-                className={`fas ${
-                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
-                }`}
-              ></i>
-            </button>
+          <div class="mt-auto flex items-center justify-center px-4 py-7">
+            <i class="fas fa-cog text-white text-2xl"></i>
           </div>
         </div>
 
-        {/* Main Content */}
-        <div
-          className={`main-content flex flex-col flex-1 transition-all duration-300 ${
-            isCollapsed ? "ml-0 w-full" : "ml-[100px] w-[calc(100%-100px)]"
-          }`}
-        >
-          {/* Main Content Header */}
-          <div className="flex justify-between items-center relative">
-            <div className="bg-black rounded-lg relative w-[96%] flex items-center">
-              {/* Hamburger Icon beside NZ Home when collapsed */}
-              <div
-                className={`absolute top-6 left-9 z-10 ${
-                  isCollapsed ? "block" : "hidden"
-                }`}
-              >
-                <button
-                  onClick={toggleSidebar}
-                  className="text-white text-2xl bg-transparent border-0"
-                >
-                  <i className={`fas fa-bars`}></i>
-                </button>
-              </div>
-
-              {/* NZ HOME title */}
-              <h1 className="text-4xl font-bold text-white mx-auto py-4 flex-1">
+        {/* <!-- Main Content --> */}
+        <div class="main-content flex flex-col flex-1">
+          <div class="flex justify-center items-start">
+            <div class="bg-black rounded-lg relative w-[96%] flex items-center">
+              <h1 class="text-4xl font-bold text-white mx-auto py-4">
                 NZ HOME
               </h1>
-              <i className="fas fa-bell text-white text-3xl absolute right-9"></i>
+              <i class="fas fa-bell text-white text-3xl absolute right-9"></i>
             </div>
           </div>
 
