@@ -249,9 +249,7 @@ function App() {
               <div class="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
                 {/* <!-- Rooms --> */}
                 <div className="rounded-lg p-4 bg-blue-300 mb-4 relative overflow-hidden">
-                  <h2 className="text-teal-500 text-2xl font-bold mb-2">
-                    Rooms
-                  </h2>
+                  <h2 className="teal-text text-2xl font-bold mb-2">Rooms</h2>
 
                   {/* Container for the rooms */}
                   <div className="transition-all duration-500 ease-in-out">
@@ -293,7 +291,7 @@ function App() {
                       <span
                         key={index}
                         className={`text-2xl ${
-                          index === currentPage ? "text-teal-500" : "text-white"
+                          index === currentPage ? "teal-text" : "text-white"
                         }`}
                       >
                         •
