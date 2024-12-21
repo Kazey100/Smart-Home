@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+/* Animation for the slide-in effect */
+@keyframes slideInNext {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInPrev {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-next {
+  animation: slideInNext 0.3s ease-out;
+}
+
+.animate-slide-in-prev {
+  animation: slideInPrev 0.3s ease-out;
+}
