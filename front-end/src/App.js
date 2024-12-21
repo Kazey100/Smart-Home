@@ -8,13 +8,13 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-800 font-sans leading-normal tracking-normal">
-      <div className="p-2 grid grid-cols-[auto_1fr]">
+    <div className="bg-gray-800 font-sans leading-normal tracking-normal h-screen overflow-hidden">
+      <div className="p-2 grid grid-cols-[auto_1fr] h-full">
         {/* Sidebar */}
         <div
-          className={`sidebar ${isCollapsed ? "w-[50px]" : "w-[100px]"} ${
+          className={`sidebar ${isCollapsed ? "w-[0px]" : "w-[100px]"} ${
             isCollapsed ? "" : "bg-black"
-          } rounded-lg min-h-screen flex flex-col transition-all duration-300`}
+          } rounded-lg min-h-full flex flex-col transition-all duration-300 overflow-y-auto`}
         >
           {/* Sidebar Logo */}
           <div className="h-[100px] flex items-center justify-center">
@@ -65,8 +65,8 @@ function App() {
             )}
           </div>
 
-          {/* Collapse Button inside the Sidebar (only < button) */}
-          <div className="flex justify-center px-4 py-4">
+          {/* Collapse Button inside the Sidebar */}
+          <div className="flex justify-center px-4 py-4 mt-auto">
             <button
               onClick={toggleSidebar}
               className={`text-white text-2xl bg-transparent border-0 ${
@@ -75,7 +75,7 @@ function App() {
             >
               <i
                 className={`fas ${
-                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
+                  isCollapsed ? "fa-chevron-right" : "fa-chevron-left"
                 }`}
               ></i>
             </button>
@@ -84,36 +84,31 @@ function App() {
 
         {/* Main Content */}
         <div
-          className={`main-content flex flex-col flex-1 transition-all duration-300 ${
-            isCollapsed ? "ml-0 w-full" : "ml-[100px] w-[calc(100%-100px)]"
-          }`}
+          className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
         >
-          {/* Main Content Header */}
-          <div className="flex justify-between items-center relative">
-            <div className="bg-black rounded-lg relative w-[96%] flex items-center">
-              {/* Hamburger Icon beside NZ Home when collapsed */}
-              <div
-                className={`absolute top-6 left-9 z-10 ${
-                  isCollapsed ? "block" : "hidden"
-                }`}
-              >
-                <button
-                  onClick={toggleSidebar}
-                  className="text-white text-2xl bg-transparent border-0"
+          <div className="px-4 grid grid-rows-[6.2rem_1fr] flex-1">
+            {/* Main Content Header */}
+            <div className="flex justify-between items-center relative">
+              <div className="bg-black rounded-lg relative w-[99%] flex items-center">
+                <div
+                  className={`absolute top-6 left-9 z-10 ${
+                    isCollapsed ? "block" : "hidden"
+                  }`}
                 >
-                  <i className={`fas fa-bars`}></i>
-                </button>
+                  <button
+                    onClick={toggleSidebar}
+                    className="text-white text-2xl bg-transparent border-0"
+                  >
+                    <i className={`fas fa-bars`}></i>
+                  </button>
+                </div>
+                <h1 className="text-4xl font-bold text-white mx-auto py-4 flex-1">
+                  NZ HOME
+                </h1>
+                <i className="fas fa-bell text-white text-3xl absolute right-9"></i>
               </div>
-
-              {/* NZ HOME title */}
-              <h1 className="text-4xl font-bold text-white mx-auto py-4 flex-1">
-                NZ HOME
-              </h1>
-              <i className="fas fa-bell text-white text-3xl absolute right-9"></i>
             </div>
-          </div>
 
-          <div class="px-4 grid grid-rows-[6.2rem_1fr] flex-1">
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
               <div class="grid grid-cols-2 p-4 gap-4 mb-4">
@@ -133,19 +128,19 @@ function App() {
 
                   <div class="pt-6">
                     <div class="rounded-lg p-3 bg-blue-300 flex flex-wrap gap-2 mt-2">
-                      <div class="bg-white rounded-lg p-4 teal-text flex-1 min-w-[150px]">
+                      <div class="bg-white rounded-lg p-2 teal-text flex-1">
                         <div>Weather Today</div>
                         <div class="text-4xl">Clear</div>
                       </div>
-                      <div class="bg-white rounded-lg p-4 teal-text flex-1 min-w-[150px]">
+                      <div class="bg-white rounded-lg p-2 teal-text flex-1">
                         <div>Temperature</div>
                         <div class="text-4xl">20 °C</div>
                       </div>
-                      <div class="bg-white rounded-lg p-4 teal-text flex-1 min-w-[150px]">
+                      <div class="bg-white rounded-lg p-2 teal-text flex-1">
                         <div>Device Status</div>
                         <div class="text-4xl">Stable</div>
                       </div>
-                      <div class="bg-white rounded-lg p-4 teal-text flex-1 min-w-[150px]">
+                      <div class="bg-white rounded-lg p-2 teal-text flex-1">
                         <div>Network</div>
                         <div class="text-4xl">500 mb/s</div>
                       </div>
@@ -156,7 +151,7 @@ function App() {
                 <div class="bg-blue-300 rounded-lg mb-4 p-4 teal-text">
                   {/* <!-- Date Picker --> */}
                   <div class="flex justify-center items-center mb-6">
-                    <div class="relative bg-white text-gray-800 rounded-full text-sm py-1 px-4 flex items-center cursor-pointer">
+                    <div class="relative bg-white text-gray-800 rounded-full text-sm py-1 px-2 flex flex-wrap items-center cursor-pointer">
                       <i class="fas fa-calendar mr-2 text-gray-600"></i>
                       6/11/2024
                       <i class="fas fa-chevron-down ml-2 text-gray-600"></i>
@@ -166,18 +161,22 @@ function App() {
                   {/* <!-- Energy Usage Section --> */}
                   <div class="bg-white p-4 rounded-lg shadow-md">
                     <h2 class="text-xl mb-4">Energy Usage</h2>
-                    <div class="flex items-center p-2 rounded-xl bg-gray-200 mb-3">
+                    <div class="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
                       <i class="fas fa-bolt text-lg mr-3"></i>
                       Today
-                      <div class="ml-auto font-bold">28.6 kWh</div>
+                      <div class="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
+                        <span class="block sm:inline">28.6 kWh</span>
+                      </div>
                       <div class="ml-2">
                         <i class="fas fa-lock text-xs"></i>
                       </div>
                     </div>
-                    <div class="flex items-center p-2 rounded-xl bg-gray-200 mb-3">
+                    <div class="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
                       <i class="fas fa-sync-alt text-lg mr-3"></i>
                       This Month
-                      <div class="ml-auto font-bold">325.37 kWh</div>
+                      <div class="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
+                        <span class="block sm:inline">325.37 kWh</span>
+                      </div>
                       <div class="ml-2">
                         <i class="fas fa-lock text-xs"></i>
                       </div>
@@ -187,10 +186,12 @@ function App() {
                   {/* <!-- Energy Generation Section --> */}
                   <div class="bg-white p-4 rounded-lg shadow-md mt-6">
                     <h2 class="text-xl mb-4">Energy Generation</h2>
-                    <div class="flex items-center p-2 rounded-xl bg-gray-200 mb-3">
+                    <div class="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
                       <i class="fas fa-sun text-lg mr-3"></i>
                       This Month
-                      <div class="ml-auto font-bold">400 kWh</div>
+                      <div class="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
+                        <span class="block sm:inline">400 kWh</span>
+                      </div>
                       <div class="ml-2">
                         <i class="fas fa-lock text-xs"></i>
                       </div>
@@ -199,11 +200,11 @@ function App() {
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 p-4 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
                 {/* <!-- Rooms --> */}
                 <div class="rounded-lg p-4 bg-blue-300 mb-4">
                   <h2 class="teal-text text-2xl font-bold mb-2">Rooms</h2>
-                  <div class="grid grid-cols-4 gap-4">
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <button class="teal-text bg-white p-3 rounded-lg">
                       Living Room
                     </button>
@@ -226,18 +227,18 @@ function App() {
               </div>
 
               <div class="rounded-lg p-4 teal-text mb-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* <!-- More Devices Section --> */}
                   <div class="bg-blue-300 rounded-lg p-4 mb-4">
                     <h2 class="text-2xl font-bold mb-4">More Devices</h2>
-                    <div class="grid grid-cols-3 gap-4">
-                      <button class="teal-text bg-white p-3 rounded-lg">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <button class="teal-text bg-white p-3 rounded-lg text-sm sm:text-base w-full text-center">
                         Samsung TV
                       </button>
-                      <button class="teal-text bg-white p-3 rounded-lg">
+                      <button class="teal-text bg-white p-3 rounded-lg text-sm sm:text-base w-full text-center">
                         Philips Hue
                       </button>
-                      <button class="teal-text bg-white p-3 rounded-lg">
+                      <button class="teal-text bg-white p-3 rounded-lg text-sm sm:text-base w-full text-center">
                         Add
                       </button>
                     </div>
@@ -246,18 +247,18 @@ function App() {
                   {/* <!-- Users Section --> */}
                   <div class="bg-blue-300 rounded-lg mb-4 p-4 teal-text">
                     <h2 class="text-2xl font-bold mb-4">Users</h2>
-                    <div class="flex gap-4">
+                    <div class="flex flex-wrap gap-4">
                       {/* <!-- User button 1 --> */}
-                      <button class="bg-white p-3 rounded-lg">
-                        <div class="text-2xl">Daughter</div>
+                      <button class="bg-white p-3 rounded-lg w-full sm:w-auto">
+                        <div class="text-xl sm:text-2xl">Daughter</div>
                         <span class="bg-red-500 text-xs rounded-full text-white px-2 inline-block">
                           Offline
                         </span>
                       </button>
 
                       {/* <!-- User button 2 --> */}
-                      <button class="bg-white p-3 rounded-lg">
-                        <div class="text-2xl">Mom</div>
+                      <button class="bg-white p-3 rounded-lg w-full sm:w-auto">
+                        <div class="text-xl sm:text-2xl">Mom</div>
                         <span class="bg-green-500 text-xs rounded-full text-white px-2 inline-block">
                           Online
                         </span>
