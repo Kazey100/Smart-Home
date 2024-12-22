@@ -61,9 +61,9 @@
 }
 
 .animate-slide-in-next {
-  animation: slideInNext 0.3s ease-out;
+  animation: slideInNext 0.4s ease-out;
 }
 
 .animate-slide-in-prev {
-  animation: slideInPrev 0.3s ease-out;
+  animation: slideInPrev 0.4s ease-out;
 }
