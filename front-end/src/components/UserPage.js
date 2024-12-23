@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-function RoomPage() {
+function UserPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -136,4 +136,4 @@ function RoomPage() {
   );
 }
 
-export default RoomPage;
+export default UserPage;

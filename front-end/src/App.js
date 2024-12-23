@@ -5,8 +5,10 @@ import WidgetsEnergy from "./components/widgetsEnergy";
 import RoomsRobots from "./components/roomsRobots";
 import Devices from "./components/devices";
 import Users from "./components/users";
+
 import RoomPage from "./components/RoomPage";
 import DevicePage from "./components/DevicePage";
+import UserPage from "./components/UserPage";
 
 import "./App.css";
 
@@ -105,27 +107,32 @@ function App() {
 
                 {/* Main Content */}
                 <div className="main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto">
-                  <div className="px-4 grid grid-rows-[6.2rem_1fr] flex-1">
+                  <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
                     {/* Header */}
                     <div className="flex justify-between items-center relative">
-                      <div className="bg-black rounded-lg relative w-[99%] flex items-center">
+                      <div className="bg-black rounded-lg w-full flex items-center px-4 py-4">
+                        {/* Hamburger Button */}
                         <div
-                          className={`absolute top-6 left-9 z-10 ${
+                          className={`flex items-center ${
                             isCollapsed ? "block" : "hidden"
                           }`}
                         >
                           <button
                             onClick={toggleSidebar}
-                            className="text-white text-2xl bg-transparent border-0"
+                            className="text-white text-2xl bg-transparent border-0 mr-4"
                           >
                             <i className="fas fa-bars"></i>
                           </button>
                         </div>
-                        <h1 className="text-4xl font-bold text-white mx-auto py-4">
+
+                        {/* Centered Text */}
+                        <h1 className="font-bold text-white flex-grow text-center text-4xl">
                           NZ HOME
                         </h1>
-                        <a href="#" className="mb-9">
-                          <i className="fas fa-bell text-white text-3xl absolute right-9"></i>
+
+                        {/* Bell Icon */}
+                        <a href="#" className="ml-auto">
+                          <i className="fas fa-bell text-white text-3xl"></i>
                         </a>
                       </div>
                     </div>
@@ -144,6 +151,7 @@ function App() {
           {/* Routes that display a blank page */}
           <Route path="/room/:name" element={<RoomPage />} />
           <Route path="/device/:name" element={<DevicePage />} />
+          <Route path="/user/:name" element={<UserPage />} />
         </Routes>
       </div>
     </Router>
