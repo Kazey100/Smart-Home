@@ -78,7 +78,7 @@ function WidgetsEnergy() {
       <div className="bg-blue-300 rounded-lg mb-4 p-4 teal-text">
         {/* Date Picker */}
         <div className="flex justify-center items-center mb-6">
-          <div className="relative bg-white text-gray-800 rounded-full text-sm py-1 px-2 flex items-center cursor-pointer w-[170px]">
+          <div className="relative bg-white text-gray-800 rounded-full text-sm py-1 px-2 flex items-center cursor-pointer w-[170px] z-50">
             <i className="fas fa-calendar mr-2 text-gray-600"></i>
             <DatePicker
               selected={selectedDate}
@@ -95,61 +95,74 @@ function WidgetsEnergy() {
 
           {/* Today Energy Usage */}
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
-              <i className="fas fa-bolt text-lg mr-3"></i>
-              <span className="text-sm sm:text-base">Today</span>
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
-                <span className="block sm:inline text-xs sm:text-sm md:text-lg">
-                  28.6 kWh
-                </span>
+            <div className="relative">
+              {/* Main Container */}
+              <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden relative">
+                <i className="fas fa-bolt text-lg mr-3"></i>
+                <span className="text-sm sm:text-base">Today</span>
+                <div className="ml-auto font-bold w-full sm:w-auto text-left sm:text-right truncate">
+                  <span className="block sm:inline text-xs sm:text-sm md:text-lg">
+                    28.6 kWh
+                  </span>
+                </div>
               </div>
-              <div className="ml-2">
-                <i className="fas fa-lock text-xs"></i>
+
+              {/* Overlay Div */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+                <i className="fas fa-lock text-white text-2xl"></i>
               </div>
             </div>
           </a>
 
           {/* This Month Energy Usage */}
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
-              <i className="fas fa-sync-alt text-lg mr-3"></i>
-              <span className="text-sm sm:text-base">This Month</span>
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
-                <span className="block sm:inline text-xs sm:text-sm md:text-lg">
-                  325.37 kWh
-                </span>
+            <div className="relative">
+              {/* Main Container */}
+              <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden relative">
+                <i className="fas fa-bolt text-lg mr-3"></i>
+                <span className="text-sm sm:text-base">This Month</span>
+                <div className="ml-auto font-bold w-full sm:w-auto text-left sm:text-right truncate">
+                  <span className="block sm:inline text-xs sm:text-sm md:text-lg">
+                    325.37 kWh
+                  </span>
+                </div>
               </div>
-              <div className="ml-2">
-                <i className="fas fa-lock text-xs"></i>
+
+              {/* Overlay Div */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+                <i className="fas fa-lock text-white text-2xl"></i>
               </div>
             </div>
           </a>
         </div>
 
         {/* Energy Generation Section */}
-        <div className="bg-white p-4 rounded-lg shadow-md mt-6 overflow-hidden">
+        <div className="bg-white p-4 rounded-lg shadow-md mt-6 overflow-hidden relative">
           <h2 className="text-xl mb-4">Energy Generation</h2>
 
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
-              {/* Icon */}
-              <i className="fas fa-sun text-lg mr-3"></i>
+            <div className="relative">
+              {/* Main Container */}
+              <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
+                {/* Icon */}
+                <i className="fas fa-sun text-lg mr-3"></i>
 
-              {/* Label */}
-              <span className="text-sm sm:text-base md:text-lg truncate">
-                This Month
-              </span>
-
-              {/* Energy Value */}
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
-                <span className="block sm:inline text-xs sm:text-sm md:text-base">
-                  400 kWh
+                {/* Label */}
+                <span className="text-sm sm:text-base md:text-lg truncate">
+                  This Month
                 </span>
+
+                {/* Energy Value */}
+                <div className="ml-auto font-bold w-full sm:w-auto text-left sm:text-right truncate">
+                  <span className="block sm:inline text-xs sm:text-sm md:text-base">
+                    400 kWh
+                  </span>
+                </div>
               </div>
 
-              {/* Lock Icon */}
-              <div className="ml-2">
-                <i className="fas fa-lock text-xs"></i>
+              {/* Overlay Div */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+                <i className="fas fa-lock text-white text-2xl"></i>
               </div>
             </div>
           </a>
