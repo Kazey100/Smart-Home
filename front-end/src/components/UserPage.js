@@ -12,78 +12,84 @@ function UserPage() {
   return (
     <div className="bg-gray-800 font-sans leading-normal tracking-normal h-screen overflow-hidden">
       <div className="p-2 grid grid-cols-[auto_1fr] h-full">
-        {/* Sidebar */}
-        <div
-          className={`sidebar ${isCollapsed ? "w-[0px]" : "w-[100px]"} ${
-            isCollapsed ? "" : "bg-black"
-          } rounded-lg min-h-full flex flex-col transition-all duration-300 overflow-y-auto`}
-        >
-          {/* Sidebar Logo */}
-          <div className="h-[100px] flex items-center justify-center">
+        <div className="relative flex">
+          {/* Sidebar */}
+          <div
+            className={`sidebar ${isCollapsed ? "w-[0px]" : "w-[100px]"} ${
+              isCollapsed ? "" : "bg-black"
+            } rounded-lg min-h-full flex flex-col overflow-y-auto`}
+          >
+            {/* Sidebar Logo */}
+            <div className="h-[100px] flex items-center justify-center">
+              <a href="/">
+                <img
+                  src="../image/NZHome.png"
+                  alt="NZ Home Logo"
+                  className={`${isCollapsed ? "hidden" : "block"}`}
+                />
+              </a>
+            </div>
+
+            {/* Sidebar Items */}
             <a href="/">
-              <img
-                src="../image/NZHome.png"
-                alt=""
-                className={`${isCollapsed ? "hidden" : "block"}`}
-              />
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-layer-group text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Devices
+                  </span>
+                )}
+              </div>
+            </a>
+            <a href="#">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-chart-pie text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Internet Usage
+                  </span>
+                )}
+              </div>
+            </a>
+            <a href="#">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-wind text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Calendar
+                  </span>
+                )}
+              </div>
             </a>
           </div>
 
-          {/* Sidebar Items */}
-          <a href="#">
-            <div className="flex flex-col items-center justify-center px-4 py-2">
-              <i
-                className={`fas fa-layer-group text-white text-2xl ${
-                  isCollapsed ? "hidden" : "block"
-                }`}
-              ></i>
-              {!isCollapsed && (
-                <span className="text-white text-center text-sm mt-2">
-                  Devices
-                </span>
-              )}
-            </div>
-          </a>
-          <a href="#">
-            <div className="flex flex-col items-center justify-center px-4 py-2">
-              <i
-                className={`fas fa-chart-pie text-white text-2xl ${
-                  isCollapsed ? "hidden" : "block"
-                }`}
-              ></i>
-              {!isCollapsed && (
-                <span className="text-white text-center text-sm mt-2">
-                  Internet Usage
-                </span>
-              )}
-            </div>
-          </a>
-          <a href="#">
-            <div className="flex flex-col items-center justify-center px-4 py-2">
-              <i
-                className={`fas fa-wind text-white text-2xl ${
-                  isCollapsed ? "hidden" : "block"
-                }`}
-              ></i>
-              {!isCollapsed && (
-                <span className="text-white text-center text-sm mt-2">
-                  Calendar
-                </span>
-              )}
-            </div>
-          </a>
-
-          {/* Collapse Button inside the Sidebar */}
-          <div className="flex justify-center px-4 py-4 mt-auto">
+          {/* Collapse Button */}
+          <div
+            className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
+              isCollapsed ? "left-[0px]" : "left-[80px]"
+            }`}
+          >
             <button
               onClick={toggleSidebar}
-              className={`text-white text-2xl bg-transparent border-0 ${
-                isCollapsed ? "hidden" : "block"
+              className={`text-white text-2xl bg-black p-2 rounded-full shadow-md transform transition-all duration-500 ease-in-out ${
+                isCollapsed ? "scale-0 opacity-0" : "scale-100 opacity-100"
               }`}
             >
               <i
                 className={`fas ${
-                  isCollapsed ? "fa-chevron-right" : "fa-chevron-left"
+                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
                 }`}
               ></i>
             </button>
