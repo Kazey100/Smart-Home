@@ -20,7 +20,7 @@ function RoomPage() {
         >
           {/* Sidebar Logo */}
           <div className="h-[100px] flex items-center justify-center">
-            <a href="index.html">
+            <a href="/">
               <img
                 src="../image/NZHome.png"
                 alt=""
@@ -114,7 +114,7 @@ function RoomPage() {
                   NZ HOME
                 </h1>
                 <a href="#">
-                  <i className="fas fa-bell text-white text-3xl absolute right-9"></i>
+                  <i className="fas fa-bell text-white text-3xl mr-9"></i>
                 </a>
               </div>
             </div>
