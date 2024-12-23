@@ -30,22 +30,45 @@ function WidgetsEnergy() {
 
         <a href="#">
           <div className="mt-12">
-            <div className="rounded-lg p-3 bg-blue-300 flex flex-wrap gap-2 mt-2">
-              <div className="bg-white rounded-lg p-2 teal-text flex-1">
-                <div>Weather Today</div>
-                <div className="text-4xl">Clear</div>
+            <div className="rounded-lg p-3 bg-blue-300 flex flex-wrap gap-2 mt-2 overflow-hidden">
+              {/* Weather Today */}
+              <div className="bg-white rounded-lg p-2 teal-text flex-1 min-w-[120px] overflow-hidden">
+                <div className="text-sm sm:text-base md:text-lg truncate">
+                  Weather Today
+                </div>
+                <div className="text-2xl sm:text-2xl md:text-3xl truncate">
+                  Clear
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-2 teal-text flex-1">
-                <div>Temperature</div>
-                <div className="text-4xl">20 °C</div>
+
+              {/* Temperature */}
+              <div className="bg-white rounded-lg p-2 teal-text flex-1 min-w-[120px] overflow-hidden">
+                <div className="text-sm sm:text-base md:text-lg truncate">
+                  Temperature
+                </div>
+                <div className="text-2xl sm:text-2xl md:text-3xl truncate">
+                  20 °C
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-2 teal-text flex-1">
-                <div>Device Status</div>
-                <div className="text-4xl">Stable</div>
+
+              {/* Device Status */}
+              <div className="bg-white rounded-lg p-2 teal-text flex-1 min-w-[120px] overflow-hidden">
+                <div className="text-sm sm:text-base md:text-lg truncate">
+                  Device Status
+                </div>
+                <div className="text-2xl sm:text-2xl md:text-3xl truncate">
+                  Stable
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-2 teal-text flex-1">
-                <div>Network</div>
-                <div className="text-4xl">500 mb/s</div>
+
+              {/* Network */}
+              <div className="bg-white rounded-lg p-2 teal-text flex-1 min-w-[120px] overflow-hidden">
+                <div className="text-sm sm:text-base md:text-lg truncate">
+                  Network
+                </div>
+                <div className="text-2xl sm:text-2xl md:text-3xl truncate">
+                  500 mb/s
+                </div>
               </div>
             </div>
           </div>
@@ -67,26 +90,34 @@ function WidgetsEnergy() {
         </div>
 
         {/* Energy Usage Section */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-4 rounded-lg shadow-md overflow-hidden">
           <h2 className="text-xl mb-4">Energy Usage</h2>
+
+          {/* Today Energy Usage */}
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
+            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
               <i className="fas fa-bolt text-lg mr-3"></i>
-              Today
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
-                <span className="block sm:inline">28.6 kWh</span>
+              <span className="text-sm sm:text-base">Today</span>
+              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
+                <span className="block sm:inline text-xs sm:text-sm md:text-lg">
+                  28.6 kWh
+                </span>
               </div>
               <div className="ml-2">
                 <i className="fas fa-lock text-xs"></i>
               </div>
             </div>
           </a>
+
+          {/* This Month Energy Usage */}
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
+            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
               <i className="fas fa-sync-alt text-lg mr-3"></i>
-              This Month
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
-                <span className="block sm:inline">325.37 kWh</span>
+              <span className="text-sm sm:text-base">This Month</span>
+              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
+                <span className="block sm:inline text-xs sm:text-sm md:text-lg">
+                  325.37 kWh
+                </span>
               </div>
               <div className="ml-2">
                 <i className="fas fa-lock text-xs"></i>
@@ -96,15 +127,27 @@ function WidgetsEnergy() {
         </div>
 
         {/* Energy Generation Section */}
-        <div className="bg-white p-4 rounded-lg shadow-md mt-6">
+        <div className="bg-white p-4 rounded-lg shadow-md mt-6 overflow-hidden">
           <h2 className="text-xl mb-4">Energy Generation</h2>
+
           <a href="#">
-            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3">
+            <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
+              {/* Icon */}
               <i className="fas fa-sun text-lg mr-3"></i>
-              This Month
-              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left">
-                <span className="block sm:inline">400 kWh</span>
+
+              {/* Label */}
+              <span className="text-sm sm:text-base md:text-lg truncate">
+                This Month
+              </span>
+
+              {/* Energy Value */}
+              <div className="ml-auto font-bold w-full sm:w-auto text-right sm:text-left truncate">
+                <span className="block sm:inline text-xs sm:text-sm md:text-base">
+                  400 kWh
+                </span>
               </div>
+
+              {/* Lock Icon */}
               <div className="ml-2">
                 <i className="fas fa-lock text-xs"></i>
               </div>
