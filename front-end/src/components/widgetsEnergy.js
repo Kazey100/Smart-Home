@@ -94,9 +94,10 @@ function WidgetsEnergy() {
           <h2 className="text-xl mb-4">Energy Usage</h2>
 
           {/* Today Energy Usage */}
-          <a href="#">
-            <div className="relative">
-              {/* Main Container */}
+
+          <div className="relative">
+            {/* Main Container */}
+            <a href="#">
               <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden relative">
                 <i className="fas fa-bolt text-lg mr-3"></i>
                 <span className="text-sm sm:text-base">Today</span>
@@ -106,18 +107,19 @@ function WidgetsEnergy() {
                   </span>
                 </div>
               </div>
+            </a>
 
-              {/* Overlay Div */}
-              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
-                <i className="fas fa-lock text-white text-2xl"></i>
-              </div>
+            {/* Overlay Div */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+              <i className="fas fa-lock text-white text-2xl"></i>
             </div>
-          </a>
+          </div>
 
           {/* This Month Energy Usage */}
-          <a href="#">
-            <div className="relative">
-              {/* Main Container */}
+
+          <div className="relative">
+            {/* Main Container */}
+            <a href="#">
               <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden relative">
                 <i className="fas fa-bolt text-lg mr-3"></i>
                 <span className="text-sm sm:text-base">This Month</span>
@@ -127,22 +129,22 @@ function WidgetsEnergy() {
                   </span>
                 </div>
               </div>
+            </a>
 
-              {/* Overlay Div */}
-              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
-                <i className="fas fa-lock text-white text-2xl"></i>
-              </div>
+            {/* Overlay Div */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+              <i className="fas fa-lock text-white text-2xl"></i>
             </div>
-          </a>
+          </div>
         </div>
 
         {/* Energy Generation Section */}
         <div className="bg-white p-4 rounded-lg shadow-md mt-6 overflow-hidden relative">
           <h2 className="text-xl mb-4">Energy Generation</h2>
 
-          <a href="#">
-            <div className="relative">
-              {/* Main Container */}
+          <div className="relative">
+            {/* Main Container */}
+            <a href="#">
               <div className="flex flex-wrap items-center p-2 rounded-xl bg-gray-200 mb-3 overflow-hidden">
                 {/* Icon */}
                 <i className="fas fa-sun text-lg mr-3"></i>
@@ -159,13 +161,13 @@ function WidgetsEnergy() {
                   </span>
                 </div>
               </div>
+            </a>
 
-              {/* Overlay Div */}
-              <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
-                <i className="fas fa-lock text-white text-2xl"></i>
-              </div>
+            {/* Overlay Div */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+              <i className="fas fa-lock text-white text-2xl"></i>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
