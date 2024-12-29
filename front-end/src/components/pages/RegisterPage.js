@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./css/registerPage.css";
-
 function RegisterPage() {
   const navigate = useNavigate();
 
@@ -16,7 +14,7 @@ function RegisterPage() {
       <div className="flex justify-between items-center relative">
         <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
           {/* Centered Text */}
-          <h1 className="flex-grow text-center text-4xl">NZ HOME</h1>
+          <h1 className="flex-grow text-center text-4xl titleGold">NZ HOME</h1>
         </div>
       </div>
 
@@ -27,7 +25,7 @@ function RegisterPage() {
             alt="NZ Home Logo"
             className="w-2/5 mx-auto -mb-6"
           />
-          <h2 className="mb-4">Register</h2>
+          <h2 className="mb-4 subtitle text-white">Register</h2>
 
           <form>
             <div className="mb-4">
@@ -60,7 +58,7 @@ function RegisterPage() {
               />
             </div>
 
-            <p>
+            <p className="pText text-white">
               <input
                 type="checkbox"
                 name="checkbox"
@@ -84,7 +82,7 @@ function RegisterPage() {
 
             <div className="flex items-center my-4">
               <hr className="flex-grow border-t" />
-              <span className="mx-4">Or</span>
+              <span className="mx-4 text-white">Or</span>
               <hr className="flex-grow border-t" />
             </div>
 

@@ -20,10 +20,6 @@ button {
   display: block;
 }
 
-.teal-text {
-  color: #006868;
-}
-
 /* Sidebar default styling */
 .sidebar {
   transition: width 0.3s ease-in-out;
@@ -32,4 +28,32 @@ button {
 /* Main content styling */
 .main-content {
   transition: margin-left 0.3s ease-in-out;
+}
+
+/* ======================== text styles ============================== */
+
+.teal-text {
+  color: #006868;
+}
+
+.titleGold {
+  color: #e9cf7d;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.pText {
+  font-size: 12px;
+}
+
+.baseGreen {
+  background-color: #192d2e;
+}
+
+.baseBG {
+  background-color: #d6dad8;
 }
