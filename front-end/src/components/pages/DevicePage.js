@@ -10,13 +10,13 @@ function DevicePage() {
   const { name } = useParams();
 
   return (
-    <div className="bg-gray-800 font-sans leading-normal tracking-normal h-screen overflow-hidden">
+    <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
       <div className="p-2 grid grid-cols-[auto_1fr] h-full">
         <div className="relative flex">
           {/* Sidebar */}
           <div
             className={`sidebar ${isCollapsed ? "w-[0px]" : "w-[100px]"} ${
-              isCollapsed ? "" : "bg-black"
+              isCollapsed ? "" : "baseGreen"
             } rounded-lg min-h-full flex flex-col overflow-y-auto`}
           >
             {/* Sidebar Logo */}
@@ -83,7 +83,7 @@ function DevicePage() {
           >
             <button
               onClick={toggleSidebar}
-              className={`text-white text-2xl bg-black p-2 rounded-full shadow-md transform transition-all duration-500 ease-in-out ${
+              className={`text-white text-2xl baseGreen p-2 rounded-full shadow-md transform transition-all duration-500 ease-in-out ${
                 isCollapsed ? "scale-0 opacity-0" : "scale-100 opacity-100"
               }`}
             >
@@ -103,7 +103,7 @@ function DevicePage() {
           <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
             {/* Main Content Header */}
             <div className="flex justify-between items-center relative">
-              <div className="bg-black rounded-lg w-full flex items-center px-4 py-4">
+              <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
                 {/* Hamburger Button */}
                 <div
                   className={`flex items-center ${
@@ -119,9 +119,14 @@ function DevicePage() {
                 </div>
 
                 {/* Centered Text */}
-                <h1 className="font-bold text-white flex-grow text-center text-4xl">
+                <h1 className="font-bold text-white flex-grow text-center lg:text-4xl titleGold">
                   NZ HOME
                 </h1>
+
+                {/* User Icon */}
+                <a href="#" className="mr-8">
+                  <i className="fas fa-user text-white text-3xl"></i>
+                </a>
 
                 {/* Bell Icon */}
                 <a href="#" className="ml-auto">

@@ -51,9 +51,14 @@ button {
 }
 
 .baseGreen {
-  background-color: #192d2e;
+  background-color: #193334;
 }
 
 .baseBG {
-  background-color: #d6dad8;
+  background-color: #dde2df;
+}
+
+.lockBG {
+  background-color: #193334;
+  opacity: 0.7;
 }

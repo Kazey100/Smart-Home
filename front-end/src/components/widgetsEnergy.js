@@ -14,7 +14,7 @@ function WidgetsEnergy() {
     <div className="grid grid-cols-2 p-4 gap-4 mb-4">
       {/* Widgets */}
       <div>
-        <div className="bg-blue-300 rounded-lg mb-4 p-4 flex flex-col justify-center">
+        <div className="baseGreen rounded-lg mb-4 p-4 flex flex-col justify-center">
           <img
             src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
             alt=""
@@ -30,7 +30,7 @@ function WidgetsEnergy() {
 
         <a href="#">
           <div className="mt-12">
-            <div className="rounded-lg p-3 bg-blue-300 flex flex-wrap gap-2 mt-2 overflow-hidden">
+            <div className="rounded-lg p-3 baseGreen flex flex-wrap gap-2 mt-2 overflow-hidden">
               {/* Weather Today */}
               <div className="bg-white rounded-lg p-2 teal-text flex-1 min-w-[120px] overflow-hidden">
                 <div className="text-sm sm:text-base md:text-lg truncate">
@@ -75,7 +75,7 @@ function WidgetsEnergy() {
         </a>
       </div>
 
-      <div className="bg-blue-300 rounded-lg mb-4 p-4 teal-text">
+      <div className="baseGreen rounded-lg mb-4 p-4 teal-text">
         {/* Date Picker */}
         <div className="flex justify-center items-center mb-6">
           <div className="relative bg-white text-gray-800 rounded-full text-sm py-1 px-2 flex items-center cursor-pointer w-[170px] z-50">
@@ -110,7 +110,7 @@ function WidgetsEnergy() {
             </a>
 
             {/* Overlay Div */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+            <div className="absolute top-0 left-0 w-full h-full lockBG flex justify-center items-center rounded-xl z-10">
               <i className="fas fa-lock text-white text-2xl"></i>
             </div>
           </div>
@@ -132,7 +132,7 @@ function WidgetsEnergy() {
             </a>
 
             {/* Overlay Div */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+            <div className="absolute top-0 left-0 w-full h-full lockBG flex justify-center items-center rounded-xl z-10">
               <i className="fas fa-lock text-white text-2xl"></i>
             </div>
           </div>
@@ -164,7 +164,7 @@ function WidgetsEnergy() {
             </a>
 
             {/* Overlay Div */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-70 flex justify-center items-center rounded-xl z-10">
+            <div className="absolute top-0 left-0 w-full h-full lockBG flex justify-center items-center rounded-xl z-10">
               <i className="fas fa-lock text-white text-2xl"></i>
             </div>
           </div>

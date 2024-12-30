@@ -37,12 +37,12 @@ function Users() {
   const currentPage = Math.floor(currentIndex / 3);
 
   return (
-    <div className="rounded-lg p-4 teal-text mb-4">
+    <div className="rounded-lg p-4 mb-4">
       <div className="grid grid-cols-1 gap-4">
         {/* Users Section */}
-        <div className="rounded-lg p-4 bg-blue-300 mb-4 relative overflow-hidden">
+        <div className="rounded-lg p-4 baseGreen mb-4 relative overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Users</h2>
+            <h2 className="text-2xl font-bold text-white">Users</h2>
           </div>
 
           <div className="transition-all duration-500 ease-in-out">
@@ -57,7 +57,9 @@ function Users() {
                 >
                   <Link to={`/user/${user.name}`}>
                     <div className="text-center bg-white p-3 rounded-lg w-full sm:w-auto">
-                      <div className="text-xl sm:text-2xl">{user.name}</div>
+                      <div className="text-xl sm:text-2xl teal-text">
+                        {user.name}
+                      </div>
                       <span className="bg-red-500 text-xs rounded-full text-white px-2 inline-block">
                         {user.status}
                       </span>
@@ -89,14 +91,14 @@ function Users() {
               disabled={currentIndex === 0}
               className="bg-white text-gray-800 p-2 rounded-full"
             >
-              &lt;
+              <i className={"fas fa-chevron-left"}></i>
             </button>
             <button
               onClick={nextItems}
               disabled={currentIndex + 3 >= users.length}
               className="bg-white text-gray-800 p-2 rounded-full"
             >
-              &gt;
+              <i className={"fas fa-chevron-right"}></i>
             </button>
           </div>
         </div>

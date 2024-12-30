@@ -41,8 +41,8 @@ function RoomsRobots() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       {/* Rooms */}
-      <div className="rounded-lg p-4 bg-blue-300 mb-4 relative overflow-hidden">
-        <h2 className="teal-text text-2xl font-bold mb-2">Rooms</h2>
+      <div className="rounded-lg p-4 baseGreen mb-4 relative overflow-hidden">
+        <h2 className="text-white text-2xl font-bold mb-2">Rooms</h2>
         <div className="transition-all duration-500 ease-in-out">
           <div
             className={`grid sm:grid-cols-4 gap-4 transition-all duration-500 ease-in-out ${animationClass}`}
@@ -86,19 +86,19 @@ function RoomsRobots() {
             disabled={currentIndex === 0}
             className="bg-white text-gray-800 p-2 rounded-full"
           >
-            &lt;
+            <i className={"fas fa-chevron-left"}></i>
           </button>
           <button
             onClick={nextItems}
             disabled={currentIndex + 4 >= rooms.length}
             className="bg-white text-gray-800 p-2 rounded-full"
           >
-            &gt;
+            <i className={"fas fa-chevron-right"}></i>
           </button>
         </div>
       </div>
       {/* Track Robot */}
-      <div className="bg-blue-300 rounded-lg mb-4 p-4 flex flex-col justify-center">
+      <div className="baseGreen rounded-lg mb-4 p-4 flex flex-col justify-center">
         <img
           src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
           alt=""

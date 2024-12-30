@@ -14,7 +14,9 @@ function RegisterPage() {
       <div className="flex justify-between items-center relative">
         <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
           {/* Centered Text */}
-          <h1 className="flex-grow text-center text-4xl titleGold">NZ HOME</h1>
+          <h1 className="flex-grow text-center lg:text-4xl titleGold">
+            NZ HOME
+          </h1>
         </div>
       </div>
 
