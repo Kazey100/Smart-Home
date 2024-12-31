@@ -10,24 +10,24 @@ function RegisterPage() {
   };
 
   return (
-    <div className="bg-gray-800 border border-black px-4 pt-3 grid grid-rows-[5rem_1fr] flex-1 h-screen">
+    <div className="baseBG border border-black px-4 pt-3 grid grid-rows-[5rem_1fr] flex-1 h-screen">
       <div className="flex justify-between items-center relative">
-        <div className="bg-black rounded-lg w-full flex items-center px-4 py-4">
+        <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
           {/* Centered Text */}
-          <h1 className="font-bold text-white flex-grow text-center text-4xl">
+          <h1 className="flex-grow text-center lg:text-4xl titleGold">
             NZ HOME
           </h1>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg w-2/6 mt-5 mb-5 mx-auto">
+      <div className="baseGreen rounded-lg w-[30%] mt-10 mb-12 mx-auto">
         <div className="text-center">
           <img
             src="./image/NZHome.png"
             alt="NZ Home Logo"
-            className="w-2/5 mx-auto"
+            className="w-2/5 mx-auto -mb-6"
           />
-          <h2>Register</h2>
+          <h2 className="mb-4 subtitle text-white">Register</h2>
 
           <form>
             <div className="mb-4">
@@ -36,7 +36,7 @@ function RegisterPage() {
                 name="username"
                 placeholder="Username"
                 required
-                className="border rounded px-2 py-1"
+                className="border rounded-[0.6rem] px-2 py-1 w-[60%]"
               />
             </div>
 
@@ -46,7 +46,7 @@ function RegisterPage() {
                 name="email"
                 placeholder="Email"
                 required
-                className="border rounded px-2 py-1"
+                className="border rounded-[0.6rem] px-2 py-1 w-[60%]"
               />
             </div>
 
@@ -56,11 +56,11 @@ function RegisterPage() {
                 name="password"
                 placeholder="Password"
                 required
-                className="border rounded px-2 py-1"
+                className="border rounded-[0.6rem] px-2 py-1 w-[60%]"
               />
             </div>
 
-            <p>
+            <p className="pText text-white">
               <input
                 type="checkbox"
                 name="checkbox"
@@ -76,20 +76,21 @@ function RegisterPage() {
 
             <button
               type="submit"
-              className="button1 bg-green-500 text-white mt-3 w-[20%] h-[6%] rounded mx-auto"
+              className="button1 bg-green-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Sign Up
             </button>
 
-            <p className="my-4">
-              -------------------------------- Or
-              --------------------------------
-            </p>
+            <div className="flex items-center my-4">
+              <hr className="flex-grow border-t" />
+              <span className="mx-4 text-white">Or</span>
+              <hr className="flex-grow border-t" />
+            </div>
 
             <button
               type="button"
-              className="button2 bg-blue-500 text-white mt-12 w-[20%] h-[6%] rounded mx-auto"
+              className="button2 bg-blue-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Log In

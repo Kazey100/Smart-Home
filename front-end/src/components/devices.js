@@ -102,19 +102,19 @@ function Devices() {
   return (
     <div className="rounded-lg p-4 teal-text mb-4">
       <div className="grid grid-cols-1 gap-4">
-        <div className="rounded-lg p-4 bg-blue-300 mb-4 relative overflow-hidden">
+        <div className="rounded-lg p-4 baseGreen mb-4 relative overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Devices</h2>
+            <h2 className="text-2xl font-bold text-white">Devices</h2>
             <div className="flex space-x-2">
               <button
                 onClick={() => handleToggleAll(true)}
-                className="teal-text font-bold"
+                className="text-white font-bold"
               >
                 Turn All On
               </button>
               <button
                 onClick={() => handleToggleAll(false)}
-                className="teal-text font-bold"
+                className="text-white font-bold"
               >
                 Turn All Off
               </button>
@@ -198,14 +198,14 @@ function Devices() {
               disabled={currentIndex === 0}
               className="bg-white text-gray-800 p-2 rounded-full"
             >
-              &lt;
+              <i className={"fas fa-chevron-left"}></i>
             </button>
             <button
               onClick={nextItems}
               disabled={currentIndex + 3 >= filteredDevices.length}
               className="bg-white text-gray-800 p-2 rounded-full"
             >
-              &gt;
+              <i className={"fas fa-chevron-right"}></i>
             </button>
           </div>
         </div>
@@ -218,7 +218,7 @@ function Devices() {
             <p>Additional device details go here.</p>
             <button
               onClick={closeModal}
-              className="mt-4 bg-teal-500 text-white px-4 py-2 rounded"
+              className="mt-4 bg-teal-500 teal-text px-4 py-2 rounded"
             >
               Close
             </button>
