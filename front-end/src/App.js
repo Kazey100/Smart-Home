@@ -9,7 +9,7 @@ import Users from "./components/users";
 import RoomPage from "./components/pages/RoomPage";
 import DevicePage from "./components/pages/DevicePage";
 import UserPage from "./components/pages/UserPage";
-import ProfilePage from "./components/pages/profilePage";
+import ProfilePage from "./components/pages/ProfilePage";
 
 import "./App.css";
 
@@ -136,7 +136,7 @@ function App() {
                     </h1>
 
                     {/* User Icon */}
-                    <a href="#" className="mr-8">
+                    <a href="/profile" className="mr-8">
                       <i className="fas fa-user text-white text-3xl"></i>
                     </a>
 
