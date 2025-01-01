@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; // Correct import for React 18
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Login from "./Login";
+import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import App from "./App";
 import "./index.css";
@@ -11,7 +11,7 @@ const Root = () => (
     <App />
 
     <Routes>
-      {/* <Route path="/" element={<Login />} /> */}
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
     </Routes>
   </Router>

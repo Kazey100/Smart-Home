@@ -9,6 +9,7 @@ import Users from "./components/users";
 import RoomPage from "./components/pages/RoomPage";
 import DevicePage from "./components/pages/DevicePage";
 import UserPage from "./components/pages/UserPage";
+import ProfilePage from "./components/pages/profilePage";
 
 import "./App.css";
 
@@ -161,6 +162,7 @@ function App() {
       <Route path="/room/:name" element={<RoomPage />} />
       <Route path="/device/:name" element={<DevicePage />} />
       <Route path="/user/:name" element={<UserPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Routes>
   );
 }
