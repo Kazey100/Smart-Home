@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProfilePage() {
+function InternetUsagePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   // const { name } = useParams();
-
-  useEffect(() => {
-    const now = new Date();
-    const dateOnly = now.toLocaleDateString();
-    document.getElementById("datetime").innerHTML = dateOnly;
-  }, []);
 
   const navigate = useNavigate();
 
@@ -57,7 +51,7 @@ function ProfilePage() {
                 )}
               </div>
             </a>
-            <a href="/usage">
+            <a href="#">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -149,77 +143,94 @@ function ProfilePage() {
 
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
-              {/* Profile Section */}
+              {/* Internet Usage Section */}
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
                 <a className="relative pl-4" href="/">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
                 <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                  Profile
+                  Internet Usages
                 </h1>
               </div>
+              {/* ==================== */}
+              <div className="grid grid-cols-2 mt-[2%]">
+                <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col items-center bg-white p-3 rounded-lg">
+                  <img
+                    src=""
+                    alt=""
+                    className="rounded-lg mb-4"
+                    style={{ height: "150px", width: "140px" }}
+                  />
+                  <div className="teal-text text-sm sm:text-base w-full text-center mb-2">
+                    Network
+                  </div>
+                  <div className="teal-text text-2xl sm:text-3xl lg:text-4xl w-full text-center mb-2">
+                    500 Mb/s
+                  </div>
+                </div>
 
-              {/* Profile Card */}
-              <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-full">
-                <img
-                  src="https://static3.depositphotos.com/1000951/138/i/600/depositphotos_1380772-stock-photo-profile-of-beautiful-smiling-girl.jpg"
-                  alt="Profile Picture"
-                  className="rounded-full w-16 h-16 mr-5"
-                />
-                <div className="flex flex-col">
-                  <h3 className="font-bold">Camilia Olson</h3>
-                  <h4 className="text-gold">Admin</h4>
-                  <span className="text-gray-500">
-                    Date Joined: <span id="datetime"></span>
-                  </span>
+                <div className="grid grid-rows-2">
+                  <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Internet Used / MB</div>
+                        <div className="grid grid-cols-2">
+                          <div className="teal-text text-sm sm:text-base w-full mb-2">
+                            Today
+                          </div>
+                          <div className="teal-text text-sm sm:text-base w-full mb-2">
+                            Monthly
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2">
+                          <div className="teal-text text-2xl w-full mb-2">
+                            2877
+                          </div>
+                          <div className="teal-text text-2xl w-full mb-2">
+                            5742
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Next Payment Date</div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          02/01/2025
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Navigation Options */}
-              <div
-                onClick={() => handleNavigation("/general-settings")}
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  General Settings{" "}
-                  <span className="text-gray-500">
-                    Languages, Notifications, Feedback, Security, Privacy
-                  </span>
-                </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("/add-user")}
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  Add User{" "}
-                  <span className="text-gray-500">Add User to Your Home</span>
-                </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("/all-users")}
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  All Users{" "}
-                  <span className="text-gray-500">
-                    View The Amount of Existing Users
-                  </span>
-                </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("/change-password")}
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  Change Password{" "}
-                  <span className="text-gray-500">
-                    Change your account's password
-                  </span>
-                </span>
+              <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
+                {" "}
+                <div className="grid grid-cols-2">
+                  <img
+                    src="https://www.quanthub.com/wp-content/uploads//pie_chart_employee_count-1024x633.png"
+                    alt=""
+                    className="rounded-lg mb-4"
+                  />{" "}
+                  <img
+                    src="https://www.quanthub.com/wp-content/uploads//pie_chart_employee_count-1024x633.png"
+                    alt=""
+                    className="rounded-lg mb-4"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -229,4 +240,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default InternetUsagePage;
