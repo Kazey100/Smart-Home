@@ -7,7 +7,7 @@ function ProfilePage() {
     setIsCollapsed(!isCollapsed);
   };
 
-  // const { name } = useParams();
+  // const { name } = useParams();a
 
   useEffect(() => {
     const now = new Date();
