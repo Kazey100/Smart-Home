@@ -7,7 +7,7 @@ function ProfilePage() {
     setIsCollapsed(!isCollapsed);
   };
 
-  // const { name } = useParams();
+  // const { name } = useParams();a
 
   useEffect(() => {
     const now = new Date();
@@ -57,7 +57,7 @@ function ProfilePage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/usage">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -154,7 +154,9 @@ function ProfilePage() {
                 <a className="relative pl-4" href="/">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
-                <h1 className="text-center lg:text-4xl w-full">Profile</h1>
+                <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                  Profile
+                </h1>
               </div>
 
               {/* Profile Card */}

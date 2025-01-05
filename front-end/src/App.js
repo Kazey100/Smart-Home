@@ -10,6 +10,7 @@ import RoomPage from "./components/pages/RoomPage";
 import DevicePage from "./components/pages/DevicePage";
 import UserPage from "./components/pages/UserPage";
 import ProfilePage from "./components/pages/ProfilePage";
+import InternetUsagePage from "./components/pages/InternetUsagePage";
 
 import "./App.css";
 
@@ -59,7 +60,7 @@ function App() {
                     )}
                   </div>
                 </a>
-                <a href="#">
+                <a href="/usage">
                   <div className="flex flex-col items-center justify-center px-4 py-2">
                     <i
                       className={`fas fa-chart-pie text-white text-2xl ${
@@ -163,6 +164,7 @@ function App() {
       <Route path="/device/:name" element={<DevicePage />} />
       <Route path="/user/:name" element={<UserPage />} />
       <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/usage" element={<InternetUsagePage />} />
     </Routes>
   );
 }
