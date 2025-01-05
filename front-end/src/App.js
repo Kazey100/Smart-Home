@@ -15,6 +15,7 @@ import ElectricUsagePage from "./components/pages/ElectricUsagePage";
 import UserSettingPage from "./components/pages/UserSettingPage";
 import AllUserPage from "./components/pages/AllUserPage";
 import ChangePasswordPage from "./components/pages/ChangePasswordPage";
+import SelectRobotPage from "./components/pages/SelectRobotPage";
 
 import "./App.css";
 
@@ -186,6 +187,7 @@ function App() {
       <Route path="/settings" element={<UserSettingPage />} />
       <Route path="/users" element={<AllUserPage />} />
       <Route path="/change&password" element={<ChangePasswordPage />} />
+      <Route path="/robots" element={<SelectRobotPage />} />
     </Routes>
   );
 }

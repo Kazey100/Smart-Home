@@ -39,13 +39,13 @@ function RoomsRobots() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
+    <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[3fr,1.2fr] p-4 gap-4">
       {/* Rooms */}
       <div className="rounded-lg p-4 baseGreen mb-4 relative overflow-hidden">
         <h2 className="text-white text-2xl font-bold mb-2">Rooms</h2>
         <div className="transition-all duration-500 ease-in-out">
           <div
-            className={`grid sm:grid-cols-4 gap-4 transition-all duration-500 ease-in-out ${animationClass}`}
+            className={`grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-500 ease-in-out ${animationClass}`}
             onAnimationEnd={handleAnimationEnd}
           >
             {rooms.slice(tempIndex, tempIndex + 4).map((room, index) => (
@@ -53,12 +53,16 @@ function RoomsRobots() {
                 key={index}
                 className="bg-white rounded-lg mb-4 p-4 flex flex-col justify-end"
               >
-                <img
-                  src={room.img}
-                  alt={room.name}
-                  className="rounded-lg mb-4"
-                  style={{ height: "170px" }}
-                />
+                <div className="flex justify-center items-center mb-4 h-[170px]">
+                  <img
+                    src={
+                      "https://wallpapers.com/images/featured/cute-anime-profile-pictures-k6h3uqxn6ei77kgl.jpg"
+                    }
+                    alt={""}
+                    className="rounded-lg object-contain"
+                    style={{ maxHeight: "100%" }}
+                  />
+                </div>
                 <Link to={`/room/${room.name}`}>
                   <div className="relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center cursor-pointer">
                     {room.name}
@@ -68,6 +72,7 @@ function RoomsRobots() {
             ))}
           </div>
         </div>
+
         <div className="flex justify-center mt-4 space-x-2">
           {Array.from({ length: totalPages }).map((_, index) => (
             <span
@@ -100,12 +105,12 @@ function RoomsRobots() {
       {/* Track Robot */}
       <div className="baseGreen rounded-lg mb-4 p-4 flex flex-col justify-center">
         <img
-          src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+          src="https://wallpapers.com/images/featured/cute-anime-profile-pictures-k6h3uqxn6ei77kgl.jpg"
           alt=""
           className="rounded-lg mb-4"
           style={{ height: "300px" }}
         />
-        <a href="#">
+        <a href="/robots">
           <div className="relative bg-white text-gray-800 rounded-full text-[12px] md:text-[15px] lg:text-[18px] py-2 px-4 flex justify-center items-center cursor-pointer">
             Track Robot
           </div>

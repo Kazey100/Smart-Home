@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function InternetUsagePage() {
+function SelectRobotPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -35,6 +35,7 @@ function InternetUsagePage() {
                 />
               </a>
             </div>
+            {/* Sidebar Items */}
             {/* Sidebar Items */}
             <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
@@ -97,7 +98,7 @@ function InternetUsagePage() {
           {/* Collapse Button */}
           <div
             className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
-              isCollapsed ? "left-[0px]" : "left-[80px]"
+              isCollapsed ? "left-[0px]" : "left-[96px]"
             }`}
           >
             <button
@@ -139,7 +140,7 @@ function InternetUsagePage() {
 
                 {/* Centered Text */}
                 <h1 className="font-bold text-white flex-grow text-center lg:text-4xl titleGold">
-                  <a href="/">NZ HOME</a>
+                  NZ HOME
                 </h1>
 
                 {/* User Icon */}
@@ -154,96 +155,39 @@ function InternetUsagePage() {
               </div>
             </div>
 
-            {/* <!-- Main Content --> */}
-            <div class="flex flex-col flex-1 gap-4">
-              {/* Internet Usage Section */}
+            {/* Main Content */}
+            <div className="flex flex-col flex-1">
+              {/* Setting Section */}
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/">
+                <a className="relative pl-4" href="/profile">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
-                <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                  Internet Usages
+                <h1 className="text-center lg:text-4xl w-full ml-[-4%]">
+                  Select Robot
                 </h1>
               </div>
-              {/* ==================== */}
-              <div className="grid grid-cols-2 mt-2 gap-4">
-                <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3 h-full">
-                  <img
-                    src=""
-                    alt=""
-                    className="rounded-lg mb-4"
-                    style={{ height: "150px", width: "140px" }}
-                  />
-                  <div className="teal-text text-sm sm:text-base w-full text-center mb-2">
-                    Network
-                  </div>
-                  <div className="teal-text text-2xl sm:text-3xl lg:text-4xl w-full text-center mb-2">
-                    500 Mb/s
-                  </div>
-                </div>
 
-                <div className="grid grid-rows-2 gap-4">
-                  <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
-                    <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4">
-                      <img
-                        src=""
-                        alt=""
-                        className="border border-black rounded-lg mb-4 mx-auto"
-                        style={{ height: "100px", width: "100px" }}
-                      />
-                      <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                        <div className="mb-2">Internet Used / MB</div>
-                        <div className="grid grid-cols-2">
-                          <div className="teal-text text-sm sm:text-base w-full mb-2">
-                            Today
-                          </div>
-                          <div className="teal-text text-sm sm:text-base w-full mb-2">
-                            Monthly
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                          <div className="teal-text text-2xl w-full mb-2">
-                            2877
-                          </div>
-                          <div className="teal-text text-2xl w-full mb-2">
-                            5742
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>{" "}
-                  <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
-                    <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4">
-                      <img
-                        src=""
-                        alt=""
-                        className="border border-black rounded-lg mb-4 mx-auto"
-                        style={{ height: "100px", width: "100px" }}
-                      />
-                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                        <div className="mb-2">Next Payment Date</div>
-                        <div className="teal-text text-2xl w-full mb-2">
-                          02/01/2025
-                        </div>
+              {/* Main Content Section */}
+
+              <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-2 justify-center items-center p-3">
+                {/* Dynamically added blocks */}
+                <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3">
+                  <div className="grid sm:grid-cols-1 items-center gap-4">
+                    <img
+                      src=""
+                      alt=""
+                      className="border border-black rounded-lg mb-4 mx-auto"
+                      style={{ height: "100px", width: "100px" }}
+                    />
+                    <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                      <div className="mb-2">Xiaomi </div>
+                      <div className="text-2xl w-full mb-2 bg-red-500 rounded-full text-white inline-block">
+                        Offline
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
-                {" "}
-                <div className="grid grid-cols-2">
-                  <img
-                    src="https://www.quanthub.com/wp-content/uploads//pie_chart_employee_count-1024x633.png"
-                    alt=""
-                    className="rounded-lg mb-4"
-                  />{" "}
-                  <img
-                    src="https://www.quanthub.com/wp-content/uploads//pie_chart_employee_count-1024x633.png"
-                    alt=""
-                    className="rounded-lg mb-4"
-                  />
-                </div>
+                </div>{" "}
+                {/* More blocks will automatically adjust */}
               </div>
             </div>
           </div>
@@ -253,4 +197,4 @@ function InternetUsagePage() {
   );
 }
 
-export default InternetUsagePage;
+export default SelectRobotPage;

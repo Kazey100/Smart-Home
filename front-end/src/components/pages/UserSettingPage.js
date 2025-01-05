@@ -35,7 +35,6 @@ function UserSettingPage() {
                 />
               </a>
             </div>
-
             {/* Sidebar Items */}
             <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
@@ -47,6 +46,20 @@ function UserSettingPage() {
                 {!isCollapsed && (
                   <span className="text-white text-center text-sm mt-2">
                     Devices
+                  </span>
+                )}
+              </div>
+            </a>{" "}
+            <a href="/electric">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-bolt text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Electrical Usage
                   </span>
                 )}
               </div>

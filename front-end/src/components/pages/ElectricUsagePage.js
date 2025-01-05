@@ -28,7 +28,6 @@ function ElectricUsagePage() {
                 />
               </a>
             </div>
-
             {/* Sidebar Items */}
             <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
@@ -43,11 +42,11 @@ function ElectricUsagePage() {
                   </span>
                 )}
               </div>
-            </a>
-            <a href="/">
+            </a>{" "}
+            <a href="/electric">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
-                  className={`fas fa-chart-pie text-white text-2xl ${
+                  className={`fas fa-bolt text-white text-2xl ${
                     isCollapsed ? "hidden" : "block"
                   }`}
                 ></i>
@@ -58,7 +57,21 @@ function ElectricUsagePage() {
                 )}
               </div>
             </a>
-            <a href="/">
+            <a href="/internet">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-chart-pie text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Internet Usage
+                  </span>
+                )}
+              </div>
+            </a>
+            <a href="#">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
