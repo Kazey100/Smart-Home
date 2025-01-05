@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AllUser() {
+function AllUserPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -157,24 +157,23 @@ function AllUser() {
               <div className="flex flex-col items-center justify-center">
                 <div
                   onClick={() => handleNavigation("#")}
-                  className="block p-2.5 my-2 border border-gray-400 bg-white text-black rounded-md no-underline"
+                  className="grid grid-cols-[auto,1fr] rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[85%]"
                 >
-                  <div className="flex justify-between items-center w-full p-2 text-base font-bold pr-4">
-                    <span>Daughter</span>
-                    <span className="mr-4">rina011@gmail.com</span>
+                  <h2>Mom</h2>
+                  <div className="text-[14px] sm:text-2xl font-bold">
+                    pokegogo@gmail.com
                   </div>
                 </div>
 
                 <div
                   onClick={() => handleNavigation("#")}
-                  className="block p-2.5 my-2 border border-gray-400 bg-white text-black rounded-md no-underline"
+                  className="grid grid-cols-[auto,1fr] rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[85%]"
                 >
-                  <div className="flex justify-between items-center w-full p-2 text-base font-bold pr-4">
-                    <span>Mon</span>
-                    <span className="mr-4" >pokegogo@gmail.com</span>
+                  <h2>Daughter</h2>
+                  <div className="text-[14px] sm:text-2xl font-bold">
+                    rina011@gmail.com
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

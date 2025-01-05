@@ -210,8 +210,8 @@ function UserProfilePage() {
                 </span>
               </div>
 
-              <div
-                onClick={() => handleNavigation("/all-users")}
+              <a
+                href="/users"
                 className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
                 <span className="font-bold">
@@ -220,10 +220,10 @@ function UserProfilePage() {
                     View The Amount of Existing Users
                   </span>
                 </span>
-              </div>
+              </a>
 
-              <div
-                onClick={() => handleNavigation("/change-password")}
+              <a
+                href="/change&password"
                 className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
                 <span className="font-bold">
@@ -232,7 +232,7 @@ function UserProfilePage() {
                     Change your account's password
                   </span>
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

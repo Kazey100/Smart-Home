@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ChangePassword() {
+function ChangePasswordPage() {
   const navigate = useNavigate();
 
   const handleButtonClick = (event) => {
@@ -20,12 +20,12 @@ function ChangePassword() {
         </div>
       </div>
 
-      <div className="baseGreen rounded-lg w-[30%] mt-10 mb-12 mx-auto">
+      <div className="baseGreen rounded-lg w-[70%] sm:w-[30%] mt-10 mb-12 mx-auto">
         <div className="text-center">
           <img
             src="./image/NZHome.png"
             alt="NZ Home Logo"
-            className="w-2/5 mx-auto -mb-6"
+            className="w-3/5 sm:w-2/5 mx-auto -mb-6"
           />
           <h2 className="mb-4 subtitle text-white">Change Password</h2>
 
@@ -75,4 +75,4 @@ function ChangePassword() {
   );
 }
 
-export default ChangePassword;
+export default ChangePasswordPage;

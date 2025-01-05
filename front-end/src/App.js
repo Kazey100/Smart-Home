@@ -13,6 +13,8 @@ import UserProfilePage from "./components/pages/UserProfilePage";
 import InternetUsagePage from "./components/pages/InternetUsagePage";
 import ElectricUsagePage from "./components/pages/ElectricUsagePage";
 import UserSettingPage from "./components/pages/UserSettingPage";
+import AllUserPage from "./components/pages/AllUserPage";
+import ChangePasswordPage from "./components/pages/ChangePasswordPage";
 
 import "./App.css";
 
@@ -182,6 +184,8 @@ function App() {
       <Route path="/internet" element={<InternetUsagePage />} />
       <Route path="/electric" element={<ElectricUsagePage />} />
       <Route path="/settings" element={<UserSettingPage />} />
+      <Route path="/users" element={<AllUserPage />} />
+      <Route path="/change&password" element={<ChangePasswordPage />} />
     </Routes>
   );
 }
