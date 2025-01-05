@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-function DevicePage() {
+function DeviceDetailsPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -147,4 +147,4 @@ function DevicePage() {
   );
 }
 
-export default DevicePage;
+export default DeviceDetailsPage;

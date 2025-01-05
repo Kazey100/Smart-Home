@@ -7,7 +7,7 @@ import Devices from "./components/devices";
 import Users from "./components/users";
 
 import RoomPage from "./components/pages/RoomPage";
-import DevicePage from "./components/pages/DevicePage";
+import DeviceDetailsPage from "./components/pages/DeviceDetailsPage";
 import UserPage from "./components/pages/UserPage";
 import UserProfilePage from "./components/pages/UserProfilePage";
 import InternetUsagePage from "./components/pages/InternetUsagePage";
@@ -176,7 +176,7 @@ function App() {
 
       {/* Routes that display a blank page */}
       <Route path="/room/:name" element={<RoomPage />} />
-      <Route path="/device/:name" element={<DevicePage />} />
+      <Route path="/device/:name" element={<DeviceDetailsPage />} />
       <Route path="/user/:name" element={<UserPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/internet" element={<InternetUsagePage />} />
