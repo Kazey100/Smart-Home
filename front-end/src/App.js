@@ -12,6 +12,7 @@ import UserPage from "./components/pages/UserPage";
 import UserProfilePage from "./components/pages/UserProfilePage";
 import InternetUsagePage from "./components/pages/InternetUsagePage";
 import ElectricUsagePage from "./components/pages/ElectricUsagePage";
+import UserSettingPage from "./components/pages/UserSettingPage";
 
 import "./App.css";
 
@@ -180,6 +181,7 @@ function App() {
       <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/internet" element={<InternetUsagePage />} />
       <Route path="/electric" element={<ElectricUsagePage />} />
+      <Route path="/settings" element={<UserSettingPage />} />
     </Routes>
   );
 }

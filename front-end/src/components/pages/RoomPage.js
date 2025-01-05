@@ -45,7 +45,7 @@ function RoomPage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/internet">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -124,7 +124,7 @@ function RoomPage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="#" className="mr-8">
+                <a href="/profile" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 

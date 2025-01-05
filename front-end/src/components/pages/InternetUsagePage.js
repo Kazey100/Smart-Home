@@ -51,7 +51,7 @@ function InternetUsagePage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/internet">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${

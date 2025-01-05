@@ -136,7 +136,7 @@ function UserProfilePage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="#" className="mr-8">
+                <a href="/profile" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -160,7 +160,7 @@ function UserProfilePage() {
               </div>
 
               {/* Profile Card */}
-              <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-full">
+              <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-[full]">
                 {/* <img
                   src="https://static3.depositphotos.com/1000951/138/i/600/depositphotos_1380772-stock-photo-profile-of-beautiful-smiling-girl.jpg"
                   alt="Profile Picture"
@@ -188,8 +188,8 @@ function UserProfilePage() {
               </div>
 
               {/* Navigation Options */}
-              <div
-                onClick={() => handleNavigation("/general-settings")}
+              <a
+                href="/settings"
                 className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
                 <span className="font-bold">
@@ -198,7 +198,7 @@ function UserProfilePage() {
                     Languages, Notifications, Feedback, Security, Privacy
                   </span>
                 </span>
-              </div>
+              </a>
 
               <div
                 onClick={() => handleNavigation("/add-user")}

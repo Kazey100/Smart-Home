@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function settingPage() {
+function UserSettingPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -51,7 +51,7 @@ function settingPage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/internet">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -84,7 +84,7 @@ function settingPage() {
           {/* Collapse Button */}
           <div
             className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
-              isCollapsed ? "left-[0px]" : "left-[80px]"
+              isCollapsed ? "left-[0px]" : "left-[96px]"
             }`}
           >
             <button
@@ -130,7 +130,7 @@ function settingPage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="#" className="mr-8">
+                <a href="/profile" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -142,73 +142,61 @@ function settingPage() {
             </div>
 
             {/* Main Content */}
-            <div class="flex flex-col flex-1">
+            <div className="flex flex-col flex-1">
               {/* Setting Section */}
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/">
+                <a className="relative pl-4" href="/profile">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
-                <h1 className="text-center lg:text-4xl w-full">Settings</h1>
+                <h1 className="text-center lg:text-4xl w-full ml-[-4%]">
+                  Settings
+                </h1>
               </div>
 
-              {/* Navigation Options */}
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg">
-                <span className="font-bold">
-                  Languages{" "}
-                </span>
+              {/* Main Content Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Languages</span>
+                </div>
+
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Notifications</span>
+                </div>
+
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Help and Feedback</span>
+                </div>
+
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Security</span>
+                </div>
+
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Privacy</span>
+                </div>
+
+                <div
+                  onClick={() => handleNavigation("#")}
+                  className="rounded-md border border-gray-500 bg-white p-4 mt-12 flex items-center justify-center text-center text-lg w-[96%]"
+                >
+                  <span className="font-bold">Log out</span>
+                </div>
               </div>
-
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg"
-              >
-                <span className="font-bold">
-                  Notifications{" "}
-                  </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg"
-              >
-                <span className="font-bold">
-                  Help and Feedback{" "}
-                </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg"
-              >
-                <span className="font-bold">
-                  Security{" "}
-                </span>
-              </div>
-
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg"
-              >
-                <span className="font-bold">
-                  Privacy{" "}
-                </span>
-              </div>
-
-              <br />
-              <br />
-              <br />
-
-              <div
-                onClick={() => handleNavigation("#")}
-                className="rounded-md border border-gray-500 bg-white p-2.5 my-2.5 flex items-center justify-center text-center text-lg"
-              >
-                <span className="font-bold">
-                  Log out{" "}
-                </span>
-              </div>
-
             </div>
           </div>
         </div>
@@ -217,4 +205,4 @@ function settingPage() {
   );
 }
 
-export default settingPage;
+export default UserSettingPage;
