@@ -15,7 +15,7 @@ function RegisterPage() {
         <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
           {/* Centered Text */}
           <h1 className="flex-grow text-center lg:text-4xl titleGold">
-            NZ HOME
+            <a href="/">NZ HOME</a>
           </h1>
         </div>
       </div>
@@ -76,7 +76,7 @@ function RegisterPage() {
 
             <button
               type="submit"
-              className="button1 bg-green-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
+              className="button1 bg-green-500 text-white mt-7 w-[40%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Sign Up
@@ -90,7 +90,7 @@ function RegisterPage() {
 
             <button
               type="button"
-              className="button2 bg-blue-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
+              className="button2 bg-blue-500 text-white mt-7 w-[40%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Log In

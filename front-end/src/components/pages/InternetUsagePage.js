@@ -126,11 +126,11 @@ function InternetUsagePage() {
 
                 {/* Centered Text */}
                 <h1 className="font-bold text-white flex-grow text-center lg:text-4xl titleGold">
-                  NZ HOME
+                  <a href="/">NZ HOME</a>
                 </h1>
 
                 {/* User Icon */}
-                <a href="#" className="mr-8">
+                <a href="/profile" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -142,7 +142,7 @@ function InternetUsagePage() {
             </div>
 
             {/* <!-- Main Content --> */}
-            <div class="flex flex-col flex-1">
+            <div class="flex flex-col flex-1 gap-4">
               {/* Internet Usage Section */}
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
                 <a className="relative pl-4" href="/">
@@ -153,8 +153,8 @@ function InternetUsagePage() {
                 </h1>
               </div>
               {/* ==================== */}
-              <div className="grid grid-cols-2 mt-[2%]">
-                <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col items-center bg-white p-3 rounded-lg">
+              <div className="grid grid-cols-2 mt-2 gap-4">
+                <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3 h-full">
                   <img
                     src=""
                     alt=""
@@ -169,7 +169,7 @@ function InternetUsagePage() {
                   </div>
                 </div>
 
-                <div className="grid grid-rows-2">
+                <div className="grid grid-rows-2 gap-4">
                   <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
                     <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4">
                       <img

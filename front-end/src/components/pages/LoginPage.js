@@ -15,7 +15,7 @@ function LoginPage() {
         <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
           {/* Centered Text */}
           <h1 className="flex-grow text-center lg:text-4xl titleGold">
-            NZ HOME
+            <a href="/">NZ HOME</a>
           </h1>
         </div>
       </div>
@@ -47,6 +47,7 @@ function LoginPage() {
                 placeholder="Email"
                 required
                 className="border rounded-[0.6rem] px-2 py-1 w-[60%]"
+                autocomplete="email"
               />
             </div>
 
@@ -69,7 +70,7 @@ function LoginPage() {
 
             <button
               type="submit"
-              className="button1 bg-green-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
+              className="button1 bg-green-500 text-white mt-7 w-[40%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Sign In
@@ -83,7 +84,7 @@ function LoginPage() {
 
             <button
               type="button"
-              className="button2 bg-blue-500 text-white mt-7 w-[20%] h-[6%] rounded-[1rem] mx-auto"
+              className="button2 bg-blue-500 text-white mt-7 w-[40%] h-[6%] rounded-[1rem] mx-auto"
               onClick={handleButtonClick}
             >
               Register

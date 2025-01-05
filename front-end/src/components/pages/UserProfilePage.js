@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProfilePage() {
+function UserProfilePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -9,11 +9,11 @@ function ProfilePage() {
 
   // const { name } = useParams();a
 
-  useEffect(() => {
-    const now = new Date();
-    const dateOnly = now.toLocaleDateString();
-    document.getElementById("datetime").innerHTML = dateOnly;
-  }, []);
+  // useEffect(() => {
+  //   const now = new Date();
+  //   const dateOnly = now.toLocaleDateString();
+  //   document.getElementById("datetime").innerHTML = dateOnly;
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -161,7 +161,7 @@ function ProfilePage() {
 
               {/* Profile Card */}
               <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-full">
-                <img
+                {/* <img
                   src="https://static3.depositphotos.com/1000951/138/i/600/depositphotos_1380772-stock-photo-profile-of-beautiful-smiling-girl.jpg"
                   alt="Profile Picture"
                   className="rounded-full w-16 h-16 mr-5"
@@ -172,7 +172,19 @@ function ProfilePage() {
                   <span className="text-gray-500">
                     Date Joined: <span id="datetime"></span>
                   </span>
-                </div>
+                </div> */}
+                <a
+                  href="/login"
+                  className="button2 bg-green-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
+                >
+                  Login
+                </a>{" "}
+                <a
+                  href="/register"
+                  className="button2 bg-blue-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
+                >
+                  register
+                </a>
               </div>
 
               {/* Navigation Options */}
@@ -229,4 +241,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default UserProfilePage;

@@ -9,8 +9,9 @@ import Users from "./components/users";
 import RoomPage from "./components/pages/RoomPage";
 import DevicePage from "./components/pages/DevicePage";
 import UserPage from "./components/pages/UserPage";
-import ProfilePage from "./components/pages/ProfilePage";
+import UserProfilePage from "./components/pages/UserProfilePage";
 import InternetUsagePage from "./components/pages/InternetUsagePage";
+import ElectricUsagePage from "./components/pages/ElectricUsagePage";
 
 import "./App.css";
 
@@ -44,7 +45,6 @@ function App() {
                     />
                   </a>
                 </div>
-
                 {/* Sidebar Items */}
                 <a href="/">
                   <div className="flex flex-col items-center justify-center px-4 py-2">
@@ -59,8 +59,22 @@ function App() {
                       </span>
                     )}
                   </div>
+                </a>{" "}
+                <a href="/electric">
+                  <div className="flex flex-col items-center justify-center px-4 py-2">
+                    <i
+                      className={`fas fa-bolt text-white text-2xl ${
+                        isCollapsed ? "hidden" : "block"
+                      }`}
+                    ></i>
+                    {!isCollapsed && (
+                      <span className="text-white text-center text-sm mt-2">
+                        Electrical Usage
+                      </span>
+                    )}
+                  </div>
                 </a>
-                <a href="/usage">
+                <a href="/internet">
                   <div className="flex flex-col items-center justify-center px-4 py-2">
                     <i
                       className={`fas fa-chart-pie text-white text-2xl ${
@@ -163,8 +177,9 @@ function App() {
       <Route path="/room/:name" element={<RoomPage />} />
       <Route path="/device/:name" element={<DevicePage />} />
       <Route path="/user/:name" element={<UserPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/usage" element={<InternetUsagePage />} />
+      <Route path="/profile" element={<UserProfilePage />} />
+      <Route path="/internet" element={<InternetUsagePage />} />
+      <Route path="/electric" element={<ElectricUsagePage />} />
     </Routes>
   );
 }
