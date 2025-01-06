@@ -16,6 +16,7 @@ import UserSettingPage from "./components/pages/UserSettingPage";
 import AllUserPage from "./components/pages/AllUserPage";
 import ChangePasswordPage from "./components/pages/ChangePasswordPage";
 import SelectRobotPage from "./components/pages/SelectRobotPage";
+import VacuumBotsPage from "./components/pages/VacuumBotsPage";
 
 import "./App.css";
 
@@ -188,6 +189,7 @@ function App() {
       <Route path="/users" element={<AllUserPage />} />
       <Route path="/change&password" element={<ChangePasswordPage />} />
       <Route path="/robots" element={<SelectRobotPage />} />
+      <Route path="/robots/vacuum/:name" element={<VacuumBotsPage />} />
     </Routes>
   );
 }
