@@ -17,6 +17,7 @@ import AllUserPage from "./components/pages/AllUserPage";
 import ChangePasswordPage from "./components/pages/ChangePasswordPage";
 import SelectRobotPage from "./components/pages/SelectRobotPage";
 import VacuumBotsPage from "./components/pages/VacuumBotsPage";
+import NotificationPage from "./components/pages/NotificationPage";
 
 import "./App.css";
 
@@ -161,7 +162,7 @@ function App() {
                     </a>
 
                     {/* Bell Icon */}
-                    <a href="#" className="mr-5">
+                    <a href="/notification" className="mr-5">
                       <i className="fas fa-bell text-white text-3xl"></i>
                     </a>
                   </div>
@@ -190,6 +191,7 @@ function App() {
       <Route path="/change&password" element={<ChangePasswordPage />} />
       <Route path="/robots" element={<SelectRobotPage />} />
       <Route path="/robots/vacuum/:name" element={<VacuumBotsPage />} />
+      <Route path="/notification" element={<NotificationPage />} />
     </Routes>
   );
 }

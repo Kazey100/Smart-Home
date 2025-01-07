@@ -129,7 +129,7 @@ function DeviceDetailsPage() {
                 </a>
 
                 {/* Bell Icon */}
-                <a href="#" className="ml-auto">
+                <a href="/notification" className="ml-auto">
                   <i className="fas fa-bell text-white text-3xl"></i>
                 </a>
               </div>

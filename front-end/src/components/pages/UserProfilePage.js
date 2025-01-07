@@ -154,7 +154,7 @@ function UserProfilePage() {
                 </a>
 
                 {/* Bell Icon */}
-                <a href="#" className="ml-auto">
+                <a href="/notification" className="ml-auto">
                   <i className="fas fa-bell text-white text-3xl"></i>
                 </a>
               </div>
@@ -196,55 +196,49 @@ function UserProfilePage() {
                   href="/register"
                   className="button2 bg-blue-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
                 >
-                  register
+                  Register
                 </a>
               </div>
 
               {/* Navigation Options */}
               <a
                 href="/settings"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <span className="font-bold">
-                  General Settings{" "}
-                  <span className="text-gray-500">
-                    Languages, Notifications, Feedback, Security, Privacy
-                  </span>
-                </span>
+                <div className="font-bold">General Settings</div>{" "}
+                <div className="font-bold text-gray-500 text-right">
+                  Languages, Notifications, Feedback, Security, Privacy
+                </div>
               </a>
 
               <div
                 onClick={() => handleNavigation("/add-user")}
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <span className="font-bold">
-                  Add User{" "}
-                  <span className="text-gray-500">Add User to Your Home</span>
-                </span>
+                <div className="font-bold">Add User </div>
+                <div className="font-bold text-gray-500 text-right">
+                  Add User to Your Home
+                </div>
               </div>
 
               <a
                 href="/users"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <span className="font-bold">
-                  All Users{" "}
-                  <span className="text-gray-500">
-                    View The Amount of Existing Users
-                  </span>
-                </span>
+                <div className="font-bold">All Users </div>{" "}
+                <div className="font-bold text-gray-500 text-right">
+                  View The Amount of Existing Users
+                </div>
               </a>
 
               <a
                 href="/change&password"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <span className="font-bold">
-                  Change Password{" "}
-                  <span className="text-gray-500">
-                    Change your account's password
-                  </span>
-                </span>
+                <div className="font-bold">Change Password </div>{" "}
+                <div className="font-bold text-gray-500 text-right">
+                  Change your account's password
+                </div>
               </a>
             </div>
           </div>

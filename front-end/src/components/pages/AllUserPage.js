@@ -135,7 +135,7 @@ function AllUserPage() {
                 </a>
 
                 {/* Bell Icon */}
-                <a href="#" className="ml-auto">
+                <a href="/notification" className="ml-auto">
                   <i className="fas fa-bell text-white text-3xl"></i>
                 </a>
               </div>
@@ -160,7 +160,7 @@ function AllUserPage() {
                   className="grid grid-cols-[auto,1fr] rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[85%]"
                 >
                   <h2>Mom</h2>
-                  <div className="text-[14px] sm:text-2xl font-bold">
+                  <div className="text-[14px] sm:text-2xl font-bold text-right">
                     pokegogo@gmail.com
                   </div>
                 </div>
@@ -170,7 +170,7 @@ function AllUserPage() {
                   className="grid grid-cols-[auto,1fr] rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[85%]"
                 >
                   <h2>Daughter</h2>
-                  <div className="text-[14px] sm:text-2xl font-bold">
+                  <div className="text-[14px] sm:text-2xl font-bold text-right">
                     rina011@gmail.com
                   </div>
                 </div>
