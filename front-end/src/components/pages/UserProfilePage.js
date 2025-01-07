@@ -203,42 +203,48 @@ function UserProfilePage() {
               {/* Navigation Options */}
               <a
                 href="/settings"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <div className="font-bold">General Settings</div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  Languages, Notifications, Feedback, Security, Privacy
-                </div>
+                <span className="font-bold">
+                  General Settings{" "}
+                  <span className="text-gray-500 ml-[970px]">
+                    Languages, Notifications, Feedback, Security, Privacy
+                  </span>
+                </span>
               </a>
 
               <div
                 onClick={() => handleNavigation("/add-user")}
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <div className="font-bold">Add User </div>
-                <div className="font-bold text-gray-500 text-right">
-                  Add User to Your Home
-                </div>
+                <span className="font-bold">
+                  Add User{" "}
+                  <span className="text-gray-500 ml-[1170px]">Add User to Your Home</span>
+                </span>
               </div>
 
               <a
                 href="/users"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <div className="font-bold">All Users </div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  View The Amount of Existing Users
-                </div>
+                <span className="font-bold">
+                  All Users{" "}
+                  <span className="text-gray-500 ml-[1120px]">
+                    View The Amount of Existing Users
+                  </span>
+                </span>
               </a>
 
               <a
                 href="/change&password"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
+                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
-                <div className="font-bold">Change Password </div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  Change your account's password
-                </div>
+                <span className="font-bold">
+                  Change Password{" "}
+                  <span className="text-gray-500 ml-[1060px]">
+                    Change your account's password
+                  </span>
+                </span>
               </a>
             </div>
           </div>
