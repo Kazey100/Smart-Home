@@ -3,7 +3,7 @@
     grid-template-rows: auto 1fr;
     grid-template-columns: auto 1fr;
     background-color: lightgrey;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidebar-container {
@@ -16,7 +16,7 @@
     padding: 0;
     border-radius: 0.5rem;
     overflow: hidden;
-    height: calc(100vh - 80px);;
+    height: 100vh;
 }
   
 /* Sidebar Styles */
@@ -136,14 +136,8 @@
 .mainContent-header {
     display: flex;
     align-items: center;
-    gap: 700px;
-}
-
-.oneLine{
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    position: relative;
 }
 
 .mainContent .arrow{
@@ -153,101 +147,47 @@
     font-size: 50px;
 }
 
-.mainContent h2{
+.mainHeader{
     margin:0;
     line-height: 1;
+    position: absolute;
+    left: 45%;
+    transform: translate(-45%);
 }
 
-.mainContent .add{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 50px;
-}
-
-.inside{
+.username, .email{
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid gray;
     border-radius: 0.5rem;
-    font-weight: bold;
-    min-height: 80%;
-    position: relative;
-}
-
-.device1, .device2{
-    display: flex;
-    flex-direction: column;
     border: 1px solid gray;
     background-color: white;
-    border-radius: 0.5rem;
-    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
     align-items: center;
-    padding: 8px;
-    width: 12%;
-    height: 12%;
+    justify-content: center;
 }
 
-/* Container for the toggle */
-.toggle-switch {
-    position: relative;
+input[type="text"] {
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 16px;
+}
+
+input[type="text"]::placeholder {
+    color: gray;
+}
+
+.addUser{
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 24px;
-    margin-top: 8px;
 }
 
-/* Hide default checkbox */
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The track */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    background-color: #ccc;
-    border-radius: 24px;
-    width: 100%;
-    height: 100%;
-    transition: background-color 0.3s;
-}
-
-/* The circular slider */
-.slider::before {
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 2px;
+.addUserBtn{
+    padding: 12px 24px;
     background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
-
-/* Toggled state */
-.toggle-switch input:checked+.slider {
-    background-color: #4caf50;
-}
-
-.toggle-switch input:checked+.slider::before {
-    transform: translateX(26px);
-}
-
-.behind{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: lightgray;
-    text-align: center;
+    color: black;
+    font-weight: 600;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
 }
