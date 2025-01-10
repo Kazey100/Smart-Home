@@ -202,15 +202,24 @@ function VacuumBotsPage() {
                           </div>
                         </div>{" "}
                         <div className="grid grid-cols-1 md:grid-cols-2">
-                          <div className="font-bold rounded-md border border-gray-300 bg-green-500 p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]">
+                          <button
+                            type="submit"
+                            className="font-bold rounded-md border border-gray-300 bg-green-500 p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]"
+                          >
                             Resume
-                          </div>{" "}
-                          <div className="font-bold rounded-md border border-gray-300 bg-red-500 p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]">
+                          </button>{" "}
+                          <button
+                            type="submit"
+                            className="font-bold rounded-md border border-gray-300 bg-red-500 p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]"
+                          >
                             Stop
-                          </div>
-                          <div className="font-bold rounded-md border border-gray-300 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]">
+                          </button>
+                          <button
+                            type="submit"
+                            className="font-bold rounded-md border border-gray-300 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[92%]"
+                          >
                             Go Home
-                          </div>{" "}
+                          </button>{" "}
                         </div>
                       </div>
                     </div>

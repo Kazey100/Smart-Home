@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProfilePage() {
+function LanguagePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -148,28 +148,52 @@ function ProfilePage() {
                 <a className="relative pl-4" href="/">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
-                <h1 className="text-center lg:text-4xl w-full">Add Users</h1>
+                <h1 className="text-center lg:text-4xl w-full">Languages</h1>
               </div>
 
-              {/* Navigation Options */}
-              <form 
-                className="flex items-center justify-center rounded-lg border border-gray-300 bg-white p-2 my-2">
-                <input type="text" className="outline-none border-none bg-transparent text-base placeholder-gray-400" placeholder="Enter user name"/>
-              </form>
+              {/* Options */}
+              <div className="grid grid-rows-4 mt-4">
+                <div className="flex items-center border border-gray-300 rounded-lg bg-white p-4 mb-4">
+                  <span className="font-bold">Chinese </span>
+                  <span
+                    onClick={() => handleNavigation("#")}
+                    className="ml-auto text-blue-500"
+                  >
+                    Switch
+                  </span>
+                </div>
 
-              <form
-                className="flex items-center justify-center rounded-lg border border-gray-300 bg-white p-2 my-2"
-              >
-                <input type="text" className="outline-none border-none bg-transparent text-base placeholder-gray-400" placeholder="Enter user email"/>
-              </form>
+                <div className="flex items-center border border-gray-300 rounded-lg bg-white p-4 mb-4">
+                  <span className="font-bold">Jananese </span>
+                  <span
+                    onClick={() => handleNavigation("#")}
+                    className="ml-auto text-blue-500"
+                  >
+                    Switch
+                  </span>
+                </div>
 
-              <div className="flex justify-center">
-                <button onClick={() => handleNavigation("#")} className="px-6 py-3 bg-white text-black font-semibold border border-gray-400 rounded-lg">
-                    +{" "}
-                </button>
+                <div className="flex items-center border border-gray-300 rounded-lg bg-white p-4 mb-4">
+                  <span className="font-bold">English </span>
+                  <span
+                    onClick={() => handleNavigation("#")}
+                    className="ml-auto text-blue-500"
+                  >
+                    Switch
+                  </span>
+                </div>
+
+                <div className="flex items-center border border-gray-300 rounded-lg bg-white p-4 mb-4">
+                  <span className="font-bold">Korean </span>
+                  <span
+                    onClick={() => handleNavigation("#")}
+                    className="ml-auto text-blue-500"
+                  >
+                    Switch
+                  </span>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -177,4 +201,4 @@ function ProfilePage() {
   );
 }
 
-export default addUsers;
+export default LanguagePage;

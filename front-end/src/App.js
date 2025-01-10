@@ -10,6 +10,8 @@ import RoomPage from "./components/pages/RoomPage";
 import DeviceDetailsPage from "./components/pages/DeviceDetailsPage";
 import UserPage from "./components/pages/UserPage";
 import UserProfilePage from "./components/pages/UserProfilePage";
+import LanguagePage from "./components/pages/LanguagePage";
+import AddUserPage from "./components/pages/AddUserPage";
 import InternetUsagePage from "./components/pages/InternetUsagePage";
 import ElectricUsagePage from "./components/pages/ElectricUsagePage";
 import UserSettingPage from "./components/pages/UserSettingPage";
@@ -184,6 +186,8 @@ function App() {
       <Route path="/device/:name" element={<DeviceDetailsPage />} />
       <Route path="/user/:name" element={<UserPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
+      <Route path="/profile/languages" element={<LanguagePage />} />
+      <Route path="/profile/AddUser" element={<AddUserPage />} />
       <Route path="/internet" element={<InternetUsagePage />} />
       <Route path="/electric" element={<ElectricUsagePage />} />
       <Route path="/settings" element={<UserSettingPage />} />

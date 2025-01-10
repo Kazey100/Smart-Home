@@ -211,15 +211,15 @@ function UserProfilePage() {
                 </div>
               </a>
 
-              <div
-                onClick={() => handleNavigation("/add-user")}
+              <a
+                href="/profile/AddUser"
                 className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
               >
                 <div className="font-bold">Add User </div>
                 <div className="font-bold text-gray-500 text-right">
                   Add User to Your Home
                 </div>
-              </div>
+              </a>
 
               <a
                 href="/users"

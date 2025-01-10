@@ -168,12 +168,12 @@ function UserSettingPage() {
 
               {/* Main Content Section */}
               <div className="flex flex-col items-center justify-center">
-                <div
-                  onClick={() => handleNavigation("#")}
+                <a
+                  href="/profile/languages"
                   className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
                 >
                   <span className="font-bold">Languages</span>
-                </div>
+                </a>
 
                 <div
                   onClick={() => handleNavigation("#")}
