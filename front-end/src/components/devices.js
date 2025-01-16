@@ -19,14 +19,14 @@ function Devices() {
   const previousStateRef = useRef(devicesState);
 
   const devices = [
-    { img: "room1.jpg", name: "Samsung TV" },
-    { img: "room2.jpg", name: "Philips Hue" },
-    { img: "room2.jpg", name: "LG Speaker" },
-    { img: "room2.jpg", name: "Nest Thermostat" },
-    { img: "room2.jpg", name: "Nest Thermostat" },
-    { img: "room2.jpg", name: "Nest Thermostat" },
-    { img: "room2.jpg", name: "Nest Thermostat" },
-    { img: "room2.jpg", name: "Nest Thermostat" },
+    { img: "room1.jpg", name: "Samsung TV", type: "TV" },
+    { img: "room2.jpg", name: "Philips Hue", type: "TV" },
+    { img: "room2.jpg", name: "LG Speaker", type: "Speaker" },
+    { img: "room2.jpg", name: "Nest Thermostat", type: "Eg" },
+    { img: "room2.jpg", name: "Nest Thermostat", type: "Eg" },
+    { img: "room2.jpg", name: "Nest Thermostat", type: "Eg" },
+    { img: "room2.jpg", name: "Nest Thermostat", type: "Eg" },
+    { img: "room2.jpg", name: "Nest Thermostat", type: "Eg" },
   ];
 
   const filteredDevices = devices.filter((device) => {
@@ -159,7 +159,7 @@ function Devices() {
                       style={{ height: "170px" }}
                       onClick={() => openModal(device)}
                     />
-                    <Link to={`/device/${device.name}`}>
+                    <Link to={`/devices/${device.type}/${device.name}/details`}>
                       <div className="teal-text text-sm sm:text-base w-full text-center mb-2">
                         {device.name}
                       </div>

@@ -7,7 +7,7 @@ function DeviceDetailsPage() {
     setIsCollapsed(!isCollapsed);
   };
 
-  const { name } = useParams();
+  const { name, type } = useParams();
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -137,8 +137,104 @@ function DeviceDetailsPage() {
 
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
-              <h1 className="text-4xl font-bold">Welcome to {name}</h1>
-              <p>This is the {name} page.</p>
+              {/* <!-- Main Content --> */}
+              <div class="flex flex-col flex-1 gap-4">
+                {/* Internet Usage Section */}
+                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
+                  <a className="relative pl-4" href="/devices">
+                    <i className="fa fa-2x fa-arrow-left"></i>
+                  </a>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    {name} ({type})
+                  </h1>
+                </div>
+
+                {/* ==================== */}
+                <div className="grid grid-rows-[auto,1fr] mt-2 gap-4 rounded-lg bg-white">
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                          <img
+                            src=""
+                            alt=""
+                            className="border border-black rounded-lg mb-4 mx-auto"
+                            style={{ height: "100px", width: "100px" }}
+                          />
+                          <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                            <div className="text-2xl w-full mb-2 rounded-full text-white inline-block bg-red-500">
+                              Offline
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <img
+                          alt="eg"
+                          src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="grid grid-cols-2 p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>{" "}
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 bg-black items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                      <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="text-2xl text-white">Set Action </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                </div>
+              </div>
             </div>
           </div>
         </div>

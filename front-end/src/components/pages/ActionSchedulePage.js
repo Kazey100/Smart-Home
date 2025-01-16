@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ActionSchedule() {
-    const [isCollapsed, setIsCollapsed] = useState(false);
-    const [isAutoOn, setIsAutoOn] = useState(false); // Manage toggle switch state
-  
-    const toggleSidebar = () => {
-      setIsCollapsed(!isCollapsed);
+function ActionSchedulePage() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isAutoOn, setIsAutoOn] = useState(false); // Manage toggle switch state
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  // ToggleSwitch component manages the toggle, taking state and setter as props
+  function ToggleSwitch({ isAutoOn, setIsAutoOn }) {
+    const handleToggle = () => {
+      setIsAutoOn(!isAutoOn); // Toggle the state when the checkbox is clicked
     };
-  
-    const navigate = useNavigate();
-  
-    const handleNavigation = (path) => {
-      navigate(path);
-    };
-  
-    // ToggleSwitch component manages the toggle, taking state and setter as props
-    function ToggleSwitch({ isAutoOn, setIsAutoOn }) {
-      const handleToggle = () => {
-        setIsAutoOn(!isAutoOn);  // Toggle the state when the checkbox is clicked
-    };
-  
+
     return (
       <div className="flex items-center">
         <input
@@ -30,11 +30,11 @@ function ActionSchedule() {
           className="sr-only peer"
         />
         <span className="relative inline-block w-[50px] h-[24px] bg-gray-300 rounded-full">
-          <span
-            className="absolute left-1 bottom-[2px] w-[20px] h-[20px] bg-white rounded-full transition-transform peer-checked:translate-x-[26px]"
-          ></span>
+          <span className="absolute left-1 bottom-[2px] w-[20px] h-[20px] bg-white rounded-full transition-transform peer-checked:translate-x-[26px]"></span>
         </span>
-        <span className="ml-4">{isAutoOn ? 'Auto Mode ON' : 'Auto Mode OFF'}</span>
+        <span className="ml-4">
+          {isAutoOn ? "Auto Mode ON" : "Auto Mode OFF"}
+        </span>
       </div>
     );
   }
@@ -212,7 +212,10 @@ function ActionSchedule() {
 
                 <br />
 
-                <a href="#" className="border border-gray-400 bg-gray-400 rounded-md text-white px-9 py-3 ml-[1296px]">
+                <a
+                  href="#"
+                  className="border border-gray-400 bg-gray-400 rounded-md text-white px-9 py-3 ml-[1296px]"
+                >
                   Done
                 </a>
                 <br />
@@ -226,4 +229,4 @@ function ActionSchedule() {
   );
 }
 
-export default ActionSchedule;
+export default ActionSchedulePage;

@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
-function UserProfilePage() {
+function LODevicesPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // const { name } = useParams();a
+  //   const { name } = useParams();
 
-  // useEffect(() => {
-  //   const now = new Date();
-  //   const dateOnly = now.toLocaleDateString();
-  //   document.getElementById("datetime").innerHTML = dateOnly;
-  // }, []);
+  const devices = [{ name: "xiaomi", type: "vacuum", status: "Offline" }];
 
-  const navigate = useNavigate();
+  const [deviceStates, setDeviceStates] = useState(
+    devices.reduce((acc, device) => {
+      acc[device.name] = false; // Initialize all devices as "Off"
+      return acc;
+    }, {})
+  );
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const toggleSwitch = (deviceName) => {
+    setDeviceStates((prevState) => ({
+      ...prevState,
+      [deviceName]: !prevState[deviceName], // Toggle the state for the specific device
+    }));
   };
 
   return (
@@ -35,7 +39,7 @@ function UserProfilePage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
@@ -162,84 +166,87 @@ function UserProfilePage() {
 
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
-              {/* Profile Section */}
-              <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/">
-                  <i className="fa fa-2x fa-arrow-left"></i>
-                </a>
-                <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                  Profile
-                </h1>
+              {/* Main Content */}
+              <div
+                className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
+              >
+                <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
+                  {/* Main Content */}
+                  <div className="flex flex-col flex-1">
+                    {/* Setting Section */}
+                    <div className="grid grid-cols-[auto,1fr,auto] items-center mt-5 w-full">
+                      <a className="relative pl-4" href="/profile">
+                        <i className="fa fa-2x fa-arrow-left"></i>
+                      </a>
+                      <h1 className="text-center lg:text-4xl w-full ml-[-1%]">
+                        List Of Devices
+                      </h1>
+                      <a href="/">
+                        <i class="fas fa-plus text-2xl"></i>
+                      </a>
+                    </div>
+
+                    {/* Main Content Section */}
+                    <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-2 justify-center items-center p-3">
+                      {/* Dynamically added blocks */}
+                      <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3">
+                        {devices.map((device) => (
+                          <Link
+                            key={device.name}
+                            to={`/devices/${device.type}/${device.name}/details`}
+                            className="w-full"
+                          >
+                            <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                              <img
+                                src=""
+                                alt=""
+                                className="border border-black rounded-lg mb-4 mx-auto"
+                                style={{ height: "100px", width: "100px" }}
+                              />
+                              <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                                <div className="mb-2">Xiaomi</div>
+                                <div
+                                  className={`text-2xl w-full mb-2 rounded-full text-white inline-block ${
+                                    deviceStates[device.name]
+                                      ? "bg-green-500"
+                                      : "bg-red-500"
+                                  }`}
+                                >
+                                  {deviceStates[device.name]
+                                    ? "Online"
+                                    : "Offline"}
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                  <div
+                                    onClick={(e) => {
+                                      e.preventDefault(); // Prevent navigation when toggling
+                                      toggleSwitch(device.name);
+                                    }}
+                                    className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
+                                      deviceStates[device.name]
+                                        ? "bg-green-500"
+                                        : "bg-gray-300"
+                                    }`}
+                                  >
+                                    <div
+                                      className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform ${
+                                        deviceStates[device.name]
+                                          ? "translate-x-8"
+                                          : "translate-x-0"
+                                      }`}
+                                    ></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                      {/* More blocks will automatically adjust */}
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              {/* Profile Card */}
-              <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-[full]">
-                {/* <img
-                  src="https://static3.depositphotos.com/1000951/138/i/600/depositphotos_1380772-stock-photo-profile-of-beautiful-smiling-girl.jpg"
-                  alt="Profile Picture"
-                  className="rounded-full w-16 h-16 mr-5"
-                />
-                <div className="flex flex-col">
-                  <h3 className="font-bold">Camilia Olson</h3>
-                  <h4 className="text-gold">Admin</h4>
-                  <span className="text-gray-500">
-                    Date Joined: <span id="datetime"></span>
-                  </span>
-                </div> */}
-                <a
-                  href="/login"
-                  className="button2 bg-green-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
-                >
-                  Login
-                </a>{" "}
-                <a
-                  href="/register"
-                  className="button2 bg-blue-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
-                >
-                  Register
-                </a>
-              </div>
-
-              {/* Navigation Options */}
-              <a
-                href="/settings"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <div className="font-bold">General Settings</div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  Languages, Notifications, Feedback, Security, Privacy
-                </div>
-              </a>
-
-              <a
-                href="/profile/AddUser"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <div className="font-bold">Add User </div>
-                <div className="font-bold text-gray-500 text-right">
-                  Add User to Your Home
-                </div>
-              </a>
-
-              <a
-                href="/users"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <div className="font-bold">All Users </div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  View The Amount of Existing Users
-                </div>
-              </a>
-
-              <a
-                href="/change&password"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <div className="font-bold">Change Password </div>{" "}
-                <div className="font-bold text-gray-500 text-right">
-                  Change your account's password
-                </div>
-              </a>
             </div>
           </div>
         </div>
@@ -248,4 +255,4 @@ function UserProfilePage() {
   );
 }
 
-export default UserProfilePage;
+export default LODevicesPage;

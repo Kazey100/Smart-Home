@@ -20,6 +20,8 @@ import ChangePasswordPage from "./components/pages/ChangePasswordPage";
 import SelectRobotPage from "./components/pages/SelectRobotPage";
 import VacuumBotsPage from "./components/pages/VacuumBotsPage";
 import NotificationPage from "./components/pages/NotificationPage";
+import ActionSchedulePage from "./components/pages/ActionSchedulePage";
+import LODevicesPage from "./components/pages/LODevicesPage";
 
 import "./App.css";
 
@@ -54,7 +56,7 @@ function App() {
                   </a>
                 </div>
                 {/* Sidebar Items */}
-                <a href="/">
+                <a href="/devices">
                   <div className="flex flex-col items-center justify-center px-4 py-2">
                     <i
                       className={`fas fa-layer-group text-white text-2xl ${
@@ -183,7 +185,10 @@ function App() {
 
       {/* Routes that display a blank page */}
       <Route path="/room/:name" element={<RoomPage />} />
-      <Route path="/device/:name" element={<DeviceDetailsPage />} />
+      <Route
+        path="/devices/:type/:name/details"
+        element={<DeviceDetailsPage />}
+      />
       <Route path="/user/:name" element={<UserPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/profile/languages" element={<LanguagePage />} />
@@ -196,6 +201,8 @@ function App() {
       <Route path="/robots" element={<SelectRobotPage />} />
       <Route path="/robots/vacuum/:name" element={<VacuumBotsPage />} />
       <Route path="/notification" element={<NotificationPage />} />
+      <Route path="/devices" element={<LODevicesPage />} />
+      <Route path="" element={<ActionSchedulePage />} />
     </Routes>
   );
 }
