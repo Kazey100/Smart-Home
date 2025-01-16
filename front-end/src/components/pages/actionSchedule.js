@@ -1,25 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function UserProfilePage() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  // const { name } = useParams();a
-
-  // useEffect(() => {
-  //   const now = new Date();
-  //   const dateOnly = now.toLocaleDateString();
-  //   document.getElementById("datetime").innerHTML = dateOnly;
-  // }, []);
-
-  const navigate = useNavigate();
-
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
+function ActionSchedule() {
+    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isAutoOn, setIsAutoOn] = useState(false); // Manage toggle switch state
+  
+    const toggleSidebar = () => {
+      setIsCollapsed(!isCollapsed);
+    };
+  
+    const navigate = useNavigate();
+  
+    const handleNavigation = (path) => {
+      navigate(path);
+    };
+  
+    // ToggleSwitch component manages the toggle, taking state and setter as props
+    function ToggleSwitch({ isAutoOn, setIsAutoOn }) {
+      const handleToggle = () => {
+        setIsAutoOn(!isAutoOn);  // Toggle the state when the checkbox is clicked
+    };
+  
+    return (
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          checked={isAutoOn}
+          onChange={handleToggle}
+          className="sr-only peer"
+        />
+        <span className="relative inline-block w-[50px] h-[24px] bg-gray-300 rounded-full">
+          <span
+            className="absolute left-1 bottom-[2px] w-[20px] h-[20px] bg-white rounded-full transition-transform peer-checked:translate-x-[26px]"
+          ></span>
+        </span>
+        <span className="ml-4">{isAutoOn ? 'Auto Mode ON' : 'Auto Mode OFF'}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -55,7 +73,7 @@ function UserProfilePage() {
                   </span>
                 )}
               </div>
-            </a>{" "}
+            </a>
             <a href="/electric">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
@@ -112,19 +130,13 @@ function UserProfilePage() {
                 isCollapsed ? "scale-0 opacity-0" : "scale-100 opacity-100"
               }`}
             >
-              <i
-                className={`fas ${
-                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
-                }`}
-              ></i>
+              <i className="fas fa-chevron-left"></i>
             </button>
           </div>
         </div>
 
         {/* Main Content */}
-        <div
-          className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
-        >
+        <div className="main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto">
           <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
             {/* Main Content Header */}
             <div className="flex justify-between items-center relative">
@@ -160,92 +172,52 @@ function UserProfilePage() {
               </div>
             </div>
 
-            {/* <!-- Main Content --> */}
-            <div class="flex flex-col flex-1">
-              {/* Profile Section */}
+            {/* Main Content */}
+            <div className="flex flex-col flex-1">
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
                 <a className="relative pl-4" href="/">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
                 <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                  Profile
+                  List of devices
                 </h1>
               </div>
 
-              {/* Profile Card */}
-              <div className="rounded-lg border border-gray-500 bg-white p-5 my-5 flex items-center w-full max-w-[full]">
-                {/* <img
-                  src="https://static3.depositphotos.com/1000951/138/i/600/depositphotos_1380772-stock-photo-profile-of-beautiful-smiling-girl.jpg"
-                  alt="Profile Picture"
-                  className="rounded-full w-16 h-16 mr-5"
-                />
-                <div className="flex flex-col">
-                  <h3 className="font-bold">Camilia Olson</h3>
-                  <h4 className="text-gold">Admin</h4>
-                  <span className="text-gray-500">
-                    Date Joined: <span id="datetime"></span>
-                  </span>
-                </div> */}
-                <a
-                  href="/login"
-                  className="button2 bg-green-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
-                >
-                  Login
-                </a>{" "}
-                <a
-                  href="/register"
-                  className="button2 bg-blue-500 text-white text-center text-2xl w-[20%] h-[110%] rounded-[1rem] mx-auto"
-                >
-                  Register
-                </a>
-              </div>
+              <div className="border border-gray-400 bg-white rounded-lg p-3 font-bold text-xl">
+                <h3 className="text-center">Air Conditioner</h3>
 
-              {/* Navigation Options */}
-              <a
-                href="/settings"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  General Settings{" "}
-                  <span className="text-gray-500 ml-[970px]">
-                    Languages, Notifications, Feedback, Security, Privacy
-                  </span>
-                </span>
-              </a>
-
-              <a
-                href="/profile/AddUser"
-                className="grid grid-cols-2 rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <div className="font-bold">Add User </div>
-                <div className="font-bold text-gray-500 text-right">
-                  Add User to Your Home
+                <div className="border border-gray-400 bg-white rounded-lg flex px-20 py-6 mx-16">
+                  <label>Temperature</label>
+                  <select className="ml-[1018px]">
+                    {[...Array(15)].map((_, i) => (
+                      <option key={i}>{16 + i}</option>
+                    ))}
+                  </select>
                 </div>
-              </a>
 
-              <a
-                href="/users"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  All Users{" "}
-                  <span className="text-gray-500 ml-[1120px]">
-                    View The Amount of Existing Users
-                  </span>
-                </span>
-              </a>
+                <br />
 
-              <a
-                href="/change&password"
-                className="rounded-lg border border-gray-500 bg-white p-5 my-2.5 w-full max-w-full"
-              >
-                <span className="font-bold">
-                  Change Password{" "}
-                  <span className="text-gray-500 ml-[1060px]">
-                    Change your account's password
-                  </span>
-                </span>
-              </a>
+                <div className="flex ml-[60px] mr-[60px] gap-[44px] border border-gray-400 bg-white rounded-md px-[252px] py-[24px]">
+                  <span>Turn on device</span>
+                  <span>Turn off device</span>
+                </div>
+
+                <br />
+
+                <div className="border border-gray-400 bg-white rounded-md flex px-3 py-6 place-content-center mx-auto">
+                  <span>Auto</span>
+                  {/* Pass the state and setter to ToggleSwitch */}
+                  <ToggleSwitch isAutoOn={isAutoOn} setIsAutoOn={setIsAutoOn} />
+                </div>
+
+                <br />
+
+                <a href="#" className="border border-gray-400 bg-gray-400 rounded-md text-white px-9 py-3 ml-[1296px]">
+                  Done
+                </a>
+                <br />
+                <br />
+              </div>
             </div>
           </div>
         </div>
@@ -254,4 +226,4 @@ function UserProfilePage() {
   );
 }
 
-export default UserProfilePage;
+export default ActionSchedule;
