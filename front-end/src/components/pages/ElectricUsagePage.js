@@ -391,7 +391,7 @@ function ElectricUsagePage() {
                         <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
                           <div className="items-center gap-4">
                             <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
-                              <div className="mb-2">Next Payment Date</div>
+                              <div className="mb-2">View Specific Devices</div>
                             </div>
                           </div>
                         </div>
@@ -400,7 +400,7 @@ function ElectricUsagePage() {
                         <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
                           <div className="items-center gap-4">
                             <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
-                              <div className="mb-2">Next Payment Date</div>
+                              <div className="mb-2">Print Full Report</div>
                             </div>
                           </div>
                         </div>

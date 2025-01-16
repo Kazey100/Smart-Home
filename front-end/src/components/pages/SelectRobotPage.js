@@ -155,7 +155,7 @@ function SelectRobotPage() {
             <div className="flex flex-col flex-1">
               {/* Setting Section */}
               <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/profile">
+                <a className="relative pl-4" href="/">
                   <i className="fa fa-2x fa-arrow-left"></i>
                 </a>
                 <h1 className="text-center lg:text-4xl w-full ml-[-4%]">

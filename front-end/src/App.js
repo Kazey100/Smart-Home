@@ -202,7 +202,10 @@ function App() {
       <Route path="/robots/vacuum/:name" element={<VacuumBotsPage />} />
       <Route path="/notification" element={<NotificationPage />} />
       <Route path="/devices" element={<LODevicesPage />} />
-      <Route path="" element={<ActionSchedulePage />} />
+      <Route
+        path="/devices/:type/:name/details/setAction"
+        element={<ActionSchedulePage />}
+      />
     </Routes>
   );
 }

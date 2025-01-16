@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function DeviceDetailsPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -23,13 +23,12 @@ function DeviceDetailsPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
-
             {/* Sidebar Items */}
             <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
@@ -44,8 +43,22 @@ function DeviceDetailsPage() {
                   </span>
                 )}
               </div>
+            </a>{" "}
+            <a href="/electric">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-bolt text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Electrical Usage
+                  </span>
+                )}
+              </div>
             </a>
-            <a href="#">
+            <a href="/internet">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -226,13 +239,18 @@ function DeviceDetailsPage() {
                       </div>
                     </div>
                   </div>{" "}
-                  <div className="p-4 gap-4 flex justify-center items-center">
-                    <div className="rounded-lg border-[2px] border-gray-300 bg-black items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
-                      <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
-                        <div className="text-2xl text-white">Set Action </div>
+                  <Link
+                    key={name}
+                    to={`/devices/${type}/${name}/details/setAction`}
+                  >
+                    <div className="p-4 gap-4 flex justify-center items-center">
+                      <div className="rounded-lg border-[2px] border-gray-300 bg-black items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                        <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
+                          <div className="text-2xl text-white">Set Action </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>{" "}
+                    </div>{" "}
+                  </Link>
                 </div>
               </div>
             </div>

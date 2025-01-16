@@ -1,43 +1,45 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ActionSchedulePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isAutoOn, setIsAutoOn] = useState(false); // Manage toggle switch state
-
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   const navigate = useNavigate();
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [temperature, setTemperature] = useState(""); // Initialize temperature state
+  const [activeButton, setActiveButton] = useState(null);
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const toggleSwitch = () => {
+    setIsSwitchOn((prevState) => !prevState);
   };
 
-  // ToggleSwitch component manages the toggle, taking state and setter as props
-  function ToggleSwitch({ isAutoOn, setIsAutoOn }) {
-    const handleToggle = () => {
-      setIsAutoOn(!isAutoOn); // Toggle the state when the checkbox is clicked
-    };
+  const { name, type } = useParams();
 
-    return (
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          checked={isAutoOn}
-          onChange={handleToggle}
-          className="sr-only peer"
-        />
-        <span className="relative inline-block w-[50px] h-[24px] bg-gray-300 rounded-full">
-          <span className="absolute left-1 bottom-[2px] w-[20px] h-[20px] bg-white rounded-full transition-transform peer-checked:translate-x-[26px]"></span>
-        </span>
-        <span className="ml-4">
-          {isAutoOn ? "Auto Mode ON" : "Auto Mode OFF"}
-        </span>
-      </div>
-    );
-  }
+  // Handle temperature change (for the dropdown)
+  const handleTemperatureChange = (e) => {
+    setTemperature(e.target.value);
+  };
+
+  // Handle button click to toggle the active state
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
+  };
+
+  // Handle the form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Submit logic here (e.g., sending data to DB)
+    console.log("Form submitted with data:", {
+      temperature,
+      isSwitchOn,
+      activeButton,
+    });
+
+    navigate(`/devices/${type}/${name}/details`);
+  };
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -53,7 +55,7 @@ function ActionSchedulePage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
@@ -73,7 +75,7 @@ function ActionSchedulePage() {
                   </span>
                 )}
               </div>
-            </a>
+            </a>{" "}
             <a href="/electric">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
@@ -130,13 +132,19 @@ function ActionSchedulePage() {
                 isCollapsed ? "scale-0 opacity-0" : "scale-100 opacity-100"
               }`}
             >
-              <i className="fas fa-chevron-left"></i>
+              <i
+                className={`fas ${
+                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
+                }`}
+              ></i>
             </button>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto">
+        <div
+          className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
+        >
           <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
             {/* Main Content Header */}
             <div className="flex justify-between items-center relative">
@@ -161,7 +169,7 @@ function ActionSchedulePage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="/profile" className="mr-8">
+                <a href="#" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -172,54 +180,114 @@ function ActionSchedulePage() {
               </div>
             </div>
 
-            {/* Main Content */}
-            <div className="flex flex-col flex-1">
-              <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/">
-                  <i className="fa fa-2x fa-arrow-left"></i>
-                </a>
-                <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                  List of devices
-                </h1>
-              </div>
-
-              <div className="border border-gray-400 bg-white rounded-lg p-3 font-bold text-xl">
-                <h3 className="text-center">Air Conditioner</h3>
-
-                <div className="border border-gray-400 bg-white rounded-lg flex px-20 py-6 mx-16">
-                  <label>Temperature</label>
-                  <select className="ml-[1018px]">
-                    {[...Array(15)].map((_, i) => (
-                      <option key={i}>{16 + i}</option>
-                    ))}
-                  </select>
+            {/* <!-- Main Content --> */}
+            <div class="flex flex-col flex-1">
+              {/* <!-- Main Content --> */}
+              <div class="flex flex-col flex-1 gap-4">
+                {/* Internet Usage Section */}
+                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
+                  <a className="relative pl-4" href="/devices">
+                    <i className="fa fa-2x fa-arrow-left"></i>
+                  </a>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    Set Action
+                  </h1>
                 </div>
 
-                <br />
-
-                <div className="flex ml-[60px] mr-[60px] gap-[44px] border border-gray-400 bg-white rounded-md px-[252px] py-[24px]">
-                  <span>Turn on device</span>
-                  <span>Turn off device</span>
-                </div>
-
-                <br />
-
-                <div className="border border-gray-400 bg-white rounded-md flex px-3 py-6 place-content-center mx-auto">
-                  <span>Auto</span>
-                  {/* Pass the state and setter to ToggleSwitch */}
-                  <ToggleSwitch isAutoOn={isAutoOn} setIsAutoOn={setIsAutoOn} />
-                </div>
-
-                <br />
-
-                <a
-                  href="#"
-                  className="border border-gray-400 bg-gray-400 rounded-md text-white px-9 py-3 ml-[1296px]"
+                {/* ==================== */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="grid grid-rows-[auto,1fr] p-4 mt-2 gap-4 rounded-lg bg-white"
                 >
-                  Done
-                </a>
-                <br />
-                <br />
+                  <h1 className="text-center lg:text-4xl w-full">
+                    {name} ({type})
+                  </h1>
+
+                  <div className="border border-gray-300 rounded-lg bg-white p-4 flex items-center justify-between">
+                    {/* Label */}
+                    <span className="text-lg font-medium text-gray-700">
+                      Temperature
+                    </span>
+
+                    {/* Dropdown */}
+                    <select
+                      className="border border-gray-300 rounded-lg p-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={temperature}
+                      onChange={handleTemperatureChange}
+                    >
+                      <option value="" disabled>
+                        Select
+                      </option>
+                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
+                        (temp) => (
+                          <option key={temp} value={temp}>
+                            {temp}°C
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6 p-5">
+                    {/* Turn On Button */}
+                    <div
+                      onClick={() => handleButtonClick("on")}
+                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
+                        activeButton === "on"
+                          ? "bg-gray-600 text-white"
+                          : "bg-white text-black"
+                      }`}
+                    >
+                      <div className="text-1xl">Turn On</div>
+                    </div>
+
+                    {/* Turn Off Button */}
+                    <div
+                      onClick={() => handleButtonClick("off")}
+                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
+                        activeButton === "off"
+                          ? "bg-gray-600 text-white"
+                          : "bg-white text-black"
+                      }`}
+                    >
+                      <div className="text-1xl">Turn Off</div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center items-center h-full w-full">
+                    <div className="border border-gray-300 rounded-lg bg-white p-4 w-[40%] flex items-center justify-between">
+                      {/* Label */}
+                      <span className="text-lg font-medium text-gray-700">
+                        Auto
+                      </span>
+
+                      {/* Switch */}
+                      <div
+                        onClick={toggleSwitch}
+                        className={`w-12 h-6 sm:w-16 sm:h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
+                          isSwitchOn ? "bg-green-500" : "bg-gray-300"
+                        }`}
+                      >
+                        <div
+                          className={`w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-white shadow-md transform transition-transform ${
+                            isSwitchOn
+                              ? "translate-x-6 sm:translate-x-8"
+                              : "translate-x-0"
+                          }`}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 gap-4 flex justify-end">
+                    <button
+                      type="submit"
+                      className="rounded-lg bg-black text-sm sm:text-base w-full mb-2 text-center sm:w-[15%] md:w-[15%] h-[3rem] flex justify-center items-center"
+                    >
+                      <div className="text-1xl text-white">Done</div>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
