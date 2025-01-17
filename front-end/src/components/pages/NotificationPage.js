@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 function NotificationPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
-  };
-
-  // const { name } = useParams();
-
-  const navigate = useNavigate();
-
-  const handleNavigation = (path) => {
-    navigate(path);
   };
 
   return (
@@ -29,7 +20,7 @@ function NotificationPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
@@ -97,7 +88,7 @@ function NotificationPage() {
           {/* Collapse Button */}
           <div
             className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
-              isCollapsed ? "left-[0px]" : "left-[96px]"
+              isCollapsed ? "left-[0px]" : "left-[80px]"
             }`}
           >
             <button
@@ -143,7 +134,7 @@ function NotificationPage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="/profile" className="mr-8">
+                <a href="#" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -154,23 +145,25 @@ function NotificationPage() {
               </div>
             </div>
 
-            {/* Main Content */}
-            <div className="flex flex-col flex-1">
-              {/* Setting Section */}
-              <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                <a className="relative pl-4" href="/profile">
-                  <i className="fa fa-2x fa-arrow-left"></i>
-                </a>
-                <h1 className="text-center lg:text-4xl w-full ml-[-4%]"></h1>
-              </div>
+            {/* <!-- Main Content --> */}
+            <div class="flex flex-col flex-1">
+              {/* <!-- Main Content --> */}
+              <div class="flex flex-col flex-1 gap-4">
+                {/* Internet Usage Section */}
+                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
+                  <a className="relative pl-4" href="/devices/new">
+                    <i className="fa fa-2x fa-arrow-left"></i>
+                  </a>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    Notifications
+                  </h1>
+                </div>
 
-              {/* Main Content Section */}
-              <div className="flex flex-col items-center justify-center">
-                <div
-                  onClick={() => handleNavigation("#")}
-                  className="rounded-md border border-gray-500 bg-white p-4 mt-4 flex items-center justify-center text-center text-lg w-[96%]"
-                >
-                  <span className="font-bold">Languages</span>
+                {/* ==================== */}
+                <div className="flex justify-center h-full">
+                  <div className="text-gray-400 flex items-center justify-between p-3 gap-2">
+                    No Notifications
+                  </div>
                 </div>
               </div>
             </div>
