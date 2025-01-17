@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
 
 import WidgetsEnergy from "./components/widgetsEnergy";
 import RoomsRobots from "./components/roomsRobots";
@@ -22,8 +23,8 @@ import VacuumBotsPage from "./components/pages/VacuumBotsPage";
 import NotificationPage from "./components/pages/NotificationPage";
 import ActionSchedulePage from "./components/pages/ActionSchedulePage";
 import LODevicesPage from "./components/pages/LODevicesPage";
-
-import "./App.css";
+// import AddNewDevicePage from "./components/pages/AddNewDevicePage";
+import NewDeviceDetailsPage from "./components/pages/NewDeviceDetailsPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -206,6 +207,8 @@ function App() {
         path="/devices/:type/:name/details/setAction"
         element={<ActionSchedulePage />}
       />
+      {/* <Route path="/devices/new" element={<AddNewDevicePage />} /> */}
+      <Route path="/devices/new/:name" element={<NewDeviceDetailsPage />} />
     </Routes>
   );
 }

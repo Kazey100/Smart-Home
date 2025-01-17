@@ -1,28 +1,45 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function LODevicesPage() {
+function NewDeviceDetailsPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  //   const { name } = useParams();
+  const navigate = useNavigate();
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [temperature, setTemperature] = useState(""); // Initialize temperature state
 
-  const devices = [{ name: "xiaomi", type: "vacuum", status: "Offline" }];
+  const toggleSwitch = () => {
+    setIsSwitchOn((prevState) => !prevState);
+  };
 
-  const [deviceStates, setDeviceStates] = useState(
-    devices.reduce((acc, device) => {
-      acc[device.name] = false; // Initialize all devices as "Off"
-      return acc;
-    }, {})
-  );
+  const { name, type } = useParams();
 
-  const toggleSwitch = (deviceName) => {
-    setDeviceStates((prevState) => ({
-      ...prevState,
-      [deviceName]: !prevState[deviceName], // Toggle the state for the specific device
-    }));
+  // Handle temperature change (for the dropdown)
+  const handleTemperatureChange = (e) => {
+    setTemperature(e.target.value);
+  };
+
+  // Handle the form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Submit logic here (e.g., sending data to DB)
+    console.log("Form submitted with data:", {
+      temperature,
+      isSwitchOn,
+    });
+
+    navigate(`/devices`);
+  };
+
+  // Handle the check validity button click
+  const handleCheckValidity = (e) => {
+    e.preventDefault();
+    // Your custom validity check logic here
+    console.log("Check validity action triggered");
+    // No navigation occurs here
   };
 
   return (
@@ -153,7 +170,7 @@ function LODevicesPage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="/profile" className="mr-8">
+                <a href="#" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -166,86 +183,88 @@ function LODevicesPage() {
 
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
-              {/* Main Content */}
-              <div
-                className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
-              >
-                <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
-                  {/* Main Content */}
-                  <div className="flex flex-col flex-1">
-                    {/* Setting Section */}
-                    <div className="grid grid-cols-[auto,1fr,auto] items-center mt-5 w-full">
-                      <a className="relative pl-4" href="/">
-                        <i className="fa fa-2x fa-arrow-left"></i>
-                      </a>
-                      <h1 className="text-center lg:text-4xl w-full ml-[-1%]">
-                        List Of Devices
-                      </h1>
-                      <a href="/devices/new">
-                        <i class="fas fa-plus text-2xl"></i>
-                      </a>
-                    </div>
+              {/* <!-- Main Content --> */}
+              <div class="flex flex-col flex-1 gap-4">
+                {/* Internet Usage Section */}
+                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
+                  <a className="relative pl-4" href="/devices/new">
+                    <i className="fa fa-2x fa-arrow-left"></i>
+                  </a>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    {name}
+                  </h1>
+                </div>
 
-                    {/* Main Content Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-2 justify-center items-center p-3">
-                      {/* Dynamically added blocks */}
-                      <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3">
-                        {devices.map((device) => (
-                          <Link
-                            key={device.name}
-                            to={`/devices/${device.type}/${device.name}/details`}
-                            className="w-full"
-                          >
-                            <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
-                              <img
-                                src=""
-                                alt=""
-                                className="border border-black rounded-lg mb-4 mx-auto"
-                                style={{ height: "100px", width: "100px" }}
-                              />
-                              <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                                <div className="mb-2">Xiaomi</div>
-                                <div
-                                  className={`text-2xl w-full mb-2 rounded-full text-white inline-block ${
-                                    deviceStates[device.name]
-                                      ? "bg-green-500"
-                                      : "bg-red-500"
-                                  }`}
-                                >
-                                  {deviceStates[device.name]
-                                    ? "Online"
-                                    : "Offline"}
-                                </div>
-                                <div className="flex flex-col items-center justify-center">
-                                  <div
-                                    onClick={(e) => {
-                                      e.preventDefault(); // Prevent navigation when toggling
-                                      toggleSwitch(device.name);
-                                    }}
-                                    className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
-                                      deviceStates[device.name]
-                                        ? "bg-green-500"
-                                        : "bg-gray-300"
-                                    }`}
-                                  >
-                                    <div
-                                      className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform ${
-                                        deviceStates[device.name]
-                                          ? "translate-x-8"
-                                          : "translate-x-0"
-                                      }`}
-                                    ></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
+                {/* ==================== */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="grid grid-rows-[auto,1fr] p-4 mt-2 gap-4 rounded-lg bg-white"
+                >
+                  <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] border border-gray-300 rounded-lg bg-white p-4 flex items-center justify-between">
+                    {/* Label */}
+                    <span className="text-lg font-medium text-gray-700">
+                      Enter Device Unique Serial Code
+                    </span>
+
+                    {/* Input */}
+                    <input
+                      type="text"
+                      className="border border-gray-300 rounded-lg p-2 ml-5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter Serial Code"
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] border border-gray-300 rounded-lg bg-white p-4 flex items-center justify-between">
+                    {/* Label */}
+                    <span className="text-lg font-medium text-gray-700">
+                      Select which space to add to
+                    </span>
+
+                    {/* Dropdown */}
+                    <select
+                      className="ml-5 border border-gray-300 rounded-lg p-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={temperature}
+                      onChange={handleTemperatureChange}
+                    >
+                      <option value="" disabled>
+                        Select
+                      </option>
+                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
+                        (temp) => (
+                          <option key={temp} value={temp}>
+                            {temp}°C
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div>
+
+                  <div className="flex justify-center items-center h-full w-full">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-[auto,1fr] border border-gray-300 rounded-lg bg-white p-4 w-[40%] flex items-center justify-between">
+                      {/* Label */}
+                      <button
+                        onClick={handleCheckValidity}
+                        className="text-lg font-medium text-gray-700"
+                      >
+                        Check Validity
+                      </button>
+
+                      {/* Switch */}
+                      <div className="text-green-700 w-full h-full flex items-center justify-center">
+                        Valid
                       </div>
-                      {/* More blocks will automatically adjust */}
                     </div>
                   </div>
-                </div>
+
+                  <div className="p-4 gap-4 flex justify-end">
+                    <button
+                      type="submit"
+                      className="rounded-lg bg-black text-sm sm:text-base w-full mb-2 text-center sm:w-[15%] md:w-[15%] h-[3rem] flex justify-center items-center"
+                    >
+                      <div className="text-1xl text-white">Done</div>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -255,4 +274,4 @@ function LODevicesPage() {
   );
 }
 
-export default LODevicesPage;
+export default NewDeviceDetailsPage;
