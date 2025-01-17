@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function Test() {
+function TestConnectionPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isConnected, setIsConnected] = useState(false); // State for connection status
   const toggleSidebar = () => {
@@ -244,4 +244,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default TestConnectionPage;
