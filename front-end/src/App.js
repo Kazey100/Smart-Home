@@ -26,6 +26,7 @@ import LODevicesPage from "./components/pages/LODevicesPage";
 // import AddNewDevicePage from "./components/pages/AddNewDevicePage";
 import NewDeviceDetailsPage from "./components/pages/NewDeviceDetailsPage";
 import TestConnectionPage from "./components/pages/TestConnectionPage";
+import CameraPage from "./components/pages/CameraPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -211,6 +212,7 @@ function App() {
       {/* <Route path="/devices/new" element={<AddNewDevicePage />} /> */}
       <Route path="/devices/new/:name" element={<NewDeviceDetailsPage />} />
       <Route path="/devices/new/:name/test" element={<TestConnectionPage />} />
+      <Route path="/camera" element={<CameraPage />} />
     </Routes>
   );
 }
