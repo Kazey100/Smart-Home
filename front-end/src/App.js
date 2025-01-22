@@ -27,6 +27,7 @@ import LODevicesPage from "./components/pages/LODevicesPage";
 import NewDeviceDetailsPage from "./components/pages/NewDeviceDetailsPage";
 import TestConnectionPage from "./components/pages/TestConnectionPage";
 import CameraPage from "./components/pages/CameraPage";
+import AllRoomPage from "./components/pages/AllRoomPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -213,6 +214,7 @@ function App() {
       <Route path="/devices/new/:name" element={<NewDeviceDetailsPage />} />
       <Route path="/devices/new/:name/test" element={<TestConnectionPage />} />
       <Route path="/camera" element={<CameraPage />} />
+      <Route path="/electric/rooms/:name" element={<AllRoomPage />} />
     </Routes>
   );
 }

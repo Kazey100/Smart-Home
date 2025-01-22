@@ -63,7 +63,7 @@ function RoomsRobots() {
                     style={{ maxHeight: "100%" }}
                   />
                 </div>
-                <Link to={`/room/${room.name}`}>
+                <Link to={`/electric/rooms/${room.name}`}>
                   <div className="relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center cursor-pointer">
                     {room.name}
                   </div>
