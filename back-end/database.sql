@@ -34,9 +34,11 @@ CREATE TABLE Device(
 
 CREATE TABLE Room(
     RoomID SERIAL PRIMARY KEY,
-    RoomType VARCHAR(20) NOT NULL,
     ImageID INT NOT NULL,
     DeviceID INT NOT NULL,
+    RoomType VARCHAR(20) NOT NULL,
+    CreatedBy VARCHAR(20) NOT NULL,
+    CreatedTime VARCHAR(20) NOT NULL,
     CONSTRAINT fk_image FOREIGN KEY (ImageID)
     REFERENCES image(ImageID),
     CONSTRAINT fk_device FOREIGN KEY (DeviceID)
@@ -85,8 +87,6 @@ CREATE TABLE InternetUsage(
     IntUsageID SERIAL PRIMARY KEY,
     DeviceID INT NOT NULL,
     DailyDataUsage INT NOT NULL,
-    MonthlyDataUsage INT NOT NULL,
-    AnnualDataUsage INT NOT NULL,
     NextPaymentDate DATE NOT NULL,
     CONSTRAINT fk_device FOREIGN KEY (DeviceID)
     REFERENCES device(DeviceID)
@@ -96,11 +96,7 @@ CREATE TABLE SingleDeviceEnergyUsage(
     SingleDevUsageID SERIAL PRIMARY KEY,
     DeviceID INT NOT NULL,
     DailyEnergyConsumption INT NOT NULL,
-    MonthlyEnergyConsumption INT NOT NULL,
-    AnnualEnergyConsumption INT NOT NULL,
     DailyEnergyGeneration INT NOT NULL,
-    MonthlyEnergyGeneration INT NOT NULL,
-    AnnualEnergyGeneration INT NOT NULL,
     CONSTRAINT fk_device FOREIGN KEY (DeviceID)
     REFERENCES device(DeviceID)
 );
