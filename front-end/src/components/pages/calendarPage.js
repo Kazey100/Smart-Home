@@ -73,14 +73,14 @@ function CalendarPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="\image\NZHome.png"
+                  src="./image/NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -122,7 +122,7 @@ function CalendarPage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/calendar">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
@@ -204,7 +204,7 @@ function CalendarPage() {
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
                 <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/devices/new">
+                  <a className="relative pl-4" href="/">
                     <i className="fa fa-2x fa-arrow-left"></i>
                   </a>
                   <h1 className="text-center md:text-4xl lg:text-4xl w-full ml-[-5%]">

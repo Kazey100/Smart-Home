@@ -29,14 +29,14 @@ function UserSettingPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="./image/NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -78,7 +78,7 @@ function UserSettingPage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/calendar">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
@@ -97,7 +97,7 @@ function UserSettingPage() {
           {/* Collapse Button */}
           <div
             className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
-              isCollapsed ? "left-[0px]" : "left-[96px]"
+              isCollapsed ? "left-[0px]" : "left-[80px]"
             }`}
           >
             <button
