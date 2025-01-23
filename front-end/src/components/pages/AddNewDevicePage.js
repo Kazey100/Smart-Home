@@ -1,72 +1,246 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// ViewSpecificDevice Component
 function AddNewDevicePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const deviceCategories = {
-    "Air Conditioner Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
-    "Microwave Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
-    "Robot Vacuum Cleaner Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
-    "Television Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
-    "Washing Machine Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
-  };
-
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  //   const { name } = useParams();
+
+  const aircon = [{ name: "DaikinAC" }, { name: "SamsungAC" }];
+  const TV = [{ name: "SonyTV" }, { name: "SamsungTV" }];
+
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
       <div className="p-2 grid grid-cols-[auto_1fr] h-full">
-        {/* Sidebar */}
         <div className="relative flex">
+          {/* Sidebar */}
           <div
-            className={`sidebar ${isCollapsed ? "w-0" : "w-64"} ${isCollapsed ? "" : "baseGreen"} rounded-lg min-h-full flex flex-col overflow-y-auto`}
+            className={`sidebar ${isCollapsed ? "w-[0px]" : "w-[100px]"} ${
+              isCollapsed ? "" : "baseGreen"
+            } rounded-lg min-h-full flex flex-col overflow-y-auto`}
           >
-            <div className="h-20 flex items-center justify-center">
+            {/* Sidebar Logo */}
+            <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="/image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
-                  className={isCollapsed ? "hidden" : "block"}
+                  className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
+            {/* Sidebar Items */}
+            <a href="/">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-layer-group text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Devices
+                  </span>
+                )}
+              </div>
+            </a>{" "}
+            <a href="/electric">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-bolt text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Electrical Usage
+                  </span>
+                )}
+              </div>
+            </a>
+            <a href="/internet">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-chart-pie text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Internet Usage
+                  </span>
+                )}
+              </div>
+            </a>
+            <a href="#">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-wind text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Calendar
+                  </span>
+                )}
+              </div>
+            </a>
           </div>
 
           {/* Collapse Button */}
           <div
-            className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ${
-              isCollapsed ? "left-0" : "left-16"
+            className={`absolute top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-in-out ${
+              isCollapsed ? "left-[0px]" : "left-[80px]"
             }`}
           >
             <button
               onClick={toggleSidebar}
-              className="text-white text-2xl baseGreen p-2 rounded-full shadow-md"
+              className={`text-white text-2xl baseGreen p-2 rounded-full shadow-md transform transition-all duration-500 ease-in-out ${
+                isCollapsed ? "scale-0 opacity-0" : "scale-100 opacity-100"
+              }`}
             >
-              <i className={`fas ${isCollapsed ? "fa-chevron-right" : "fa-chevron-left"}`}></i>
+              <i
+                className={`fas ${
+                  isCollapsed ? "fa-chevron-left" : "fa-chevron-left"
+                }`}
+              ></i>
             </button>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col flex-1 overflow-y-auto">
+        <div
+          className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
+        >
           <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
-            <div className="flex justify-between items-center baseGreen rounded-lg px-4 py-4">
-              <h1 className="font-bold text-white flex-grow text-center lg:text-4xl">NZ HOME</h1>
+            {/* Main Content Header */}
+            <div className="flex justify-between items-center relative">
+              <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
+                {/* Hamburger Button */}
+                <div
+                  className={`flex items-center ${
+                    isCollapsed ? "block" : "hidden"
+                  }`}
+                >
+                  <button
+                    onClick={toggleSidebar}
+                    className="text-white text-2xl bg-transparent border-0 mr-4"
+                  >
+                    <i className="fas fa-bars"></i>
+                  </button>
+                </div>
+
+                {/* Centered Text */}
+                <h1 className="font-bold text-white flex-grow text-center lg:text-4xl titleGold">
+                  NZ HOME
+                </h1>
+
+                {/* User Icon */}
+                <a href="/profile" className="mr-8">
+                  <i className="fas fa-user text-white text-3xl"></i>
+                </a>
+
+                {/* Bell Icon */}
+                <a href="/notification" className="ml-auto">
+                  <i className="fas fa-bell text-white text-3xl"></i>
+                </a>
+              </div>
             </div>
 
-            {/* Content */}
-            <div className="p-4">
-              <h1 className="text-center lg:text-4xl mb-6">Select Devices To View</h1>
+            {/* <!-- Main Content --> */}
+            <div class="flex flex-col flex-1">
+              {/* Main Content */}
+              <div
+                className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
+              >
+                <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
+                  {/* Main Content */}
+                  <div className="flex flex-col flex-1">
+                    {/* Setting Section */}
+                    <div className="grid grid-cols-[auto,1fr,auto] items-center mt-5 w-full">
+                      <a className="relative pl-4" href="/devices">
+                        <i className="fa fa-2x fa-arrow-left"></i>
+                      </a>
+                      <h1 className="text-center lg:text-4xl w-full ml-[-1%]">
+                        Select a device
+                      </h1>
+                    </div>
 
-              {/* Device Sections */}
-              <div className="grid gap-8">
-                {Object.entries(deviceCategories).map(([title, devices]) => (
-                  <DeviceSection key={title} title={title} devices={devices} />
-                ))}
+                    <div className="grid grid-rows-[auto,1fr] gap-4 mt-[5%]">
+                      {/* Air Conditioner Brand */}
+                      <div className="text-left font-medium text-lg ml-6">
+                        Air Conditioner Brand
+                      </div>
+
+                      {/* Main Content Section */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center p-3">
+                        {/* Dynamically added blocks */}
+                        {aircon.map((device) => (
+                          <div
+                            key={device.name}
+                            className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3"
+                          >
+                            <Link
+                              to={`/devices/new/${device.name}`}
+                              className="w-full"
+                            >
+                              <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                                <img
+                                  src=""
+                                  alt=""
+                                  className="border border-black rounded-lg mb-4 mx-auto"
+                                  style={{ height: "100px", width: "100px" }}
+                                />
+                                <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                                  <div className="mb-2">{device.name}</div>
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-rows-[auto,1fr] gap-4">
+                      {/* Air Conditioner Brand */}
+                      <div className="text-left font-medium text-lg mt-6 ml-6">
+                        Television Brand
+                      </div>
+
+                      {/* Main Content Section */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center p-3">
+                        {/* Dynamically added blocks */}
+                        {TV.map((device) => (
+                          <div
+                            key={device.name}
+                            className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3"
+                          >
+                            <Link
+                              to={`/devices/new/${device.name}`}
+                              className="w-full"
+                            >
+                              <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                                <img
+                                  src=""
+                                  alt=""
+                                  className="border border-black rounded-lg mb-4 mx-auto"
+                                  style={{ height: "100px", width: "100px" }}
+                                />
+                                <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                                  <div className="mb-2">{device.name}</div>
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -76,58 +250,4 @@ function AddNewDevicePage() {
   );
 }
 
-// Combined DeviceSection Component
-function DeviceSection({ title, devices }) {
-  return (
-    <div>
-      <h2 className="text-left font-medium text-lg mb-4">{title}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {devices.map((device) => {
-          return (
-            <div
-              key={device.name}
-              className="rounded-lg border-2 border-gray-300 bg-white p-4 flex flex-col items-center"
-            >
-              {/* React Router Link */}
-              <Link to={`/devices/${title.toLowerCase().replace(" ", "_")}/${device.name.toLowerCase().replace(" ", "_")}`} className="w-full text-center">
-                <img
-                  src=""
-                  alt={`${device.name} logo`}
-                  className="border border-black rounded-lg mb-4 mx-auto"
-                  style={{ height: "100px", width: "100px" }}
-                />
-                <span className="block font-medium text-sm">{device.name}</span>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// Device Page Component (for each device)
-function DevicePage() {
-  const { category, deviceName } = useParams();
-
-  return (
-    <div className="p-4">
-      <h1 className="text-center lg:text-4xl mb-6">{`${category} - ${deviceName}`}</h1>
-      <p>Details about {deviceName} from {category} will be displayed here.</p>
-    </div>
-  );
-}
-
-// Router Configuration (without App component)
-function RouterConfig() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<AddNewDevicePage />} />
-        <Route path="/devices/:category/:deviceName" element={<DevicePage />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default RouterConfig;
+export default AddNewDevicePage;

@@ -31,7 +31,7 @@ function NewDeviceDetailsPage() {
       isSwitchOn,
     });
 
-    navigate(`/devices`);
+    navigate(`/devices/new/${name}/test`);
   };
 
   // Handle the check validity button click
@@ -229,13 +229,17 @@ function NewDeviceDetailsPage() {
                       <option value="" disabled>
                         Select
                       </option>
-                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
-                        (temp) => (
-                          <option key={temp} value={temp}>
-                            {temp}°C
-                          </option>
-                        )
-                      )}
+                      {[
+                        "Living Room",
+                        "Kitchen",
+                        "Bedroom",
+                        "Bathroom",
+                        "Garage",
+                      ].map((room) => (
+                        <option key={room} value={room}>
+                          {room}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
