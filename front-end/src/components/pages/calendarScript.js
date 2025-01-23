@@ -1,136 +1,264 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// Define an array to store events
+let events = [];
 
-function CalendarPage() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [reminders, setReminders] = useState([]);
+// letiables to store event input fields and reminder list
+let eventDateInput =
+    document.getElementById("eventDate");
+let eventTitleInput =
+    document.getElementById("eventTitle");
+let eventDescriptionInput =
+    document.getElementById("eventDescription");
+let reminderList =
+    document.getElementById("reminderList");
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+// Counter to generate unique event IDs
+let eventIdCounter = 1;
 
-  const navigate = useNavigate();
+// Function to add events
+function addEvent() {
+    let date = eventDateInput.value;
+    let title = eventTitleInput.value;
+    let description = eventDescriptionInput.value;
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
+    if (date && title) {
+        // Create a unique event ID
+        let eventId = eventIdCounter++;
 
-  const daysInMonth = (month, year) => {
-    return 32 - new Date(year, month, 32).getDate();
-  };
-
-  const previous = () => {
-    if (currentMonth === 0) {
-      setCurrentYear(currentYear - 1);
-      setCurrentMonth(11);
-    } else {
-      setCurrentMonth(currentMonth - 1);
+        events.push(
+            {
+                id: eventId, date: date,
+                title: title,
+                description: description
+            }
+        );
+        showCalendar(currentMonth, currentYear);
+        eventDateInput.value = "";
+        eventTitleInput.value = "";
+        eventDescriptionInput.value = "";
+        displayReminders();
     }
-  };
-
-  const next = () => {
-    if (currentMonth === 11) {
-      setCurrentYear(currentYear + 1);
-      setCurrentMonth(0);
-    } else {
-      setCurrentMonth(currentMonth + 1);
-    }
-  };
-
-  const jump = (month, year) => {
-    setCurrentMonth(month);
-    setCurrentYear(year);
-  };
-
-  useEffect(() => {
-    console.log(`Calendar updated for ${currentMonth + 1}/${currentYear}`);
-  }, [currentMonth, currentYear]);
-
-  return (
-    <div className="grid grid-rows-[auto_1fr] grid-cols-[auto_1fr] bg-gray-300 h-full w-auto">
-    <div className="row-span-2 col-span-1 bg-gray-800 flex flex-col m-2 p-0 rounded-lg overflow-hidden h-screen">
-        <div className="flex flex-col items-center justify-center w-24 bg-gray-800 rounded-lg transition-all ease-in-out">
-        <div className="flex items-center justify-center h-24 mb-5">
-            <a href="/">
-            <img src="../image/NZHome.png" alt="NZ Home Logo" className="h-20 w-auto" />
-            </a>
-        </div>
-        <a href="/" className="flex flex-col items-center justify-center m-2 p-2 w-4/5 text-white text-center rounded-lg no-underline">
-            <i className="fas fa-layer-group text-2xl my-1"></i>
-            <span className="text-xs mt-1">Devices</span>
-        </a>
-        <a href="#" className="flex flex-col items-center justify-center m-2 p-2 w-4/5 text-white text-center rounded-lg no-underline">
-            <i className="fas fa-chart-pie text-2xl my-1"></i>
-            <span className="text-xs mt-1">Internet Usage</span>
-        </a>
-        <a href="#" className="flex flex-col items-center justify-center m-2 p-2 w-4/5 text-white text-center rounded-lg no-underline">
-            <i className="fas fa-wind text-2xl my-1"></i>
-            <span className="text-xs mt-1">Calendar</span>
-        </a>
-        </div>
-    </div>
-
-    <div className="row-span-1 col-span-2 flex items-center justify-between bg-gray-800 p-4 rounded-lg text-white">
-        <h1 className="text-3xl font-bold text-center flex-grow">NZ HOME</h1>
-        <a href="#" className="text-white text-2xl">
-        <i className="fas fa-bell"></i>
-        </a>
-    </div>
-
-    <div className="w-full mx-auto my-4">
-        <div className="flex items-center justify-between px-5">
-        <a className="text-black font-bold text-4xl no-underline" href="#">←</a>
-        <h2 className="m-0 text-lg">Calendar</h2>
-        <a className="text-black font-bold text-4xl no-underline" href="#" id="addButton">+</a>
-        </div>
-        <div className="flex bg-white p-4 max-w-11/12 mx-auto shadow-lg gap-8">
-        <div className="min-w-[200px] max-w-[300px] bg-teal-500 rounded-lg p-4">
-            <div className="my-4">
-            <h3 className="text-black text-base">Reminders</h3>
-            <ul className="list-none p-0">
-                <li className="my-2 text-sm">
-                <strong>Event Title</strong> - Event Description on Event Date
-                <button className="ml-4 bg-red-600 text-white px-2 py-1 text-xs rounded hover:bg-red-700">Delete</button>
-                </li>
-            </ul>
-            </div>
-        </div>
-        <div className="bg-gray-700 w-full h-full p-4 rounded-lg">
-            <h3 className="text-white text-center">
-            {new Date().toLocaleString("default", { month: "long" })} {new Date().getFullYear()}
-            </h3>
-            <div className="flex justify-between my-4">
-            <button className="bg-green-600 text-white px-3 py-1 rounded">‹</button>
-            <button className="bg-green-600 text-white px-3 py-1 rounded">›</button>
-            </div>
-            <table className="table-auto border-collapse w-full h-[70vh] text-center">
-            <thead></thead>
-            <tbody></tbody>
-            </table>
-            <div className="flex justify-between my-4">
-            <label htmlFor="month">Jump To: </label>
-            <select id="month" className="cursor-pointer bg-white text-gray-700 border rounded px-3 py-1">
-                {Array.from({ length: 12 }, (_, i) => (
-                <option key={i} value={i}>
-                    {new Date(0, i).toLocaleString("default", { month: "short" })}
-                </option>
-                ))}
-            </select>
-            <select id="year" className="cursor-pointer bg-white text-gray-700 border rounded px-3 py-1">
-                {Array.from({ length: 10 }, (_, i) => (
-                <option key={i} value={currentYear - 5 + i}>
-                    {currentYear - 5 + i}
-                </option>
-                ))}
-            </select>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-  );
 }
 
-export default calendarPage;
+// Function to delete an event by ID
+function deleteEvent(eventId) {
+    // Find the index of the event with the given ID
+    let eventIndex =
+        events.findIndex((event) =>
+            event.id === eventId);
+
+    if (eventIndex !== -1) {
+        // Remove the event from the events array
+        events.splice(eventIndex, 1);
+        showCalendar(currentMonth, currentYear);
+        displayReminders();
+    }
+}
+
+// Function to display reminders
+function displayReminders() {
+    reminderList.innerHTML = "";
+    for (let i = 0; i < events.length; i++) {
+        let event = events[i];
+        let eventDate = new Date(event.date);
+        if (eventDate.getMonth() ===
+            currentMonth &&
+            eventDate.getFullYear() ===
+            currentYear) {
+            let listItem = document.createElement("li");
+            listItem.innerHTML =
+                `<strong>${event.title}</strong> - 
+			${event.description} on 
+			${eventDate.toLocaleDateString()}`;
+
+            // Add a delete button for each reminder item
+            let deleteButton =
+                document.createElement("button");
+            deleteButton.className = "delete-event";
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function () {
+                deleteEvent(event.id);
+            };
+
+            listItem.appendChild(deleteButton);
+            reminderList.appendChild(listItem);
+        }
+    }
+}
+
+// Function to generate a range of 
+// years for the year select input
+function generate_year_range(start, end) {
+    let years = "";
+    for (let year = start; year <= end; year++) {
+        years += "<option value='" +
+            year + "'>" + year + "</option>";
+    }
+    return years;
+}
+
+// Initialize date-related letiables
+today = new Date();
+currentMonth = today.getMonth();
+currentYear = today.getFullYear();
+selectYear = document.getElementById("year");
+selectMonth = document.getElementById("month");
+
+createYear = generate_year_range(1970, 2050);
+
+document.getElementById("year").innerHTML = createYear;
+
+let calendar = document.getElementById("calendar");
+
+let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+let days = [
+    "Sun", "Mon", "Tue", "Wed",
+    "Thu", "Fri", "Sat"];
+
+$dataHead = "<tr>";
+for (dhead in days) {
+    $dataHead += "<th data-days='" +
+        days[dhead] + "'>" +
+        days[dhead] + "</th>";
+}
+$dataHead += "</tr>";
+
+document.getElementById("thead-month").innerHTML = $dataHead;
+
+monthAndYear =
+    document.getElementById("monthAndYear");
+showCalendar(currentMonth, currentYear);
+
+// Function to navigate to the next month
+function next() {
+    currentYear = currentMonth === 11 ?
+        currentYear + 1 : currentYear;
+    currentMonth = (currentMonth + 1) % 12;
+    showCalendar(currentMonth, currentYear);
+}
+
+// Function to navigate to the previous month
+function previous() {
+    currentYear = currentMonth === 0 ?
+        currentYear - 1 : currentYear;
+    currentMonth = currentMonth === 0 ?
+        11 : currentMonth - 1;
+    showCalendar(currentMonth, currentYear);
+}
+
+// Function to jump to a specific month and year
+function jump() {
+    currentYear = parseInt(selectYear.value);
+    currentMonth = parseInt(selectMonth.value);
+    showCalendar(currentMonth, currentYear);
+}
+
+// Function to display the calendar
+function showCalendar(month, year) {
+    let firstDay = new Date(year, month, 1).getDay();
+    tbl = document.getElementById("calendar-body");
+    tbl.innerHTML = "";
+    monthAndYear.innerHTML = months[month] + " " + year;
+    selectYear.value = year;
+    selectMonth.value = month;
+
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+        let row = document.createElement("tr");
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+                cell = document.createElement("td");
+                cellText = document.createTextNode("");
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+            } else if (date > daysInMonth(month, year)) {
+                break;
+            } else {
+                cell = document.createElement("td");
+                cell.setAttribute("data-date", date);
+                cell.setAttribute("data-month", month + 1);
+                cell.setAttribute("data-year", year);
+                cell.setAttribute("data-month_name", months[month]);
+                cell.className = "date-picker";
+                cell.innerHTML = "<span>" + date + "</span";
+
+                if (
+                    date === today.getDate() &&
+                    year === today.getFullYear() &&
+                    month === today.getMonth()
+                ) {
+                    cell.className = "date-picker selected";
+                }
+
+                // Check if there are events on this date
+                if (hasEventOnDate(date, month, year)) {
+                    cell.classList.add("event-marker");
+                    cell.appendChild(
+                        createEventTooltip(date, month, year)
+                    );
+                }
+
+                row.appendChild(cell);
+                date++;
+            }
+        }
+        tbl.appendChild(row);
+    }
+
+    displayReminders();
+}
+
+// Function to create an event tooltip
+function createEventTooltip(date, month, year) {
+    let tooltip = document.createElement("div");
+    tooltip.className = "event-tooltip";
+    let eventsOnDate = getEventsOnDate(date, month, year);
+    for (let i = 0; i < eventsOnDate.length; i++) {
+        let event = eventsOnDate[i];
+        let eventDate = new Date(event.date);
+        let eventText = `<strong>${event.title}</strong> - 
+			${event.description} on 
+			${eventDate.toLocaleDateString()}`;
+        let eventElement = document.createElement("p");
+        eventElement.innerHTML = eventText;
+        tooltip.appendChild(eventElement);
+    }
+    return tooltip;
+}
+
+// Function to get events on a specific date
+function getEventsOnDate(date, month, year) {
+    return events.filter(function (event) {
+        let eventDate = new Date(event.date);
+        return (
+            eventDate.getDate() === date &&
+            eventDate.getMonth() === month &&
+            eventDate.getFullYear() === year
+        );
+    });
+}
+
+// Function to check if there are events on a specific date
+function hasEventOnDate(date, month, year) {
+    return getEventsOnDate(date, month, year).length > 0;
+}
+
+// Function to get the number of days in a month
+function daysInMonth(iMonth, iYear) {
+    return 32 - new Date(iYear, iMonth, 32).getDate();
+}
+
+// Call the showCalendar function initially to display the calendar
+showCalendar(currentMonth, currentYear);
