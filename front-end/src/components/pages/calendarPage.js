@@ -59,18 +59,6 @@ function CalendarPage() {
     setEvents(events.filter((event) => event.id !== id));
   };
 
-  // Get events on a specific date
-  const getEventsOnDate = (date, month, year) => {
-    return events.filter((event) => {
-      const eventDate = new Date(event.date);
-      return (
-        eventDate.getDate() === date &&
-        eventDate.getMonth() === month &&
-        eventDate.getFullYear() === year
-      );
-    });
-  };
-
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
       <div className="p-2 grid grid-cols-[auto_1fr] h-full">
