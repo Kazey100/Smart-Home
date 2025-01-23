@@ -28,6 +28,8 @@ import NewDeviceDetailsPage from "./components/pages/NewDeviceDetailsPage";
 import TestConnectionPage from "./components/pages/TestConnectionPage";
 import CameraPage from "./components/pages/CameraPage";
 import AllRoomPage from "./components/pages/AllRoomPage";
+import CalendarPage from "./components/pages/CalendarPage";
+import Bac from "./components/pages/bac";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -102,7 +104,7 @@ function App() {
                     )}
                   </div>
                 </a>
-                <a href="#">
+                <a href="/calendar">
                   <div className="flex flex-col items-center justify-center px-4 py-2">
                     <i
                       className={`fas fa-wind text-white text-2xl ${
@@ -215,6 +217,8 @@ function App() {
       <Route path="/devices/new/:name/test" element={<TestConnectionPage />} />
       <Route path="/camera" element={<CameraPage />} />
       <Route path="/electric/rooms/:name" element={<AllRoomPage />} />
+      <Route path="/calendar" element={<CalendarPage />} />
+      <Route path="/bac" element={<Bac />} />
     </Routes>
   );
 }
