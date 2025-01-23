@@ -169,50 +169,10 @@
     gap: 30px;
 }
 
-#left {
-    min-width: 200px;
-    max-width: 300px;
-    background-color: lightgrey;
-    border-radius: 0.5rem;
-}
-
 #right {
     background-color: white;
     width: 100%;
     height: 100%;
-}
-
-/* Reminder section styling */
-#reminder-section {
-    padding: 10px;
-    margin: 20px 0;
-}
-
-#reminder-section h3 {
-    color: black;
-    font-size: 18px;
-    margin: 0;
-}
-
-#reminderList {
-    list-style: none;
-    padding: 0;
-}
-
-#reminderList li {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-/* Style for the delete buttons */
-.delete-event {
-    background: rgb(237, 19, 19);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-    align-items: right;
 }
 
 /* Buttons in the calendar */
@@ -244,12 +204,13 @@
 .date-picker.selected {
     background-color: #f2f2f2;
     font-weight: bold;
-    outline: 1px dashed f2f2f2;
+    outline: 1px dashed #00BCD4;
 }
 
 .date-picker.selected span {
     border-bottom: 2px solid currentColor;
 }
+
 
 /* Day-specific styling */
 .date-picker:nth-child(7) {
@@ -311,9 +272,11 @@
     .container-calendar {
         flex-direction: column;
     }
+
     #left {
         max-width: 100%;
     }
+
     #right {
         width: 100%;
     }
