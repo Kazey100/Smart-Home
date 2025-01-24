@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 function CalendarPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
