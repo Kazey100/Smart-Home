@@ -29,15 +29,14 @@ function LanguagePage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="../image/NZHome.png"
+                  src="./image/NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
-
             {/* Sidebar Items */}
-            <a href="/">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -50,8 +49,22 @@ function LanguagePage() {
                   </span>
                 )}
               </div>
+            </a>{" "}
+            <a href="/electric">
+              <div className="flex flex-col items-center justify-center px-4 py-2">
+                <i
+                  className={`fas fa-bolt text-white text-2xl ${
+                    isCollapsed ? "hidden" : "block"
+                  }`}
+                ></i>
+                {!isCollapsed && (
+                  <span className="text-white text-center text-sm mt-2">
+                    Electrical Usage
+                  </span>
+                )}
+              </div>
             </a>
-            <a href="#">
+            <a href="/internet">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-chart-pie text-white text-2xl ${
@@ -65,7 +78,7 @@ function LanguagePage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/calendar">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${

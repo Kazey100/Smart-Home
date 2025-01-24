@@ -1,13 +1,27 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useParams,
+} from "react-router-dom";
 
-function UserPage() {
+// ViewSpecificDevice Component
+function ViewSpecificDevice() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const deviceCategories = {
+    "Air Conditioner Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
+    "Microwave Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
+    "Robot Vacuum Cleaner Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
+    "Television Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
+    "Washing Machine Brand": [{ name: "Brand 1" }, { name: "Brand 2" }],
+  };
+
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
-
-  const { name } = useParams();
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -110,48 +124,24 @@ function UserPage() {
         </div>
 
         {/* Main Content */}
-        <div
-          className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
-        >
+        <div className="flex flex-col flex-1 overflow-y-auto">
           <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
-            {/* Main Content Header */}
-            <div className="flex justify-between items-center relative">
-              <div className="baseGreen rounded-lg w-full flex items-center px-4 py-4">
-                {/* Hamburger Button */}
-                <div
-                  className={`flex items-center ${
-                    isCollapsed ? "block" : "hidden"
-                  }`}
-                >
-                  <button
-                    onClick={toggleSidebar}
-                    className="text-white text-2xl bg-transparent border-0 mr-4"
-                  >
-                    <i className="fas fa-bars"></i>
-                  </button>
-                </div>
-
-                {/* Centered Text */}
-                <h1 className="font-bold text-white flex-grow text-center lg:text-4xl titleGold">
-                  NZ HOME
-                </h1>
-
-                {/* User Icon */}
-                <a href="/profile" className="mr-8">
-                  <i className="fas fa-user text-white text-3xl"></i>
-                </a>
-
-                {/* Bell Icon */}
-                <a href="/notification" className="ml-auto">
-                  <i className="fas fa-bell text-white text-3xl"></i>
-                </a>
-              </div>
+            <div className="flex justify-between items-center baseGreen rounded-lg px-4 py-4">
+              <h1 className="font-bold text-white flex-grow text-center lg:text-4xl">
+                NZ HOME
+              </h1>
             </div>
 
-            {/* <!-- Main Content --> */}
-            <div class="flex flex-col flex-1">
-              <h1 className="text-4xl font-bold">Welcome to {name}</h1>
-              <p>This is the {name} page.</p>
+            {/* Content */}
+            <div className="p-4">
+              <h1 className="text-center lg:text-4xl mb-6">Select a Device</h1>
+
+              {/* Device Sections */}
+              <div className="grid gap-8">
+                {Object.entries(deviceCategories).map(([title, devices]) => (
+                  <DeviceSection key={title} title={title} devices={devices} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -160,4 +150,67 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+// Combined DeviceSection Component
+function DeviceSection({ title, devices }) {
+  return (
+    <div>
+      <h2 className="text-left font-medium text-lg mb-4">{title}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {devices.map((device) => {
+          return (
+            <div
+              key={device.name}
+              className="rounded-lg border-2 border-gray-300 bg-white p-4 flex flex-col items-center"
+            >
+              {/* React Router Link */}
+              <Link
+                to={`/devices/${title
+                  .toLowerCase()
+                  .replace(" ", "_")}/${device.name
+                  .toLowerCase()
+                  .replace(" ", "_")}`}
+                className="w-full text-center"
+              >
+                <img
+                  src=""
+                  alt={`${device.name} logo`}
+                  className="border border-black rounded-lg mb-4 mx-auto"
+                  style={{ height: "100px", width: "100px" }}
+                />
+                <span className="block font-medium text-sm">{device.name}</span>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Device Page Component (for each device)
+function DevicePage() {
+  const { category, deviceName } = useParams();
+
+  return (
+    <div className="p-4">
+      <h1 className="text-center lg:text-4xl mb-6">{`${category} - ${deviceName}`}</h1>
+      <p>
+        Details about {deviceName} from {category} will be displayed here.
+      </p>
+    </div>
+  );
+}
+
+// Router Configuration (without App component)
+function RouterConfig() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<ViewSpecificDevice />} />
+        <Route path="/devices/:category/:deviceName" element={<DevicePage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default RouterConfig;

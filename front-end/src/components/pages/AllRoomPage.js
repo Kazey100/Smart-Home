@@ -1,9 +1,46 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function NotificationPage() {
+function AllRoomPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState(""); // Track animation
+  const [tempIndex, setTempIndex] = useState(currentIndex); // Temporary index for animation
+  const rooms = [
+    { img: "room1.jpg", name: "Living Room" },
+    { img: "room2.jpg", name: "Kitchen" },
+    { img: "room3.jpg", name: "Bathroom" },
+    { img: "room4.jpg", name: "Master" },
+    { img: "room5.jpg", name: "Guest Room" },
+    { img: "room6.jpg", name: "Office" },
+    { img: "room7.jpg", name: "Garage" },
+    { img: "room8.jpg", name: "Patio" },
+    { img: "room8.jpg", name: "Patio" },
+    { img: "room8.jpg", name: "Patio" },
+  ];
+
+  const totalPages = Math.ceil(rooms.length / 2);
+  const currentPage = Math.floor(currentIndex / 2);
+
+  const prevItems = () => {
+    if (currentIndex === 0) return; // Prevent unnecessary actions
+    setAnimationClass("animate-slide-in-prev");
+    setTempIndex(currentIndex - 2); // Update temp index for display
+  };
+
+  const nextItems = () => {
+    if (currentIndex + 2 >= rooms.length) return; // Prevent unnecessary actions
+    setAnimationClass("animate-slide-in-next");
+    setTempIndex(currentIndex + 2); // Update temp index for display
+  };
+
+  const handleAnimationEnd = () => {
+    setAnimationClass(""); // Reset animation class
+    setCurrentIndex(tempIndex); // Update actual index after animation ends
   };
 
   return (
@@ -20,14 +57,14 @@ function NotificationPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="./image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/devices">
+            <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -69,7 +106,7 @@ function NotificationPage() {
                 )}
               </div>
             </a>
-            <a href="/calendar">
+            <a href="#">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
@@ -151,18 +188,85 @@ function NotificationPage() {
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
                 <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/devices/new">
+                  <a className="relative pl-4" href="/">
                     <i className="fa fa-2x fa-arrow-left"></i>
                   </a>
                   <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                    Notifications
+                    Rooms
                   </h1>
                 </div>
 
                 {/* ==================== */}
-                <div className="flex justify-center h-full">
-                  <div className="text-gray-400 flex items-center justify-between p-3 gap-2">
-                    No Notifications
+
+                <div className="rounded-lg p-4 mb-4 relative overflow-hidden">
+                  <div className="transition-all duration-500 ease-in-out">
+                    <div
+                      className={`grid grid-cols-2 gap-4 transition-all duration-500 ease-in-out ${animationClass}`}
+                      onAnimationEnd={handleAnimationEnd}
+                    >
+                      {rooms
+                        .slice(tempIndex, tempIndex + 2)
+                        .map((room, index) => (
+                          <div
+                            key={index}
+                            className="bg-white rounded-lg mb-4 p-4 flex flex-col justify-end h-full"
+                          >
+                            <div className="flex justify-center items-center mb-4 h-[23rem]">
+                              <img
+                                src={
+                                  "https://wallpapers.com/images/featured/cute-anime-profile-pictures-k6h3uqxn6ei77kgl.jpg"
+                                }
+                                alt={""}
+                                className="rounded-lg object-contain"
+                                style={{ maxHeight: "100%" }}
+                              />
+                            </div>
+
+                            <div className="relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
+                              {room.name}
+                            </div>
+                            <div className="grid grid-cols-2 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center gap-4">
+                              <Link key={room.name} to={``}>
+                                <div className="border border-gray-400 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
+                                  Summary
+                                </div>{" "}
+                              </Link>
+                              <div className="border border-gray-400 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
+                                Devices
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center mt-4 space-x-2">
+                    {Array.from({ length: totalPages }).map((_, index) => (
+                      <span
+                        key={index}
+                        className={`text-2xl ${
+                          index === currentPage ? "teal-text" : "text-white"
+                        }`}
+                      >
+                        •
+                      </span>
+                    ))}
+                  </div>
+                  <div className="absolute inset-y-1/2 w-[95%] flex justify-between items-center">
+                    <button
+                      onClick={prevItems}
+                      disabled={currentIndex === 0}
+                      className="bg-white text-gray-800 p-2 rounded-full"
+                    >
+                      <i className={"fas fa-chevron-left"}></i>
+                    </button>
+                    <button
+                      onClick={nextItems}
+                      disabled={currentIndex + 2 >= rooms.length}
+                      className="bg-white text-gray-800 p-2 rounded-full"
+                    >
+                      <i className={"fas fa-chevron-right"}></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -174,4 +278,4 @@ function NotificationPage() {
   );
 }
 
-export default NotificationPage;
+export default AllRoomPage;

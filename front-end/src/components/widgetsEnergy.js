@@ -21,7 +21,7 @@ function WidgetsEnergy() {
             className="rounded-lg mb-4"
             style={{ height: "170px" }}
           />
-          <a href="#">
+          <a href="/camera">
             <div className="relative bg-white text-gray-800 rounded-full text-[12px] md:text-[15px] lg:text-[18px] py-2 px-4 flex justify-center items-center cursor-pointer">
               Check Camera
             </div>

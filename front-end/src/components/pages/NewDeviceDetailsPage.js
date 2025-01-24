@@ -31,7 +31,7 @@ function NewDeviceDetailsPage() {
       isSwitchOn,
     });
 
-    navigate(`/devices`);
+    navigate(`/devices/new/${name}/test`);
   };
 
   // Handle the check validity button click
@@ -56,14 +56,14 @@ function NewDeviceDetailsPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="\image\NZHome.png"
+                  src="./image/NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -105,7 +105,7 @@ function NewDeviceDetailsPage() {
                 )}
               </div>
             </a>
-            <a href="#">
+            <a href="/calendar">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
@@ -229,13 +229,17 @@ function NewDeviceDetailsPage() {
                       <option value="" disabled>
                         Select
                       </option>
-                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
-                        (temp) => (
-                          <option key={temp} value={temp}>
-                            {temp}°C
-                          </option>
-                        )
-                      )}
+                      {[
+                        "Living Room",
+                        "Kitchen",
+                        "Bedroom",
+                        "Bathroom",
+                        "Garage",
+                      ].map((room) => (
+                        <option key={room} value={room}>
+                          {room}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
