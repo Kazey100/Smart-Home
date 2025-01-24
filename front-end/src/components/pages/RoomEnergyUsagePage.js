@@ -1,45 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-function ActionSchedulePage() {
+function DeviceDetailsPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const navigate = useNavigate();
-  const [isSwitchOn, setIsSwitchOn] = useState(false);
-  const [temperature, setTemperature] = useState(""); // Initialize temperature state
-  const [activeButton, setActiveButton] = useState(null);
-
-  const toggleSwitch = () => {
-    setIsSwitchOn((prevState) => !prevState);
-  };
-
   const { name, type } = useParams();
-
-  // Handle temperature change (for the dropdown) 
-  const handleTemperatureChange = (e) => {
-    setTemperature(e.target.value);
-  };
-
-  // Handle button click to toggle the active state
-  const handleButtonClick = (button) => {
-    setActiveButton(button);
-  };
-
-  // Handle the form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Submit logic here (e.g., sending data to DB)
-    console.log("Form submitted with data:", {
-      temperature,
-      isSwitchOn,
-      activeButton,
-    });
-
-    navigate(`/devices/${type}/${name}/details`);
-  };
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -190,104 +158,100 @@ function ActionSchedulePage() {
                     <i className="fa fa-2x fa-arrow-left"></i>
                   </a>
                   <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                    Set Action
+                    {name} ({type})
                   </h1>
                 </div>
 
                 {/* ==================== */}
-                <form
-                  onSubmit={handleSubmit}
-                  className="grid grid-rows-[auto,1fr] p-4 mt-2 gap-4 rounded-lg bg-white"
-                >
-                  <h1 className="text-center lg:text-4xl w-full">
-                    {name} ({type})
-                  </h1>
-
-                  <div className="border border-gray-300 rounded-lg bg-white p-4 flex items-center justify-between">
-                    {/* Label */}
-                    <span className="text-lg font-medium text-gray-700">
-                      Temperature
-                    </span>
-
-                    {/* Dropdown */}
-                    <select
-                      className="border border-gray-300 rounded-lg p-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={temperature}
-                      onChange={handleTemperatureChange}
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
-                        (temp) => (
-                          <option key={temp} value={temp}>
-                            {temp}°C
-                          </option>
-                        )
-                      )}
-                    </select>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-6 p-5">
-                    {/* Turn On Button */}
-                    <div
-                      onClick={() => handleButtonClick("on")}
-                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
-                        activeButton === "on"
-                          ? "bg-gray-600 text-white"
-                          : "bg-white text-black"
-                      }`}
-                    >
-                      <div className="text-1xl">Turn On</div>
-                    </div>
-
-                    {/* Turn Off Button */}
-                    <div
-                      onClick={() => handleButtonClick("off")}
-                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
-                        activeButton === "off"
-                          ? "bg-gray-600 text-white"
-                          : "bg-white text-black"
-                      }`}
-                    >
-                      <div className="text-1xl">Turn Off</div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center items-center h-full w-full">
-                    <div className="border border-gray-300 rounded-lg bg-white p-4 w-[40%] flex items-center justify-between">
-                      {/* Label */}
-                      <span className="text-lg font-medium text-gray-700">
-                        Auto
-                      </span>
-
-                      {/* Switch */}
-                      <div
-                        onClick={toggleSwitch}
-                        className={`w-12 h-6 sm:w-16 sm:h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
-                          isSwitchOn ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      >
-                        <div
-                          className={`w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-white shadow-md transform transition-transform ${
-                            isSwitchOn
-                              ? "translate-x-6 sm:translate-x-8"
-                              : "translate-x-0"
-                          }`}
-                        ></div>
+                <div className="grid grid-rows-[auto,1fr] mt-2 gap-4 rounded-lg bg-white">
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                          <img
+                            src=""
+                            alt=""
+                            className="border border-black rounded-lg mb-4 mx-auto"
+                            style={{ height: "100px", width: "100px" }}
+                          />
+                          <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                            <div className="text-2xl w-full mb-2 rounded-full text-white inline-block bg-red-500">
+                              Offline
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="p-4 gap-4 flex justify-end">
-                    <button
-                      type="submit"
-                      className="rounded-lg bg-black text-sm sm:text-base w-full mb-2 text-center sm:w-[15%] md:w-[15%] h-[3rem] flex justify-center items-center"
-                    >
-                      <div className="text-1xl text-white">Done</div>
-                    </button>
-                  </div>
-                </form>
+                  </div>{" "}
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <img
+                          alt="eg"
+                          src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="grid grid-cols-2 p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>{" "}
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <Link
+                    key={name}
+                    to={`/devices/${type}/${name}/details/setAction`}
+                  >
+                    <div className="p-4 gap-4 flex justify-center items-center">
+                      <div className="rounded-lg border-[2px] border-gray-300 bg-black items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                        <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
+                          <div className="text-2xl text-white">Set Action </div>
+                        </div>
+                      </div>
+                    </div>{" "}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -297,4 +261,4 @@ function ActionSchedulePage() {
   );
 }
 
-export default ActionSchedulePage;
+export default DeviceDetailsPage;
