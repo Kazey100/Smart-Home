@@ -30,6 +30,7 @@ import CameraPage from "./components/pages/CameraPage";
 import AllRoomPage from "./components/pages/AllRoomPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import Bac from "./components/pages/bac";
+import CalendarReport from "./components/pages/CalendarReport";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -55,7 +56,7 @@ function App() {
                 <div className="h-[100px] flex items-center justify-center">
                   <a href="/">
                     <img
-                      src="./image/NZHome.png"
+                      src="./image/NZHome2.png"
                       alt="NZ Home Logo"
                       className={`${isCollapsed ? "hidden" : "block"}`}
                     />
@@ -218,6 +219,7 @@ function App() {
       <Route path="/camera" element={<CameraPage />} />
       <Route path="/electric/rooms/:name" element={<AllRoomPage />} />
       <Route path="/calendar" element={<CalendarPage />} />
+      <Route path="/calendar/report" element={<CalendarReport />} />
       <Route path="/bac" element={<Bac />} />
     </Routes>
   );

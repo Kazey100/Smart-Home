@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 function CalendarPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
@@ -18,7 +17,6 @@ function CalendarPage() {
   // States for time components
   const [selectedHour, setSelectedHour] = useState(today.getHours());
   const [selectedMinute, setSelectedMinute] = useState(today.getMinutes());
-  const [selectedSecond, setSelectedSecond] = useState(today.getSeconds());
 
   // Generate options for dropdowns
   const generateOptions = (start, end) => {
@@ -35,7 +33,7 @@ function CalendarPage() {
   const addEvent = () => {
     if (eventDate && eventTitle) {
       const eventDetails = new Date(eventDate);
-      eventDetails.setHours(selectedHour, selectedMinute, selectedSecond);
+      eventDetails.setHours(selectedHour, selectedMinute);
 
       setEvents([
         ...events,
@@ -49,7 +47,7 @@ function CalendarPage() {
       setEventDate(null);
       setSelectedHour(today.getHours());
       setSelectedMinute(today.getMinutes());
-      setSelectedSecond(today.getSeconds());
+
       setEventTitle("");
       setEventDescription("");
     }
@@ -299,29 +297,15 @@ function CalendarPage() {
                               {generateOptions(0, 59)}
                             </select>
                           </div>
-                          <div>
-                            <label className="block text-sm font-medium mb-1">
-                              Second:
-                            </label>
-                            <select
-                              value={selectedSecond}
-                              onChange={(e) =>
-                                setSelectedSecond(parseInt(e.target.value))
-                              }
-                              className="border border-gray-300 rounded p-2"
-                            >
-                              {generateOptions(0, 59)}
-                            </select>
-                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Event Form */}
-                  <div className="event-form bg-gray-100 p-4 mt-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-3">Add Event</h3>
+                  <div className="event-form bg-gray-100 p-4 mt-4 rounded-lg shadow-md grid grid-cols-2 gap-4">
                     <div className="space-y-3">
+                      <h3 className="text-xl font-semibold mb-3">Add Event</h3>
                       <input
                         type="text"
                         placeholder="Event Title"
@@ -342,6 +326,21 @@ function CalendarPage() {
                       >
                         Add Event
                       </button>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-semibold mb-3">
+                        Generate Report
+                      </h3>
+                      <a href="/calendar/report">
+                        <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
+                          <div className="items-center gap-4">
+                            <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
+                              <div className="mb-2">Choose a Date</div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
