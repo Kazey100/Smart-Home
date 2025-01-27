@@ -30,7 +30,7 @@ import CameraPage from "./components/pages/CameraPage";
 import AllRoomPage from "./components/pages/AllRoomPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import Bac from "./components/pages/bac";
-import CalendarReport from "./components/pages/CalendarReport";
+import CalendarReport from "./components/pages/calendarReport";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
