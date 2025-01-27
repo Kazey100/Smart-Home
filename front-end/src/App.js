@@ -217,7 +217,8 @@ function App() {
       <Route path="/devices/new/:name" element={<NewDeviceDetailsPage />} />
       <Route path="/devices/new/:name/test" element={<TestConnectionPage />} />
       <Route path="/camera" element={<CameraPage />} />
-      <Route path="/electric/rooms/:name" element={<AllRoomPage />} />
+      <Route path="/rooms" element={<AllRoomPage />} />
+      {/* <Route path="/electric/rooms/:name" element={<AllRoomPage />} /> */}
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/calendar/report" element={<CalendarReport />} />
       <Route path="/bac" element={<Bac />} />

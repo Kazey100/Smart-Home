@@ -187,13 +187,16 @@ function AllRoomPage() {
               {/* <!-- Main Content --> */}
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
-                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
+                <div className="grid grid-cols-[auto,1fr,auto] items-center mt-5 w-full">
                   <a className="relative pl-4" href="/">
                     <i className="fa fa-2x fa-arrow-left"></i>
                   </a>
-                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                  <h1 className="text-center lg:text-4xl w-full ml-[-1%]">
                     Rooms
                   </h1>
+                  <a href="/rooms/new">
+                    <i class="fas fa-plus text-2xl"></i>
+                  </a>
                 </div>
 
                 {/* ==================== */}

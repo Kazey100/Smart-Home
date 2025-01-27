@@ -42,7 +42,14 @@ function RoomsRobots() {
     <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[3fr,1.2fr] p-4 gap-4">
       {/* Rooms */}
       <div className="rounded-lg p-4 baseGreen mb-4 relative overflow-hidden">
-        <h2 className="text-white text-2xl font-bold mb-2">Rooms</h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-white text-2xl font-bold mb-2">Rooms</h2>
+          <div className="flex space-x-2">
+            <Link to="/rooms">
+              <div className="text-white font-bold">View Details</div>
+            </Link>
+          </div>
+        </div>
         <div className="transition-all duration-500 ease-in-out">
           <div
             className={`grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-500 ease-in-out ${animationClass}`}
