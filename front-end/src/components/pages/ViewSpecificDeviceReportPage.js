@@ -1,30 +1,13 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "react-datepicker/dist/react-datepicker.css";
 
-function RoomsNewAccessPage() {
+function ViewSpecificDeviceReportPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Devices
-  const devices = [{ name: "mom" }, { name: "daughter" }];
-
-  const [selectedDevices, setSelectedDevices] = useState([]); // Selected devices
-
-  // Toggle Selected State
-  const toggleSelected = (deviceName) => {
-    setSelectedDevices(
-      (prevSelected) =>
-        prevSelected.includes(deviceName)
-          ? prevSelected.filter((name) => name !== deviceName) // Remove from selected
-          : [...prevSelected, deviceName] // Add to selected
-    );
-  };
-
-  // Get title
-  const { roomTitle } = useParams();
+  const { name, date } = useParams();
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -40,14 +23,14 @@ function RoomsNewAccessPage() {
             <div className="h-[100px] flex items-center justify-center">
               <a href="/">
                 <img
-                  src="./image/NZHome.png"
+                  src="\image\NZHome.png"
                   alt="NZ Home Logo"
                   className={`${isCollapsed ? "hidden" : "block"}`}
                 />
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/devices">
+            <a href="/">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -89,7 +72,7 @@ function RoomsNewAccessPage() {
                 )}
               </div>
             </a>
-            <a href="/calendar">
+            <a href="#">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-wind text-white text-2xl ${
@@ -171,76 +154,90 @@ function RoomsNewAccessPage() {
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
                 <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/rooms/new">
+                  <Link className="relative pl-4" to={`/electric`}>
                     <i className="fa fa-2x fa-arrow-left"></i>
-                  </a>
-                  <h1 className="text-center md:text-4xl lg:text-4xl w-full ml-[-5%]">
-                    Room Access Permission
+                  </Link>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    {name}
                   </h1>
                 </div>
 
                 {/* ==================== */}
-                <div className="wrapper p-4">
-                  {/* Event Form */}
-                  <div className="event-form bg-gray-100 p-4 mt-4 rounded-lg shadow-md grid grid-rows-[auto] gap-4">
-                    <div className="grid grid-rows-[auto]">
-                      <div className="grid grid-cols-1">
-                        <h3 className="text-xl font-semibold m-5 text-center">
-                          Assign who can access to the “{roomTitle}”
-                        </h3>{" "}
-                      </div>
-
-                      {/* Dynamically added blocks for Devices */}
-                      <div className="grid grid-cols-4 gap-2 justify-center items-center p-3">
-                        {devices.map((device) => (
-                          <div
-                            key={device.name}
-                            className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3 cursor-pointer"
-                            onClick={() => toggleSelected(device.name)} // Toggle selected on click
-                          >
-                            <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
-                              <img
-                                src=""
-                                alt=""
-                                className="border border-black rounded-lg mb-4 mx-auto"
-                                style={{ height: "100px", width: "100px" }}
-                              />
-                              <div className="relative w-full">
-                                <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                                  <div className="mb-2">{device.name}</div>
-                                </div>
-
-                                {/* Green Check Mark for Selected Devices */}
-                                {selectedDevices.includes(device.name) && (
-                                  <div className="absolute top-0 right-0 bg-green-500 text-white rounded-full p-1">
-                                    <i className="fas fa-check"></i>
-                                  </div>
-                                )}
-                              </div>
+                <div className="grid grid-rows-[auto,1fr] mt-2 gap-4 rounded-lg bg-white">
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
+                          <img
+                            src=""
+                            alt=""
+                            className="border border-black rounded-lg mb-4 mx-auto"
+                            style={{ height: "100px", width: "100px" }}
+                          />
+                          <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                            <div className="text-2xl w-full mb-2 rounded-full text-white inline-block bg-red-500">
+                              Offline
                             </div>
                           </div>
-                        ))}
-
-                        {/* Message if no devices */}
-                        {devices.length === 0 && (
-                          <p className="text-gray-500 col-span-4 text-center">
-                            No Users
-                          </p>
-                        )}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Next Button */}
-                    <Link
-                      to={`/rooms/access`} // Use the input value in the link
-                      className={`w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 block text-center ${
-                        selectedDevices.length === 0
-                          ? "pointer-events-none opacity-50"
-                          : ""
-                      }`} // Disable button if no devices are selected
-                    >
-                      Next
-                    </Link>
+                  </div>{" "}
+                  <div className="justify-center items-center p-3 gap-2">
+                    <div className="items-center gap-2">
+                      <div className=" flex flex-cols justify-center items-center p-3">
+                        <img
+                          alt="eg"
+                          src="https://www.excel-easy.com/examples/images/line-chart/line-chart.png"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="grid grid-cols-2 p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>{" "}
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
+                  </div>{" "}
+                  <div className="p-4 gap-4 flex justify-center items-center">
+                    <div className="rounded-lg border-[2px] border-gray-300 grid sm:grid-cols-1 md:grid-cols-[auto,1fr] items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
+                      <img
+                        src=""
+                        alt=""
+                        className="border border-black rounded-lg mb-4 mx-auto"
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <div className="grid grid-rows-2 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                        <div className="mb-2">Today </div>
+                        <div className="teal-text text-2xl w-full mb-2">
+                          10.5 kWh
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -252,4 +249,4 @@ function RoomsNewAccessPage() {
   );
 }
 
-export default RoomsNewAccessPage;
+export default ViewSpecificDeviceReportPage;

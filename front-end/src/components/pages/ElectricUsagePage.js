@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function ElectricUsagePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -387,7 +388,7 @@ function ElectricUsagePage() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                      <a href="/">
+                      <Link to={"/electric/date"}>
                         <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
                           <div className="items-center gap-4">
                             <div className="teal-text text-sm sm:text-base w-full mb-2 text-center">
@@ -395,7 +396,7 @@ function ElectricUsagePage() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                       <a href="/">
                         <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col bg-white p-3 rounded-lg">
                           <div className="items-center gap-4">

@@ -33,6 +33,9 @@ import Bac from "./components/pages/bac";
 import CalendarReport from "./components/pages/calendarReport";
 import RoomsNewPage from "./components/pages/RoomsNewPage";
 import RoomsNewAccessPage from "./components/pages/RoomsNewAccessPage";
+import ViewSpecificDevicePage from "./components/pages/ViewSpecificDevicePage";
+import ViewSpecificDeviceDatePage from "./components/pages/ViewSpecificDeviceDatePage";
+import ViewSpecificDeviceReportPage from "./components/pages/ViewSpecificDeviceReportPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -204,6 +207,15 @@ function App() {
       <Route path="/profile/AddUser" element={<AddUserPage />} />
       <Route path="/internet" element={<InternetUsagePage />} />
       <Route path="/electric" element={<ElectricUsagePage />} />
+      <Route path="/electric/date" element={<ViewSpecificDeviceDatePage />} />
+      <Route
+        path="/electric/:date/devices"
+        element={<ViewSpecificDevicePage />}
+      />
+      <Route
+        path="/electric/:date/:name/report"
+        element={<ViewSpecificDeviceReportPage />}
+      />
       <Route path="/settings" element={<UserSettingPage />} />
       <Route path="/users" element={<AllUserPage />} />
       <Route path="/change&password" element={<ChangePasswordPage />} />
@@ -224,7 +236,7 @@ function App() {
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/calendar/report" element={<CalendarReport />} />
       <Route path="/rooms/new" element={<RoomsNewPage />} />
-      <Route path="/rooms/:name/access" element={<RoomsNewAccessPage />} />
+      <Route path="/rooms/:roomTitle/access" element={<RoomsNewAccessPage />} />
       <Route path="/bac" element={<Bac />} />
     </Routes>
   );
