@@ -31,6 +31,8 @@ import AllRoomPage from "./components/pages/AllRoomPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import Bac from "./components/pages/bac";
 import CalendarReport from "./components/pages/calendarReport";
+import RoomsNewPage from "./components/pages/RoomsNewPage";
+import RoomsNewAccessPage from "./components/pages/RoomsNewAccessPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -221,6 +223,8 @@ function App() {
       {/* <Route path="/electric/rooms/:name" element={<AllRoomPage />} /> */}
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/calendar/report" element={<CalendarReport />} />
+      <Route path="/rooms/new" element={<RoomsNewPage />} />
+      <Route path="/rooms/:name/access" element={<RoomsNewAccessPage />} />
       <Route path="/bac" element={<Bac />} />
     </Routes>
   );
