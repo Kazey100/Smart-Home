@@ -1,30 +1,45 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
-function RoomsNewAccessPage() {
+function RoomDeviceSetActionPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Devices
-  const users = [{ name: "mom" }, { name: "daughter" }];
+  const navigate = useNavigate();
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [temperature, setTemperature] = useState(""); // Initialize temperature state
+  const [activeButton, setActiveButton] = useState(null);
 
-  const [selectedDevices, setSelectedDevices] = useState([]); // Selected users
-
-  // Toggle Selected State
-  const toggleSelected = (deviceName) => {
-    setSelectedDevices(
-      (prevSelected) =>
-        prevSelected.includes(deviceName)
-          ? prevSelected.filter((name) => name !== deviceName) // Remove from selected
-          : [...prevSelected, deviceName] // Add to selected
-    );
+  const toggleSwitch = () => {
+    setIsSwitchOn((prevState) => !prevState);
   };
 
-  // Get title
   const { roomTitle } = useParams();
+
+  // Handle temperature change (for the dropdown)
+  const handleTemperatureChange = (e) => {
+    setTemperature(e.target.value);
+  };
+
+  // Handle button click to toggle the active state
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
+  };
+
+  // Handle the form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Submit logic here (e.g., sending data to DB)
+    console.log("Form submitted with data:", {
+      temperature,
+      isSwitchOn,
+      activeButton,
+    });
+
+    navigate(`/rooms/devices/${roomTitle}`);
+  };
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -47,7 +62,7 @@ function RoomsNewAccessPage() {
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/users">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -171,78 +186,111 @@ function RoomsNewAccessPage() {
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
                 <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/rooms/new">
+                  <Link
+                    className="relative pl-4"
+                    to={`/rooms/summary/${roomTitle}`}
+                  >
                     <i className="fa fa-2x fa-arrow-left"></i>
-                  </a>
-                  <h1 className="text-center md:text-4xl lg:text-4xl w-full ml-[-5%]">
-                    Room Access Permission
+                  </Link>
+                  <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
+                    Set Action
                   </h1>
                 </div>
 
                 {/* ==================== */}
-                <div className="wrapper p-4">
-                  {/* Event Form */}
-                  <div className="event-form bg-gray-100 p-4 mt-4 rounded-lg shadow-md grid grid-rows-[auto] gap-4">
-                    <div className="grid grid-rows-[auto]">
-                      <div className="grid grid-cols-1">
-                        <h3 className="text-xl font-semibold m-5 text-center">
-                          Assign who can access to the “{roomTitle}”
-                        </h3>{" "}
-                      </div>
+                <form
+                  onSubmit={handleSubmit}
+                  className="grid grid-rows-[auto,1fr] p-4 mt-2 gap-4 rounded-lg bg-white"
+                >
+                  <h1 className="text-center lg:text-4xl w-full">
+                    {roomTitle}
+                  </h1>
 
-                      {/* Dynamically added blocks for Devices */}
-                      <div className="grid grid-cols-4 gap-2 justify-center items-center p-3">
-                        {users.map((device) => (
-                          <div
-                            key={device.name}
-                            className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3 cursor-pointer"
-                            onClick={() => toggleSelected(device.name)} // Toggle selected on click
-                          >
-                            <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
-                              <img
-                                src=""
-                                alt=""
-                                className="border border-black rounded-lg mb-4 mx-auto"
-                                style={{ height: "100px", width: "100px" }}
-                              />
-                              <div className="relative w-full">
-                                <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                                  <div className="mb-2">{device.name}</div>
-                                </div>
+                  <div className="border border-gray-300 rounded-lg bg-white p-4 flex items-center justify-between">
+                    {/* Label */}
+                    <span className="text-lg font-medium text-gray-700">
+                      Temperature
+                    </span>
 
-                                {/* Green Check Mark for Selected Devices */}
-                                {selectedDevices.includes(device.name) && (
-                                  <div className="absolute top-0 right-0 bg-green-500 text-white rounded-full p-1">
-                                    <i className="fas fa-check"></i>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                    {/* Dropdown */}
+                    <select
+                      className="border border-gray-300 rounded-lg p-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={temperature}
+                      onChange={handleTemperatureChange}
+                    >
+                      <option value="" disabled>
+                        Select
+                      </option>
+                      {Array.from({ length: 100 }, (_, i) => i + 1).map(
+                        (temp) => (
+                          <option key={temp} value={temp}>
+                            {temp}°C
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div>
 
-                        {/* Message if no users */}
-                        {users.length === 0 && (
-                          <p className="text-gray-500 col-span-4 text-center">
-                            No Users
-                          </p>
-                        )}
-                      </div>
+                  <div className="grid grid-cols-2 gap-6 p-5">
+                    {/* Turn On Button */}
+                    <div
+                      onClick={() => handleButtonClick("on")}
+                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
+                        activeButton === "on"
+                          ? "bg-gray-600 text-white"
+                          : "bg-white text-black"
+                      }`}
+                    >
+                      <div className="text-1xl">Turn On</div>
                     </div>
 
-                    {/* Next Button */}
-                    <Link
-                      to={`/rooms/access`} // Use the input value in the link
-                      className={`w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 block text-center ${
-                        selectedDevices.length === 0
-                          ? "pointer-events-none opacity-50"
-                          : ""
-                      }`} // Disable button if no users are selected
+                    {/* Turn Off Button */}
+                    <div
+                      onClick={() => handleButtonClick("off")}
+                      className={`border border-gray-300 h-[3rem] rounded-lg text-sm sm:text-base text-center flex justify-center items-center cursor-pointer transition-all ${
+                        activeButton === "off"
+                          ? "bg-gray-600 text-white"
+                          : "bg-white text-black"
+                      }`}
                     >
-                      Next
-                    </Link>
+                      <div className="text-1xl">Turn Off</div>
+                    </div>
                   </div>
-                </div>
+
+                  <div className="flex justify-center items-center h-full w-full">
+                    <div className="border border-gray-300 rounded-lg bg-white p-4 w-[40%] flex items-center justify-between">
+                      {/* Label */}
+                      <span className="text-lg font-medium text-gray-700">
+                        Auto
+                      </span>
+
+                      {/* Switch */}
+                      <div
+                        onClick={toggleSwitch}
+                        className={`w-12 h-6 sm:w-16 sm:h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
+                          isSwitchOn ? "bg-green-500" : "bg-gray-300"
+                        }`}
+                      >
+                        <div
+                          className={`w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-white shadow-md transform transition-transform ${
+                            isSwitchOn
+                              ? "translate-x-6 sm:translate-x-8"
+                              : "translate-x-0"
+                          }`}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 gap-4 flex justify-end">
+                    <button
+                      type="submit"
+                      className="rounded-lg bg-black text-sm sm:text-base w-full mb-2 text-center sm:w-[15%] md:w-[15%] h-[3rem] flex justify-center items-center"
+                    >
+                      <div className="text-1xl text-white">Done</div>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -252,4 +300,4 @@ function RoomsNewAccessPage() {
   );
 }
 
-export default RoomsNewAccessPage;
+export default RoomDeviceSetActionPage;

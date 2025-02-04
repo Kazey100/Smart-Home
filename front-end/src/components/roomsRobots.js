@@ -46,7 +46,7 @@ function RoomsRobots() {
           <h2 className="text-white text-2xl font-bold mb-2">Rooms</h2>
           <div className="flex space-x-2">
             <Link to="/rooms">
-              <div className="text-white font-bold">View Details</div>
+              <div className="text-white font-bold">View All Rooms</div>
             </Link>
           </div>
         </div>
@@ -70,7 +70,7 @@ function RoomsRobots() {
                     style={{ maxHeight: "100%" }}
                   />
                 </div>
-                <Link to={`/electric/rooms/${room.name}`}>
+                <Link to={`/rooms/devices/${room.name}`}>
                   <div className="relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center cursor-pointer">
                     {room.name}
                   </div>

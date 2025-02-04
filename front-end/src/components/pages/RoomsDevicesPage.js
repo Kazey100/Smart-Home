@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "react-datepicker/dist/react-datepicker.css";
+import { useParams, Link } from "react-router-dom";
 
-function RoomsNewAccessPage() {
+function RoomsDevicesPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Devices
-  const users = [{ name: "mom" }, { name: "daughter" }];
-
-  const [selectedDevices, setSelectedDevices] = useState([]); // Selected users
-
-  // Toggle Selected State
-  const toggleSelected = (deviceName) => {
-    setSelectedDevices(
-      (prevSelected) =>
-        prevSelected.includes(deviceName)
-          ? prevSelected.filter((name) => name !== deviceName) // Remove from selected
-          : [...prevSelected, deviceName] // Add to selected
-    );
-  };
-
-  // Get title
   const { roomTitle } = useParams();
+
+  const devices = [{ name: "xiaomi", type: "vacuum", status: "Offline" }];
+
+  const [deviceStates, setDeviceStates] = useState(
+    devices.reduce((acc, device) => {
+      acc[device.name] = false; // Initialize all devices as "Off"
+      return acc;
+    }, {})
+  );
+
+  const toggleSwitch = (deviceName) => {
+    setDeviceStates((prevState) => ({
+      ...prevState,
+      [deviceName]: !prevState[deviceName], // Toggle the state for the specific device
+    }));
+  };
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -47,7 +46,7 @@ function RoomsNewAccessPage() {
               </a>
             </div>
             {/* Sidebar Items */}
-            <a href="/users">
+            <a href="/devices">
               <div className="flex flex-col items-center justify-center px-4 py-2">
                 <i
                   className={`fas fa-layer-group text-white text-2xl ${
@@ -154,7 +153,7 @@ function RoomsNewAccessPage() {
                 </h1>
 
                 {/* User Icon */}
-                <a href="#" className="mr-8">
+                <a href="/profile" className="mr-8">
                   <i className="fas fa-user text-white text-3xl"></i>
                 </a>
 
@@ -167,36 +166,32 @@ function RoomsNewAccessPage() {
 
             {/* <!-- Main Content --> */}
             <div class="flex flex-col flex-1">
-              {/* <!-- Main Content --> */}
-              <div class="flex flex-col flex-1 gap-4">
-                {/* Internet Usage Section */}
-                <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/rooms/new">
-                    <i className="fa fa-2x fa-arrow-left"></i>
-                  </a>
-                  <h1 className="text-center md:text-4xl lg:text-4xl w-full ml-[-5%]">
-                    Room Access Permission
-                  </h1>
-                </div>
+              {/* Main Content */}
+              <div
+                className={`main-content flex flex-col flex-1 transition-all duration-300 overflow-y-auto`}
+              >
+                <div className="px-4 grid grid-rows-[5rem_1fr] flex-1">
+                  {/* Main Content */}
+                  <div className="flex flex-col flex-1">
+                    {/* Setting Section */}
+                    <div className="grid grid-cols-[auto,1fr,auto] items-center mt-5 w-full">
+                      <a className="relative pl-4" href="/rooms">
+                        <i className="fa fa-2x fa-arrow-left"></i>
+                      </a>
+                      <h1 className="text-center lg:text-4xl w-full ml-[-1%]">
+                        {roomTitle}
+                      </h1>
+                    </div>
 
-                {/* ==================== */}
-                <div className="wrapper p-4">
-                  {/* Event Form */}
-                  <div className="event-form bg-gray-100 p-4 mt-4 rounded-lg shadow-md grid grid-rows-[auto] gap-4">
-                    <div className="grid grid-rows-[auto]">
-                      <div className="grid grid-cols-1">
-                        <h3 className="text-xl font-semibold m-5 text-center">
-                          Assign who can access to the “{roomTitle}”
-                        </h3>{" "}
-                      </div>
-
-                      {/* Dynamically added blocks for Devices */}
-                      <div className="grid grid-cols-4 gap-2 justify-center items-center p-3">
-                        {users.map((device) => (
-                          <div
+                    {/* Main Content Section */}
+                    <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-2 justify-center items-center p-3">
+                      {/* Dynamically added blocks */}
+                      <div className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3">
+                        {devices.map((device) => (
+                          <Link
                             key={device.name}
-                            className="rounded-lg border-[2px] border-gray-300 bg-white flex flex-col justify-center items-center p-3 cursor-pointer"
-                            onClick={() => toggleSelected(device.name)} // Toggle selected on click
+                            to={`/rooms/summary/${device.name}`}
+                            className="w-full"
                           >
                             <div className="grid sm:grid-cols-1 items-center gap-4 p-4">
                               <img
@@ -205,42 +200,47 @@ function RoomsNewAccessPage() {
                                 className="border border-black rounded-lg mb-4 mx-auto"
                                 style={{ height: "100px", width: "100px" }}
                               />
-                              <div className="relative w-full">
-                                <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
-                                  <div className="mb-2">{device.name}</div>
+                              <div className="grid grid-rows-3 teal-text text-sm sm:text-base w-full mb-2 text-center">
+                                <div className="mb-2">Xiaomi</div>
+                                <div
+                                  className={`text-2xl w-full mb-2 rounded-full text-white inline-block ${
+                                    deviceStates[device.name]
+                                      ? "bg-green-500"
+                                      : "bg-red-500"
+                                  }`}
+                                >
+                                  {deviceStates[device.name]
+                                    ? "Online"
+                                    : "Offline"}
                                 </div>
-
-                                {/* Green Check Mark for Selected Devices */}
-                                {selectedDevices.includes(device.name) && (
-                                  <div className="absolute top-0 right-0 bg-green-500 text-white rounded-full p-1">
-                                    <i className="fas fa-check"></i>
+                                <div className="flex flex-col items-center justify-center">
+                                  <div
+                                    onClick={(e) => {
+                                      e.preventDefault(); // Prevent navigation when toggling
+                                      toggleSwitch(device.name);
+                                    }}
+                                    className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-all ${
+                                      deviceStates[device.name]
+                                        ? "bg-green-500"
+                                        : "bg-gray-300"
+                                    }`}
+                                  >
+                                    <div
+                                      className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform ${
+                                        deviceStates[device.name]
+                                          ? "translate-x-8"
+                                          : "translate-x-0"
+                                      }`}
+                                    ></div>
                                   </div>
-                                )}
+                                </div>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         ))}
-
-                        {/* Message if no users */}
-                        {users.length === 0 && (
-                          <p className="text-gray-500 col-span-4 text-center">
-                            No Users
-                          </p>
-                        )}
                       </div>
+                      {/* More blocks will automatically adjust */}
                     </div>
-
-                    {/* Next Button */}
-                    <Link
-                      to={`/rooms/access`} // Use the input value in the link
-                      className={`w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 block text-center ${
-                        selectedDevices.length === 0
-                          ? "pointer-events-none opacity-50"
-                          : ""
-                      }`} // Disable button if no users are selected
-                    >
-                      Next
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -252,4 +252,4 @@ function RoomsNewAccessPage() {
   );
 }
 
-export default RoomsNewAccessPage;
+export default RoomsDevicesPage;

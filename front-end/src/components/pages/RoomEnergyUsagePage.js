@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-function DeviceDetailsPage() {
+function RoomEnergyUsagePage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const { name, type } = useParams();
+  const { roomTitle } = useParams();
 
   return (
     <div className="baseBG font-sans leading-normal tracking-normal h-screen overflow-hidden">
@@ -154,11 +154,11 @@ function DeviceDetailsPage() {
               <div class="flex flex-col flex-1 gap-4">
                 {/* Internet Usage Section */}
                 <div className="grid grid-cols-[auto,1fr] items-center mt-5 w-full">
-                  <a className="relative pl-4" href="/devices">
+                  <a className="relative pl-4" href="/rooms">
                     <i className="fa fa-2x fa-arrow-left"></i>
                   </a>
                   <h1 className="text-center lg:text-4xl w-full ml-[-5%]">
-                    {name} ({type})
+                    {roomTitle}
                   </h1>
                 </div>
 
@@ -240,8 +240,8 @@ function DeviceDetailsPage() {
                     </div>
                   </div>{" "}
                   <Link
-                    key={name}
-                    to={`/devices/${type}/${name}/details/setAction`}
+                    key={roomTitle}
+                    to={`/rooms/summary/${roomTitle}/setAction`}
                   >
                     <div className="p-4 gap-4 flex justify-center items-center">
                       <div className="rounded-lg border-[2px] border-gray-300 bg-black items-center gap-4 p-4 sm:w-[50%] md:w-[35%]">
@@ -261,4 +261,4 @@ function DeviceDetailsPage() {
   );
 }
 
-export default DeviceDetailsPage;
+export default RoomEnergyUsagePage;

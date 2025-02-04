@@ -229,14 +229,19 @@ function AllRoomPage() {
                               {room.name}
                             </div>
                             <div className="grid grid-cols-2 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center gap-4">
-                              <Link key={room.name} to={``}>
+                              <Link
+                                key={room.name}
+                                to={`/rooms/summary/${room.name}`}
+                              >
                                 <div className="border border-gray-400 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
                                   Summary
                                 </div>{" "}
                               </Link>
-                              <div className="border border-gray-400 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
-                                Devices
-                              </div>
+                              <Link to={`/rooms/devices/${room.name}`}>
+                                <div className="border border-gray-400 relative bg-white text-gray-800 rounded-full text-sm py-2 px-4 flex justify-center items-center">
+                                  Devices
+                                </div>
+                              </Link>
                             </div>
                           </div>
                         ))}

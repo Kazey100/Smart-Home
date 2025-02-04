@@ -36,6 +36,9 @@ import RoomsNewAccessPage from "./components/pages/RoomsNewAccessPage";
 import ViewSpecificDevicePage from "./components/pages/ViewSpecificDevicePage";
 import ViewSpecificDeviceDatePage from "./components/pages/ViewSpecificDeviceDatePage";
 import ViewSpecificDeviceReportPage from "./components/pages/ViewSpecificDeviceReportPage";
+import RoomsDevicesPage from "./components/pages/RoomsDevicesPage";
+import RoomEnergyUsagePage from "./components/pages/RoomEnergyUsagePage";
+import RoomDeviceSetActionPage from "./components/pages/RoomDeviceSetActionPage";
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -194,7 +197,6 @@ function App() {
           </div>
         }
       />
-
       {/* Routes that display a blank page */}
       <Route path="/room/:name" element={<RoomPage />} />
       <Route
@@ -237,6 +239,15 @@ function App() {
       <Route path="/calendar/report" element={<CalendarReport />} />
       <Route path="/rooms/new" element={<RoomsNewPage />} />
       <Route path="/rooms/:roomTitle/access" element={<RoomsNewAccessPage />} />
+      <Route path="/rooms/devices/:roomTitle" element={<RoomsDevicesPage />} />
+      <Route
+        path="/rooms/summary/:roomTitle"
+        element={<RoomEnergyUsagePage />}
+      />{" "}
+      <Route
+        path="/rooms/summary/:roomTitle/setAction"
+        element={<RoomDeviceSetActionPage />}
+      />
       <Route path="/bac" element={<Bac />} />
     </Routes>
   );
