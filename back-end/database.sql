@@ -21,7 +21,7 @@ CREATE TYPE dtype AS ENUM ('S','E');
 
 CREATE TABLE Device(
     DeviceID SERIAL PRIMARY KEY,
-    SerialNumber SERIAL PRIMARY KEY,
+    SerialNumber INT NOT NULL,
     ImageID INT NOT NULL,
     DeviceType dtype NOT NULL,
     Brand VARCHAR(20) NOT NULL,
