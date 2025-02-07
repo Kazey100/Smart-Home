@@ -1,0 +1,23 @@
+{
+  "name": "smart-home",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/wailoon06/Smart-Home#readme",
+  "bugs": {
+    "url": "https://github.com/wailoon06/Smart-Home/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wailoon06/Smart-Home.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
